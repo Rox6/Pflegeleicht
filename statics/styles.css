@@ -1,40 +1,52 @@
-/*General*/
+/* Fuente y fondo general */
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: white;
+    color: #333;
 }
 
-/*Header and Footer*/
-.header{
-    background-color: #A8D5BA;
-    color: #2E7D59;
-    padding-top: 50px;
-    text-align: center;
-
+/* Header */
+.header {
+    background-color: #ffffff;
+    color: #0F3159;
 }
 
-.header nav ul {
-    list-style: none;
-    padding: 20px;
-    margin: 10px 0 0 0;
-    display: flex;
-    justify-content: right;
-    gap: 20px;
-
-
-}
-
-.header a {
-    color: #1D3C34;
-    text-decoration: none;
+.header .nav-link {
+    color: #0F3159;
     font-weight: bold;
-    font-size: x-large;
+    font-size: 25px;
 }
 
-/*Footer*/
+.header .nav-link:hover {
+    color: #F57C00;
+    text-decoration: underline;
+}
+
+.header img{
+    height: 200px;
+}
+
+/* Carrusel */
+.carousel-section {
+    background-color: #FFF8E7;
+    padding: 2rem 0;
+}
+
+.carousel-inner img {
+    max-height: 500px;
+    object-fit: contain;
+    width: 100%;
+}
+
+/* Footer */
 .footer {
-    background-color: #A8D5BA;
-    color: #2E7D59;
+    background-color: #003366;
+    color: white;
     padding: 20px 0;
     text-align: center;
+}
+
+.footer a {
+    color: white;
+    text-decoration: underline;
 }
