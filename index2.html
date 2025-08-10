@@ -3,93 +3,752 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PflegeLeicht - Ihre professionelle Pflegeberatung für Pflegegrad, Entlastungsbudget und mehr.">
-    <title>PflegeLeicht - Startseite</title>
-    <style>
-        
-    </style>
+    <title>PflegeLeicht - Wir machen Pflege einfach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="statics/styles2.css">
 </head>
 <body>
-    <header>
-        <div class="logo">PflegeLeicht</div>
-        <nav>
-            <a href="#">Startseite</a>
-            <a href="#services">Services</a>
-            <a href="#kontakt">Kontakt</a>
-            <a href="#ueber-uns">Über uns</a>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container" onclick="showPage('startseite')">
+                <img src="statics/img/logo.png" alt="PflegeLeicht Logo" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" onclick="showPage('startseite')">Startseite</a></li>
+                <li><a href="#" onclick="showPage('services')">Services</a></li>
+                <li><a href="#kontakt" onclick="showPage('startseite'); setTimeout(() => scrollToContact(), 100)">Kontakt</a></li>
+                <li><a href="#" onclick="showPage('startseite')">Über uns</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">☰</button>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Pflegeberatung, auf die Sie sich verlassen können!</h1>
-    </section>
+    <!-- Startseite -->
+    <div id="startseite" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Wir helfen Ihnen bei der Pflege</h1>
+                    <div class="subtitle">Einfach • Verständlich • Für Sie da</div>
+                    <p>PflegeLeicht macht es Ihnen leicht: Wir helfen Ihnen dabei, einen Pflegegrad zu bekommen und alle Leistungen zu erhalten, die Ihnen zustehen. Sie sind nicht allein - wir begleiten Sie Schritt für Schritt.</p>
+                    <div class="hero-buttons">
+                        <a href="#kontakt" class="btn-primary" onclick="scrollToContact()">Kostenlose Beratung</a>
+                        <a href="#" class="btn-secondary" onclick="showPage('services')">Was wir für Sie tun</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="icon">🤝</div>
+                        <h3>Persönliche Betreuung</h3>
+                        <p>Individuelle Lösungen für Ihre Bedürfnisse</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="section">
-        <h2>Unsere Mission</h2>
-        <p>PflegeLeicht unterstützt Sie zuverlässig bei allen Fragen rund um die Beantragung des Pflegegrades sowie entsprechender Pflegeleistungen. Unser Ziel ist es, Sie in jeder Phase zu begleiten und für Sie das Beste herauszuholen.</p>
+        <!-- Carousel -->
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel" id="carousel">
+                    <div class="carousel-slide slide-1">
+                        <div class="slide-content">
+                            <h3>Professionelle Pflegeberatung</h3>
+                            <p>Wir begleiten Sie durch den gesamten Prozess der Pflegegrad-Beantragung</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide slide-2">
+                        <div class="slide-content">
+                            <h3>Individuelle Betreuung</h3>
+                            <p>Jeder Fall wird persönlich und sorgfältig behandelt</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide slide-3">
+                        <div class="slide-content">
+                            <h3>Erfolgreiche Ergebnisse</h3>
+                            <p>Wir holen das Maximum für Sie heraus</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                </div>
+            </div>
+        </section>
 
-        <div class="cta">
-            <p>Haben Sie bereits einen Pflegegrad und benötigen eine Höherstufung, weil sich Ihr Hilfebedarf erhöht hat oder Sie zu gering eingestuft wurden?</p>
-            <button>Jetzt Beratung anfragen</button>
+        <!-- Company Section -->
+        <section class="company-section">
+            <div class="company-container">
+                <div class="company-text">
+                    <h2>Über PflegeLeicht</h2>
+                    <p>Mit jahrelanger Erfahrung im Pflegebereich verstehen wir die Herausforderungen, denen sich Familien gegenübersehen. Unser engagiertes Team arbeitet daran, Ihnen den Weg durch das komplexe System der Pflegeversicherung zu erleichtern.</p>
+                    <p>Wir glauben daran, dass jeder Mensch die bestmögliche Pflege und Unterstützung verdient. Deshalb setzen wir uns mit Leidenschaft und Fachwissen für Ihre Rechte ein.</p>
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Erfolgreiche Fälle</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Erfolgsquote</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Jahre Erfahrung</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Erreichbarkeit</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="services-container">
+                <div class="services-header">
+                    <h2>Unsere Services</h2>
+                    <p>Umfassende Unterstützung in allen Bereichen der Pflegeberatung</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">📋</span>
+                        <h3>Pflegegrad beantragen</h3>
+                        <p>Wir helfen Ihnen dabei, einen Pflegegrad zu bekommen. Wir füllen alle Papiere aus und bereiten Sie auf den Besuch vom Gutachter vor.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">📈</span>
+                        <h3>Höheren Pflegegrad bekommen</h3>
+                        <p>Wenn Sie mehr Hilfe brauchen als bisher, helfen wir Ihnen dabei, einen höheren Pflegegrad zu bekommen.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">⚖️</span>
+                        <h3>Gegen Ablehnung wehren</h3>
+                        <p>Wenn die Krankenkasse "Nein" sagt, geben wir nicht auf. Wir helfen Ihnen dabei, sich zu wehren.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🏠</span>
+                        <h3>Zusätzliche Hilfe organisieren</h3>
+                        <p>Sie haben Anspruch auf 125€ im Monat für zusätzliche Hilfe. Wir organisieren das für Sie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <div class="cta-header">
+                    <h2>Brauchen Sie Hilfe?</h2>
+                    <p>Wir sind für Sie da - kostenlos und unverbindlich</p>
+                </div>
+                <div class="cta-cards">
+                    <div class="cta-card">
+                        <h3>Sie haben schon einen Pflegegrad?</h3>
+                        <p>Wenn Sie mehr Hilfe brauchen als bisher oder denken, dass Ihr Pflegegrad zu niedrig ist, können wir Ihnen helfen, einen höheren zu bekommen.</p>
+                        <a href="#kontakt" class="btn-primary" onclick="scrollToContact()">Kostenlose Beratung</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3>Sie brauchen zum ersten Mal Hilfe?</h3>
+                        <p>Wenn Sie oder ein Familienmitglied Hilfe im Alltag brauchen, helfen wir Ihnen dabei, einen Pflegegrad zu bekommen.</p>
+                        <a href="#kontakt" class="btn-primary" onclick="scrollToContact()">Kostenlose Beratung</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="kontakt">
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h2>Kontaktieren Sie uns</h2>
+                    <p>Wir sind hier, um Ihnen zu helfen. Kontaktieren Sie uns für eine kostenlose Erstberatung.</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefonnummer *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail-Adresse *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="concern">Ihr Anliegen *</label>
+                            <select id="concern" name="concern" required>
+                                <option value="">Bitte wählen Sie...</option>
+                                <option value="pflegegrad-beantragen">Pflegegrad beantragen</option>
+                                <option value="pflegegrad-anpassen">Pflegegrad anpassen/Höherstufung</option>
+                                <option value="widerspruch">Widerspruch einlegen</option>
+                                <option value="entlastungsleistungen">Entlastungsleistungen</option>
+                                <option value="wohnumfeld">Wohnumfeldverbessernde Maßnahmen</option>
+                                <option value="anders">Anderes Anliegen</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ihre Nachricht</label>
+                            <textarea id="message" name="message" placeholder="Beschreiben Sie hier Ihr Anliegen detaillierter..."></textarea>
+                        </div>
+                        <div class="privacy-notice">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu und bin damit einverstanden, dass PflegeLeicht mich bezüglich meiner Anfrage kontaktiert. *</label>
+                        </div>
+                        <button type="submit" class="submit-btn">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <div class="services-page">
+            <div class="services-page-container">
+                <h1>Unsere Services</h1>
+                <div class="services-intro">
+                    <p>Unsere Services sind individuell auf Ihre Bedürfnisse abgestimmt. Wir begleiten Sie in allen Fragen rund um Pflegeleistungen – von der Antragstellung bis hin zur Optimierung Ihrer Ansprüche.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Hilfe bei der Beantragung des Pflegegrades</h3>
+                    <p>Wir unterstützen Sie bei der kompletten Beantragung eines Pflegegrades, von der Erfassung Ihrer Daten bis hin zum Versand des Antrags an die zuständige Kasse, sowie Vorbereitung auf den Gutachtertermin. Unser erfahrenes Team kennt alle Fallstricke und sorgt dafür, dass Ihr Antrag vollständig und korrekt eingereicht wird.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Organisation und Unterstützung bei Beantragung von Verhinderungspflege und Entlastungsbudget</h3>
+                    <p>Wir übernehmen die Antragstellung und sorgen dafür, dass Sie die Ihnen zustehenden Leistungen effizient nutzen können. Dabei beraten wir Sie über alle Möglichkeiten und helfen bei der optimalen Ausschöpfung Ihrer Ansprüche.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Widerspruch gegen eine zu niedrige Pflegegrad-Einstufung</h3>
+                    <p>Wir analysieren Ihren Bescheid gründlich, erstellen einen professionellen Widerspruch und begleiten Sie durch den gesamten Prozess. Mit unserer Expertise erhöhen wir Ihre Chancen auf eine erfolgreiche Neubewertung erheblich.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Abrechnung des monatlichen Entlastungsbetrages über Nachbarschaftshilfe</h3>
+                    <p>Wir organisieren die Nachbarschaftshilfe und kümmern uns um die Registrierung sowie korrekte Abrechnung der Entlastungsleistungen. So können Sie Ihren monatlichen Entlastungsbetrag von 125€ optimal nutzen.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Antrag auf wohnumfeldverbessernde Maßnahmen</h3>
+                    <p>Unterstützung bei der Beantragung von Zuschüssen für bauliche Veränderungen, die das Wohnumfeld an die Bedürfnisse der pflegebedürftigen Person anpassen. Wir helfen Ihnen dabei, bis zu 4.000€ Zuschuss für notwendige Umbauten zu erhalten.</p>
+                </div>
+
+                <div style="text-align: center; margin-top: 4rem;">
+                    <a href="#" class="btn-primary" onclick="showPage('startseite'); setTimeout(() => scrollToContact(), 100);">Jetzt kostenlose Beratung anfragen</a>
+                </div>
+            </div>
         </div>
-        <div class="cta">
-            <p>Möchten Sie oder einer Ihrer Angehörigen einen Pflegegrad beantragen?</p>
-            <button>Jetzt Beratung anfragen</button>
-        </div>
-    </section>
+    </div>
 
-    <section class="section" id="kontakt">
-        <h2>Kontaktformular</h2>
-        <form>
-            <input type="text" name="name" placeholder="Ihr Name" required>
-            <input type="tel" name="telefon" placeholder="Telefonnummer">
-            <input type="email" name="email" placeholder="E-Mail-Adresse" required>
-            <select name="anliegen">
-                <option>Pflegegrad beantragen</option>
-                <option>Pflegegrad anpassen</option>
-                <option>Widerspruch</option>
-                <option>Anderes</option>
-            </select>
-            <textarea name="nachricht" placeholder="Ihr Anliegen" rows="4"></textarea>
-            <button type="submit">Absenden</button>
-        </form>
-        <small>Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.</small>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <a href="#">Startseite</a> |
-            <a href="#services">Services</a> |
-            <a href="#kontakt">Kontakt</a> |
-            <a href="#impressum">Impressum</a>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="#" onclick="showPage('startseite')">Startseite</a>
+                <a href="#" onclick="showPage('services')">Services</a>
+                <a href="#" onclick="showPage('startseite'); setTimeout(() => scrollToContact(), 100)">Kontakt</a>
+                <a href="#" onclick="showPage('startseite')">Über uns</a>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>📍 Musterstraße 123<br>12345 Musterstadt, Deutschland</p>
+                <p>📞 +49 (0) 123 456 789</p>
+                <p>✉️ info@pflegeleicht.de</p>
+                <p>🕒 Mo-Fr: 8:00-18:00 Uhr</p>
+            </div>
+            <div class="footer-section">
+                <h3>Rechtliches</h3>
+                <a href="#">Impressum</a>
+                <a href="#">Datenschutzerklärung</a>
+                <a href="#">AGB</a>
+                <a href="#">Firmenregister</a>
+                <a href="#">Widerrufsrecht</a>
+            </div>
+            <div class="footer-section">
+                <h3>Folgen Sie uns</h3>
+                <p>Bleiben Sie über Neuigkeiten informiert</p>
+                <div class="social-icons">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="LinkedIn">💼</a>
+                    <a href="#" title="Xing">🔗</a>
+                    <a href="#" title="Instagram">📷</a>
+                </div>
+            </div>
         </div>
-        <p>PflegeLeicht GmbH | Am Marktplatz 5, 65779 Kelkheim (Taunus) |</p>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PflegeLeicht GmbH. Alle Rechte vorbehalten. </p>
+        </div>
     </footer>
 
-    <!-- SERVICES PAGE STRUCTURE (SEITE 2) -->
-    <section class="section services-section" id="services">
-        <h2>Unsere Services</h2>
-        <p>Unsere Services sind individuell auf Ihre Bedürfnisse abgestimmt. Wir begleiten Sie in allen Fragen rund um Pflegeleistungen – von der Antragstellung bis hin zur Optimierung Ihrer Ansprüche.</p>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
 
-        <h3>Hilfe bei der Beantragung des Pflegegrades</h3>
-        <p>Wir unterstützen Sie bei der kompletten Beantragung eines Pflegegrades, von der Erfassung Ihrer Daten bis hin zum Versand des Antrags an die zuständige Kasse, sowie Vorbereitung auf den Gutachtertermin.</p>
+        // Carousel Functionality
+        //let currentSlide = 0;
+        //const totalSlides = 3;
 
-        <h3>Organisation und Unterstützung bei Verhinderungspflege & Entlastungsbudget</h3>
-        <p>Wir übernehmen die Antragstellung und sorgen dafür, dass Sie die Ihnen zustehenden Leistungen effizient nutzen können.</p>
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            const carousel = document.getElementById('carousel');
+            carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+        }
 
-        <h3>Widerspruch gegen eine zu niedrige Pflegegrad-Einstufung</h3>
-        <p>Wir analysieren Ihren Bescheid, erstellen einen professionellen Widerspruch und begleiten Sie durch den gesamten Prozess.</p>
+        // Auto-advance carousel
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }, 5000);
 
-        <h3>Abrechnung des Entlastungsbetrages über Nachbarschaftshilfe</h3>
-        <p>Wir organisieren die Nachbarschaftshilfe und kümmern uns um die Registrierung sowie korrekte Abrechnung der Entlastungsleistungen.</p>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Close mobile menu
+            document.getElementById('navMenu').classList.remove('active');
+        }
 
-        <h3>Antrag auf wohnumfeldverbessernde Maßnahmen</h3>
-        <p>Wir beantragen für Sie finanzielle Unterstützung zur Anpassung Ihres Wohnumfeldes an Ihre Bedürfnisse.</p>
+        // Scroll to contact section
+        function scrollToContact() {
+            const contactSection = document.getElementById('kontakt');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
-        <h3>Antrag auf GdB / Schwerbehindertenausweis</h3>
-        <p>Wir übernehmen die Beantragung Ihres Schwerbehindertenausweises und helfen Ihnen, alle erforderlichen Unterlagen einzureichen.</p>
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validation
+            if (!data.name || !data.phone || !data.email || !data.concern) {
+                alert('Bitte füllen Sie alle Pflichtfelder (*) aus.');
+                return;
+            }
+            
+            if (!data.privacy) {
+                alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                return;
+            }
+            
+            // Success message
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns innerhalb von 24 Stunden bei Ihnen melden.');
+            this.reset();
+        });
 
-        <button>Kontaktieren Sie uns für ein individuelles Beratungsgespräch</button>
-    </section>
+        // Smooth scrolling for all anchor links
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('a[href^="#"]')) {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('startseite');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d1717211994dbd',t:'MTc1NDg0OTM1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
+    <!-- Startseite -->
+    <div id="startseite" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Wir helfen Ihnen bei der Pflege</h1>
+                    <div class="subtitle">Einfach • Verständlich • Für Sie da</div>
+                    <p>PflegeLeicht macht es Ihnen leicht: Wir helfen Ihnen dabei, einen Pflegegrad zu bekommen und alle Leistungen zu erhalten, die Ihnen zustehen. Sie sind nicht allein - wir begleiten Sie Schritt für Schritt.</p>
+                    <div class="hero-buttons">
+                        <a href="#kontakt" class="btn-primary" onclick="scrollToContact()">Kostenlose Beratung</a>
+                        <a href="#" class="btn-secondary" onclick="showPage('services')">Was wir für Sie tun</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="icon">🤝</div>
+                        <h3>Persönliche Betreuung</h3>
+                        <p>Individuelle Lösungen für Ihre Bedürfnisse</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carousel -->
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel" id="carousel">
+                    <div class="carousel-slide slide-1">
+                        <div class="slide-content">
+                            <h3>Professionelle Pflegeberatung</h3>
+                            <p>Wir begleiten Sie durch den gesamten Prozess der Pflegegrad-Beantragung</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide slide-2">
+                        <div class="slide-content">
+                            <h3>Individuelle Betreuung</h3>
+                            <p>Jeder Fall wird persönlich und sorgfältig behandelt</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide slide-3">
+                        <div class="slide-content">
+                            <h3>Erfolgreiche Ergebnisse</h3>
+                            <p>Wir holen das Maximum für Sie heraus</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Section -->
+        <section class="company-section">
+            <div class="company-container">
+                <div class="company-text">
+                    <h2>Über PflegeLeicht</h2>
+                    <p>Mit jahrelanger Erfahrung im Pflegebereich verstehen wir die Herausforderungen, denen sich Familien gegenübersehen. Unser engagiertes Team arbeitet daran, Ihnen den Weg durch das komplexe System der Pflegeversicherung zu erleichtern.</p>
+                    <p>Wir glauben daran, dass jeder Mensch die bestmögliche Pflege und Unterstützung verdient. Deshalb setzen wir uns mit Leidenschaft und Fachwissen für Ihre Rechte ein.</p>
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Erfolgreiche Fälle</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Erfolgsquote</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Jahre Erfahrung</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Erreichbarkeit</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="services-container">
+                <div class="services-header">
+                    <h2>Unsere Services</h2>
+                    <p>Umfassende Unterstützung in allen Bereichen der Pflegeberatung</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">📋</span>
+                        <h3>Pflegegrad beantragen</h3>
+                        <p>Wir helfen Ihnen dabei, einen Pflegegrad zu bekommen. Wir füllen alle Papiere aus und bereiten Sie auf den Besuch vom Gutachter vor.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">📈</span>
+                        <h3>Höheren Pflegegrad bekommen</h3>
+                        <p>Wenn Sie mehr Hilfe brauchen als bisher, helfen wir Ihnen dabei, einen höheren Pflegegrad zu bekommen.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">⚖️</span>
+                        <h3>Gegen Ablehnung wehren</h3>
+                        <p>Wenn die Krankenkasse "Nein" sagt, geben wir nicht auf. Wir helfen Ihnen dabei, sich zu wehren.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🏠</span>
+                        <h3>Zusätzliche Hilfe organisieren</h3>
+                        <p>Sie haben Anspruch auf 125€ im Monat für zusätzliche Hilfe. Wir organisieren das für Sie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <div class="cta-header">
+                    <h2>Brauchen Sie Hilfe?</h2>
+                    <p>Wir sind für Sie da - kostenlos und unverbindlich</p>
+                </div>
+                <div class="cta-cards">
+                    <div class="cta-card">
+                        <h3>Sie haben schon einen Pflegegrad?</h3>
+                        <p>Wenn Sie mehr Hilfe brauchen als bisher oder denken, dass Ihr Pflegegrad zu niedrig ist, können wir Ihnen helfen, einen höheren zu bekommen.</p>
+                        <a href="#kontakt" class="btn-primary" onclick="scrollToContact()">Kostenlose Beratung</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3>Sie brauchen zum ersten Mal Hilfe?</h3>
+                        <p>Wenn Sie oder ein Familienmitglied Hilfe im Alltag brauchen, helfen wir Ihnen dabei, einen Pflegegrad zu bekommen.</p>
+                        <a href="#kontakt" class="btn-primary" onclick="scrollToContact()">Kostenlose Beratung</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="kontakt">
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h2>Kontaktieren Sie uns</h2>
+                    <p>Wir sind hier, um Ihnen zu helfen. Kontaktieren Sie uns für eine kostenlose Erstberatung.</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefonnummer *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail-Adresse *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="concern">Ihr Anliegen *</label>
+                            <select id="concern" name="concern" required>
+                                <option value="">Bitte wählen Sie...</option>
+                                <option value="pflegegrad-beantragen">Pflegegrad beantragen</option>
+                                <option value="pflegegrad-anpassen">Pflegegrad anpassen/Höherstufung</option>
+                                <option value="widerspruch">Widerspruch einlegen</option>
+                                <option value="entlastungsleistungen">Entlastungsleistungen</option>
+                                <option value="wohnumfeld">Wohnumfeldverbessernde Maßnahmen</option>
+                                <option value="anders">Anderes Anliegen</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ihre Nachricht</label>
+                            <textarea id="message" name="message" placeholder="Beschreiben Sie hier Ihr Anliegen detaillierter..."></textarea>
+                        </div>
+                        <div class="privacy-notice">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu und bin damit einverstanden, dass PflegeLeicht mich bezüglich meiner Anfrage kontaktiert. *</label>
+                        </div>
+                        <button type="submit" class="submit-btn">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <div class="services-page">
+            <div class="services-page-container">
+                <h1>Unsere Services</h1>
+                <div class="services-intro">
+                    <p>Unsere Services sind individuell auf Ihre Bedürfnisse abgestimmt. Wir begleiten Sie in allen Fragen rund um Pflegeleistungen – von der Antragstellung bis hin zur Optimierung Ihrer Ansprüche.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Hilfe bei der Beantragung des Pflegegrades</h3>
+                    <p>Wir unterstützen Sie bei der kompletten Beantragung eines Pflegegrades, von der Erfassung Ihrer Daten bis hin zum Versand des Antrags an die zuständige Kasse, sowie Vorbereitung auf den Gutachtertermin. Unser erfahrenes Team kennt alle Fallstricke und sorgt dafür, dass Ihr Antrag vollständig und korrekt eingereicht wird.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Organisation und Unterstützung bei Beantragung von Verhinderungspflege und Entlastungsbudget</h3>
+                    <p>Wir übernehmen die Antragstellung und sorgen dafür, dass Sie die Ihnen zustehenden Leistungen effizient nutzen können. Dabei beraten wir Sie über alle Möglichkeiten und helfen bei der optimalen Ausschöpfung Ihrer Ansprüche.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Widerspruch gegen eine zu niedrige Pflegegrad-Einstufung</h3>
+                    <p>Wir analysieren Ihren Bescheid gründlich, erstellen einen professionellen Widerspruch und begleiten Sie durch den gesamten Prozess. Mit unserer Expertise erhöhen wir Ihre Chancen auf eine erfolgreiche Neubewertung erheblich.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Abrechnung des monatlichen Entlastungsbetrages über Nachbarschaftshilfe</h3>
+                    <p>Wir organisieren die Nachbarschaftshilfe und kümmern uns um die Registrierung sowie korrekte Abrechnung der Entlastungsleistungen. So können Sie Ihren monatlichen Entlastungsbetrag von 125€ optimal nutzen.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h3>Antrag auf wohnumfeldverbessernde Maßnahmen</h3>
+                    <p>Unterstützung bei der Beantragung von Zuschüssen für bauliche Veränderungen, die das Wohnumfeld an die Bedürfnisse der pflegebedürftigen Person anpassen. Wir helfen Ihnen dabei, bis zu 4.000€ Zuschuss für notwendige Umbauten zu erhalten.</p>
+                </div>
+
+                <div style="text-align: center; margin-top: 4rem;">
+                    <a href="#" class="btn-primary" onclick="showPage('startseite'); setTimeout(() => scrollToContact(), 100);">Jetzt kostenlose Beratung anfragen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Carousel Functionality
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            const carousel = document.getElementById('carousel');
+            carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+        }
+
+        // Auto-advance carousel
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }, 5000);
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Close mobile menu
+            document.getElementById('navMenu').classList.remove('active');
+        }
+
+        // Scroll to contact section
+        function scrollToContact() {
+            const contactSection = document.getElementById('kontakt');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validation
+            if (!data.name || !data.phone || !data.email || !data.concern) {
+                alert('Bitte füllen Sie alle Pflichtfelder (*) aus.');
+                return;
+            }
+            
+            if (!data.privacy) {
+                alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                return;
+            }
+            
+            // Success message
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns innerhalb von 24 Stunden bei Ihnen melden.');
+            this.reset();
+        });
+
+        // Smooth scrolling for all anchor links
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('a[href^="#"]')) {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('startseite');
+        });
+    </script>
 </body>
 </html>
