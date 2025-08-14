@@ -349,10 +349,10 @@ body {
             background: #f7fafc;
         }
         
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .about-page-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
         }
         
         .about-header {
@@ -361,10 +361,11 @@ body {
         }
         
         .about-header h2 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
+            color: #0f3159;
+            text-align: center;
+            margin-top: 100px;
             font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 1rem;
         }
         
         .about-header p {
@@ -471,7 +472,6 @@ body {
             margin: 0 auto;
         }
 
-
         /* Values Grid */
         .values-grid {
             display: grid;
@@ -506,8 +506,6 @@ body {
             line-height: 1.6;
             text-align: center;
         }
-
-
         /* Services Section */
         .services-section {
             padding: 8rem 3rem;
@@ -1109,53 +1107,51 @@ body {
         }
 
         @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 1.8rem;
-            }
+        .hero-text h1 {
+            font-size: 1.8rem;
+        }
 
-            .hero-text .subtitle {
-                font-size: 1rem;
-            }
-                .logo-container {
-        width: 120px;
-        height: 40px;
+        .hero-text .subtitle {
+            font-size: 1rem;
+        }
 
+        .logo-container {
+            width: 120px;
+            height: 40px;
+        }
 
-            .logo {
-                font-size: 1.8rem;
-            }
+        .logo {
+            font-size: 1.8rem;
+        }
 
-            .nav-menu a {
-                font-size: 1.1rem;
-            }
+        .nav-menu a {
+            font-size: 1.1rem;
+        }
 
-            .carousel-slide {
-                height: 250px;
-            }
+        .carousel-slide {
+            height: 250px;
+        }
 
-            .slide-content h3 {
-                font-size: 1.5rem;
-            }
+        .slide-content h3 {
+            font-size: 1.5rem;
+        }
 
-            .company-text h2,
-            .services-header h2,
-            .cta-header h2,
-            .contact-header h2 {
-                font-size: 1.8rem;
-            }
+        .company-text h2,
+        .services-header h2,
+        .cta-header h2,
+        .contact-header h2 {
+            font-size: 1.8rem;
+        }
 
-            .service-card {
-                padding: 2rem;
-            }
+        .service-card {
+            padding: 2rem;
+        }
 
-            .service-icon {
-                font-size: 3.5rem;
-            }
+        .service-icon {
+            font-size: 3.5rem;
+        }
 
-
-
-            .contact-form {
-                padding: 1.5rem;
-            }
+        .contact-form {
+            padding: 1.5rem;
         }
     }
