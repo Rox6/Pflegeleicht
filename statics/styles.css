@@ -933,22 +933,29 @@ body {
         }
 
         /* Responsive Design */
-        @media (max-width: 1200px) {
-            .nav-container {
-                padding: 1rem 2rem;
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
             }
-                .hero-content {
-        padding: 0 2rem;
-    }
-}
-
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-                padding: 0 2rem;
+            
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 1.5rem 0;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                gap: 0.5rem;
+                border-top: 1px solid rgba(226, 232, 240, 0.8);
             }
+            
 
             .hero-text h1 {
                 font-size: 2.5rem;
@@ -1154,4 +1161,162 @@ body {
         .contact-form {
             padding: 1.5rem;
         }
-    }
+        /* Service Section */
+        .impressum-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-top: 180px;
+        }
+        .impressum-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .impressum-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .impressum-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .impressum-card h2 {
+            color: #2d3748;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
+            position: relative;
+        }
+
+        .impressum-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #4299e1, #63b3ed);
+            border-radius: 1px;
+        }
+
+        .impressum-card h3 {
+            color: #4299e1;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .impressum-card p {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .impressum-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .impressum-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .impressum-card h2 {
+            color: #2d3748;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
+            position: relative;
+        }
+
+        .impressum-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #4299e1, #63b3ed);
+            border-radius: 1px;
+        }
+
+        .impressum-card h3 {
+            color: #4299e1;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .impressum-card p {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .impressum-card ul {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .impressum-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+        }
+
+        .contact-info h3 {
+            color: white !important;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .contact-info p {
+            color: white;
+            opacity: 0.95;
+        }
+
+        .contact-info strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .impressum-card a {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .impressum-card a:hover {
+            color: #2b6cb0;
+            text-decoration: underline;
+        }
+    } 
