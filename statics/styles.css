@@ -1066,44 +1066,34 @@ body {
             .service-card p {
                 font-size: 1rem;
             }
-
             .form-grid {
                 grid-template-columns: 1fr;
             }
-
             .contact-form {
                 padding: 2rem;
             }
-
             .form-group label {
                 font-size: 1.1rem;
             }
-
             .form-group input,
             .form-group select,
             .form-group textarea {
                 font-size: 1rem;
                 padding: 1rem;
             }
-
             .services-page h1 {
                 font-size: 2.2rem;
             }
-
             .company-text h2,
             .services-header h2,
             .cta-header h2,
             .contact-header h2 {
                 font-size: 2rem;
             }
-
             .company-text p,
             .services-header p {
                 font-size: 1rem;
             }
-
-
-
             .carousel-section,
             .company-section,
             .services-section,
@@ -1161,101 +1151,4 @@ body {
         .contact-form {
             padding: 1.5rem;
         }
-        /* General Impressum Styles*/
-        .impressum-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 2rem;
-        padding-top: 180px; /* para que no se tape con el header fijo */
-        }
-
-        .impressum-header {
-        text-align: center;
-        padding: 3rem 0;
-        margin-bottom: 2rem;
-        }
-
-        .impressum-header h1 {
-        font-size: 2.5rem;
-        color: #333;
-        margin-bottom: 0.5rem;
-        }
-
-        .impressum-header p {
-        color: #666;
-        font-size: 1.1rem;
-        }
-
-        .impressum-card {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        padding: 2rem;
-        margin-bottom: 2rem;
-        transition: transform 0.3s ease;
-        }
-
-        .impressum-card:hover {
-        transform: translateY(-5px);
-        }
-
-        .impressum-card h2 {
-        color: #2c3e50;
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid #f0f0f0;
-        }
-
-        .impressum-card p {
-        margin-bottom: 1rem;
-        line-height: 1.6;
-        color: #444;
-        }
-
-        .impressum-card strong {
-        color: #2c3e50;
-        }
-
-        .contact-links {
-        margin-top: 1rem;
-        }
-
-        .contact-links a {
-        display: inline-block;
-        margin-right: 1.5rem;
-        color: #3498db;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        }
-        .contact-links a:hover {
-        color: #2980b9;
-        }
-        .impressum-footer {
-        text-align: center;
-        padding: 2rem 0;
-        color: #666;
-        border-top: 1px solid #eee;
-        margin-top: 3rem;
-        }
-        
-        /*Responsive (Mobile)*/
-        @media (max-width: 480px) {
-        .impressum-container {
-        padding: 1rem;
-        padding-top: 120px;
-        }
-        .impressum-header h1 {
-        font-size: 2rem;
-        }
-        .impressum-card {
-        padding: 1.5rem;
-        }
-        .impressum-card h2 {
-        font-size: 1.3rem;
-        }
-        .impressum-footer {
-        font-size: 0.9rem;
-        }
     }
-}
