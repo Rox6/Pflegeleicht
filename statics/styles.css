@@ -1,63 +1,65 @@
-   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.7;
-    color: #1a1a1a;
-    overflow-x: hidden;
-    font-size: 16px;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            font-size: clamp(14px, 1.5vw, 16px);
+        }
 
-/* Header */
-.header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(15, 49, 89, 0.1);
-}
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(15, 49, 89, 0.1);
+        }
 
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 3rem;
-}
+        .nav-container {
+            max-width: min(1400px, 95vw);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 3vw, 3rem);
+            min-height: 70px;
+        }
 
-.logo-container {
-    height: 150px;
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
+        .logo-container {
+            height: clamp(40px, 8vw, 150px);
+            width: clamp(120px, 25vw, 400px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
 
-
-
-.nav-menu {
+        .nav-menu {
             display: flex;
             list-style: none;
-            gap: 3rem;
+            gap: clamp(1rem, 3vw, 3rem);
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         .nav-menu a {
             text-decoration: none;
             color: #1a1a1a;
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 1.8vw, 1.5rem);
             position: relative;
             transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
+            padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 1rem);
             border-radius: 8px;
+            white-space: nowrap;
         }
 
         .nav-menu a:hover,
@@ -87,9 +89,10 @@ body {
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
             cursor: pointer;
             color: #0f3159;
+            padding: 0.5rem;
         }
 
         /* Hero Section */
@@ -100,6 +103,7 @@ body {
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: clamp(70px, 10vh, 120px);
         }
 
         .hero::before {
@@ -114,12 +118,12 @@ body {
         }
 
         .hero-content {
-            max-width: 1400px;
+            max-width: min(1400px, 95vw);
             margin: 0 auto;
-            padding: 0 3rem;
+            padding: 0 clamp(1rem, 3vw, 3rem);
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+            gap: clamp(2rem, 5vw, 4rem);
             align-items: center;
             position: relative;
             z-index: 2;
@@ -130,24 +134,24 @@ body {
         }
 
         .hero-text h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1rem, 3vw, 2rem);
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-text .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
             opacity: 1;
             font-weight: 500;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .hero-text p {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
             opacity: 1;
             line-height: 1.8;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
@@ -155,27 +159,28 @@ body {
 
         .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: clamp(1rem, 2vw, 1.5rem);
             flex-wrap: wrap;
+            justify-content: flex-start;
         }
 
         .btn-primary {
             background: #D2691E;
             color: white;
-            padding: 1.2rem 2.5rem;
+            padding: clamp(1rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
             border: 3px solid #D2691E;
             border-radius: 12px;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(210, 105, 30, 0.4);
-            min-height: 50px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 15px rgba(210, 105, 30, 0.4);
+            min-height: 50px;
+            min-width: 150px;
         }
 
         .btn-primary:hover,
@@ -190,10 +195,10 @@ body {
         .btn-secondary {
             background: white;
             color: #0f3159;
-            padding: 1.2rem 2.5rem;
+            padding: clamp(1rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
             border: 3px solid white;
             border-radius: 12px;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -202,6 +207,7 @@ body {
             align-items: center;
             justify-content: center;
             min-height: 50px;
+            min-width: 150px;
         }
 
         .btn-secondary:hover,
@@ -224,11 +230,13 @@ body {
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
-            padding: 3rem;
+            padding: clamp(2rem, 4vw, 3rem);
             text-align: center;
             color: white;
             transform: rotate(-5deg);
             transition: transform 0.3s ease;
+            max-width: 400px;
+            width: 100%;
         }
 
         .hero-card:hover {
@@ -236,286 +244,283 @@ body {
         }
 
         .hero-card .icon {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 6vw, 4rem);
             margin-bottom: 1rem;
         }
 
         .hero-card h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
             margin-bottom: 1rem;
         }
 
         /* Carousel */
-/* ===== FIX: que no se apilen los slides ===== */
-        .carousel{
-        display: flex;
-        flex-wrap: nowrap;          /* <-- evita que brinquen a otra línea */
-        will-change: transform;     /* animación más suave */
+        .carousel {
+            display: flex;
+            flex-wrap: nowrap;
+            will-change: transform;
         }
 
-        .carousel-slide{
-        flex: 0 0 100%;             /* <-- cada slide ocupa exactamente el 100% */
-        min-width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        .carousel-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            height: clamp(300px, 50vh, 600px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Imagen dentro del slide: no empuja el layout */
         .carousel-slide img,
-        .slide-image{
-        max-width: 520px;           /* controla el tamaño visual */
-        width: 400px;
-        height: auto;
-        object-fit: contain;
-        display: block;
+        .slide-image {
+            max-width: min(520px, 90vw);
+            width: clamp(300px, 60vw, 400px);
+            height: auto;
+            object-fit: contain;
+            display: block;
         }
 
-        /* (Opcional, solo estético) texto + imagen más bonitos sin romper layout */
-        .slide-content{
-        text-align: center;
-        color: #111827;
-        max-width: 600px;
-        padding: 2rem;
-        }
-        .slide-content h3{
-        font-size: 2.2rem;
-        font-weight: 800;
-        margin-bottom: .75rem;
-        letter-spacing: .2px;
-        }
-        .slide-content h3::after{
-        content:"";
-        display:block;
-        width:64px;height:4px;border-radius:999px;
-        margin:.6rem auto 0;
-        background: linear-gradient(90deg,#D2691E,#ff9a4d);
-        }
-        .slide-content p{
-        font-size:1.1rem;
-        line-height:1.7;
-        color:#374151;
-        opacity:1;
+        .slide-content {
+            text-align: center;
+            color: #111827;
+            max-width: min(600px, 90vw);
+            padding: clamp(1rem, 3vw, 2rem);
         }
 
-        /* Imagen menos “plana” */
+        .slide-content h3 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.2px;
+        }
+
+        .slide-content h3::after {
+            content: "";
+            display: block;
+            width: 64px;
+            height: 4px;
+            border-radius: 999px;
+            margin: 0.6rem auto 0;
+            background: linear-gradient(90deg, #D2691E, #ff9a4d);
+        }
+
+        .slide-content p {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            line-height: 1.7;
+            color: #374151;
+            opacity: 1;
+        }
+
         .carousel-slide img,
-        .slide-image{
-        filter: drop-shadow(0 14px 28px rgba(0,0,0,.12));
-        transition: transform .3s ease, filter .3s ease;
-        }
-        .carousel-slide:hover .slide-image{
-        transform: translateY(-2px);
-        filter: drop-shadow(0 18px 34px rgba(0,0,0,.16));
+        .slide-image {
+            filter: drop-shadow(0 14px 28px rgba(0,0,0,.12));
+            transition: transform .3s ease, filter .3s ease;
         }
 
+        .carousel-slide:hover .slide-image {
+            transform: translateY(-2px);
+            filter: drop-shadow(0 18px 34px rgba(0,0,0,.16));
+        }
 
-        /* About Page Styles */
-        /* About Section Page */
+        /* About Section */
         .about-section-home {
-            padding: 6rem 0;
+            padding: clamp(4rem, 8vw, 6rem) 0;
             background: #f7fafc;
         }
-        
+
         .about-page-container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 2rem;
+            max-width: min(1200px, 95vw);
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
         }
-        
+
         .about-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2rem, 5vw, 4rem);
         }
-        
+
         .about-header h2 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             color: #0f3159;
             text-align: center;
-            margin-top: 100px;
+            margin-top: clamp(50px, 10vh, 100px);
             font-weight: 700;
         }
-        
+
         .about-header p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
             color: #4a5568;
             opacity: 0.8;
         }
-        
+
         .about-content-home {
-            max-width: 1000px;
+            max-width: min(1000px, 95vw);
             margin: 0 auto;
         }
-        
+
         .about-text {
             text-align: center;
         }
-        
+
         .about-text > p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
             line-height: 1.7;
             color: #4a5568;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(2rem, 4vw, 3rem);
         }
-        
+
         .values-preview {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
         }
-        
+
         .value-preview {
             background: white;
-            padding: 2rem;
+            padding: clamp(1.5rem, 3vw, 2rem);
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
-        
+
         .value-preview:hover {
             transform: translateY(-5px);
         }
-        
+
         .value-preview .value-icon {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 1rem;
             display: block;
         }
-        
+
         .value-preview h4 {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
             font-weight: 600;
             color: #2d3748;
             margin-bottom: 0.5rem;
         }
-        
+
         .value-preview p {
             color: #4a5568;
             line-height: 1.6;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         .about-page {
             min-height: 100vh;
-            padding-top: 80px;
+            padding-top: clamp(70px, 10vh, 80px);
         }
-        
-        .about-page-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
+
         .about-intro {
-            max-width: 800px;
+            max-width: min(800px, 95vw);
             margin: 0 auto;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
             line-height: 1.6;
             opacity: 0.9;
         }
-        
+
         .about-content {
-            margin-top: 4rem;
+            margin-top: clamp(2rem, 5vw, 4rem);
         }
-        
+
         .about-section {
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2rem, 5vw, 4rem);
         }
-        
+
         .about-section h2 {
             color: #2d3748;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
             text-align: center;
         }
-        
+
         .about-section p {
             color: #4a5568;
             line-height: 1.7;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             text-align: center;
-            max-width: 800px;
+            max-width: min(800px, 95vw);
             margin: 0 auto;
         }
 
         /* Values Grid */
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-top: clamp(1rem, 3vw, 2rem);
         }
-        
+
         .value-item {
             text-align: center;
-            padding: 2rem;
+            padding: clamp(1.5rem, 3vw, 2rem);
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .value-icon {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 3rem);
             margin-bottom: 1rem;
             display: block;
         }
-        
+
         .value-item h3 {
             color: #2d3748;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2.3vw, 1.3rem);
             font-weight: 600;
             margin-bottom: 1rem;
         }
-        
+
         .value-item p {
             color: #4a5568;
             line-height: 1.6;
             text-align: center;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
+
         /* Services Section */
         .services-section {
-            padding: 8rem 3rem;
+            padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem);
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
 
         .services-container {
-            max-width: 1400px;
+            max-width: min(1400px, 95vw);
             margin: 0 auto;
         }
 
         .services-header {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: clamp(3rem, 6vw, 5rem);
         }
 
         .services-header h2 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             color: #0f3159;
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1rem, 3vw, 2rem);
             font-weight: 700;
             line-height: 1.3;
         }
 
         .services-header p {
-            font-size: 1.4rem;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
             color: #1a1a1a;
-            max-width: 700px;
+            max-width: min(700px, 95vw);
             margin: 0 auto;
             line-height: 1.8;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+            gap: clamp(1.5rem, 3vw, 2.5rem);
         }
 
         .service-card {
             background: white;
-            padding: 3.5rem;
+            padding: clamp(2rem, 4vw, 3.5rem);
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
             transition: all 0.3s ease;
@@ -545,16 +550,16 @@ body {
         }
 
         .service-icon {
-            font-size: 4.5rem;
-            margin-bottom: 2rem;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            margin-bottom: clamp(1rem, 3vw, 2rem);
             display: block;
             text-align: center;
         }
 
         .service-card h3 {
             color: #0f3159;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
             font-weight: 700;
             line-height: 1.4;
             text-align: center;
@@ -563,14 +568,14 @@ body {
         .service-card p {
             color: #1a1a1a;
             line-height: 1.8;
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
             margin: 0;
             text-align: left;
         }
 
         /* CTA Section */
         .cta-section {
-            padding: 8rem 3rem;
+            padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem);
             background: linear-gradient(135deg, #0f3159 0%, #1a5490 100%);
             position: relative;
             overflow: hidden;
@@ -593,7 +598,7 @@ body {
         }
 
         .cta-container {
-            max-width: 1400px;
+            max-width: min(1400px, 95vw);
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -602,31 +607,31 @@ body {
         .cta-header {
             text-align: center;
             color: white;
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2rem, 5vw, 4rem);
         }
 
         .cta-header h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
             font-weight: 700;
         }
 
         .cta-header p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
             opacity: 0.9;
         }
 
         .cta-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
         }
 
         .cta-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 3rem;
+            padding: clamp(2rem, 4vw, 3rem);
             border-radius: 25px;
             text-align: center;
             color: white;
@@ -638,57 +643,60 @@ body {
         }
 
         .cta-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
             font-weight: 600;
         }
 
         .cta-card p {
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
             opacity: 0.9;
             line-height: 1.6;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         /* Contact Form */
         .contact-section {
-            padding: 8rem 3rem;
+            padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem);
             background: white;
+            padding-top: clamp(100px, 12vh, 140px);
         }
 
         .contact-container {
-            max-width: 1000px;
+            max-width: min(1000px, 95vw);
             margin: 0 auto;
-            padding-top: 50px;
+            padding-top: 0;
         }
 
         .contact-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2rem, 5vw, 4rem);
         }
 
         .contact-header h2 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             color: #0f3159;
-            margin-bottom: 1.5rem;
+            margin-top: clamp(50px, 10vh, 100px);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
             font-weight: 700;
         }
 
         .contact-form {
             background: #f8fafc;
-            padding: 4rem;
+            padding: clamp(2rem, 5vw, 4rem);
             border-radius: 25px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: clamp(1rem, 3vw, 2rem);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1rem, 3vw, 2rem);
         }
 
         .form-group label {
@@ -696,7 +704,7 @@ body {
             margin-bottom: 1rem;
             color: #0f3159;
             font-weight: 700;
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
             line-height: 1.5;
         }
 
@@ -704,10 +712,10 @@ body {
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 1.5rem;
+            padding: clamp(1rem, 2vw, 1.5rem);
             border: 3px solid #cbd5e0;
             border-radius: 10px;
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
             transition: all 0.3s ease;
             background: white;
             min-height: 60px;
@@ -723,7 +731,7 @@ body {
         }
 
         .form-group textarea {
-            height: 150px;
+            height: clamp(120px, 20vh, 150px);
             resize: vertical;
         }
 
@@ -731,23 +739,25 @@ body {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            margin: 2rem 0;
-            font-size: 0.95rem;
+            margin: clamp(1rem, 3vw, 2rem) 0;
+            font-size: clamp(0.85rem, 1.8vw, 0.95rem);
             color: #64748b;
         }
 
         .privacy-notice input[type="checkbox"] {
             width: auto;
             margin: 0;
+            min-width: 20px;
+            min-height: 20px;
         }
 
         .submit-btn {
             background: #D2691E;
             color: white;
-            padding: 1.5rem 3rem;
+            padding: clamp(1.2rem, 2.5vw, 1.5rem) clamp(2rem, 4vw, 3rem);
             border: 3px solid #D2691E;
             border-radius: 12px;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -769,21 +779,21 @@ body {
         .footer {
             background: #0f3159;
             color: white;
-            padding: 4rem 3rem 2rem;
+            padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 3rem) clamp(1rem, 3vw, 2rem);
         }
 
         .footer-container {
-            max-width: 1400px;
+            max-width: min(1400px, 95vw);
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
         }
 
         .footer-section h3 {
             color: #F57C00;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            font-size: clamp(1.1rem, 2.3vw, 1.3rem);
             font-weight: 600;
         }
 
@@ -793,6 +803,7 @@ body {
             display: block;
             margin-bottom: 0.8rem;
             transition: color 0.3s ease;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         .footer-section a:hover {
@@ -802,24 +813,26 @@ body {
         .footer-section p {
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 0.8rem;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
         .social-icons {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: clamp(1rem, 2vw, 1.5rem);
+            flex-wrap: wrap;
         }
 
         .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
             background: rgba(245, 124, 0, 0.2);
             border-radius: 50%;
             transition: all 0.3s ease;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
         }
 
         .social-icons a:hover {
@@ -829,45 +842,48 @@ body {
 
         .footer-bottom {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: clamp(2rem, 4vw, 3rem);
+            padding-top: clamp(1rem, 3vw, 2rem);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.6);
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
         }
 
         /* Services Page */
         .services-page {
-            padding: 8rem 3rem 4rem;
+            padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 4rem);
             background: white;
             min-height: 100vh;
+            padding-top: clamp(100px, 12vh, 140px);
         }
 
         .services-page-container {
-            max-width: 1200px;
+            max-width: min(1200px, 95vw);
             margin: 0 auto;
         }
 
         .services-page h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             color: #0f3159;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-top: clamp(50px, 10vh, 100px);
+            margin-bottom: clamp(1rem, 3vw, 2rem);
             font-weight: 700;
         }
 
         .services-intro {
             text-align: center;
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2.3vw, 1.3rem);
             color: #64748b;
-            max-width: 800px;
-            margin: 0 auto 4rem;
+            max-width: min(800px, 95vw);
+            margin: 0 auto clamp(2rem, 5vw, 4rem);
             line-height: 1.7;
         }
 
         .service-detail {
             background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-            margin-bottom: 3rem;
-            padding: 3rem;
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+            padding: clamp(2rem, 4vw, 3rem);
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             border-left: 5px solid #F57C00;
@@ -880,53 +896,52 @@ body {
 
         .service-detail h3 {
             color: #0f3159;
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.3rem, 2.8vw, 1.6rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
             font-weight: 600;
         }
 
         .service-detail p {
             color: #64748b;
             line-height: 1.7;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
         }
 
         /* Page Navigation */
         .page {
             display: none;
-            padding-top: 50px;
+            padding-top: clamp(100px, 12vh, 140px);
         }
 
         .page.active {
             display: block;
         }
 
-        /* Responsive Design */
+        /* Enhanced Responsive Design */
         @media (max-width: 1200px) {
             .nav-container {
-                padding: 1rem 2rem;
+                padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 2.5vw, 2rem);
             }
-                .hero-content {
-        padding: 0 2rem;
-    }
-}
+            
+            .hero-content {
+                padding: 0 clamp(1rem, 2.5vw, 2rem);
+            }
+        }
 
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: clamp(2rem, 4vw, 3rem);
                 text-align: center;
-                padding: 0 2rem;
+                padding: 0 clamp(1rem, 2.5vw, 2rem);
             }
 
-            .hero-text h1 {
-                font-size: 2.5rem;
+            .hero-buttons {
+                justify-content: center;
             }
-
-
 
             .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             }
 
             .cta-cards {
@@ -935,20 +950,6 @@ body {
         }
 
         @media (max-width: 768px) {
-            body {
-                font-size: 15px;
-            }
-
-            .nav-container {
-                padding: 1rem 1.5rem;
-            }
-            
-    .logo-container {
-        width: 150px;
-        height: 50px;
-    }
-
-
             .nav-menu {
                 display: none;
                 position: absolute;
@@ -957,7 +958,7 @@ body {
                 width: 100%;
                 background: white;
                 flex-direction: column;
-                padding: 2rem;
+                padding: clamp(1rem, 3vw, 2rem);
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
                 gap: 1rem;
             }
@@ -970,22 +971,6 @@ body {
                 display: block;
             }
 
-            .hero-content {
-                padding: 0 1.5rem;
-            }
-
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-text .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-text p {
-                font-size: 1rem;
-            }
-
             .hero-buttons {
                 justify-content: center;
                 flex-direction: column;
@@ -996,170 +981,89 @@ body {
             .btn-secondary {
                 width: 100%;
                 max-width: 300px;
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-
-            .carousel-slide {
-                height: 300px;
-            }
-
-            .slide-content h3 {
-                font-size: 1.8rem;
-            }
-
-            .slide-content p {
-                font-size: 1rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .service-card {
-                padding: 2.5rem;
-            }
-
-            .service-card h3 {
-                font-size: 1.5rem;
-            }
-
-            .service-card p {
-                font-size: 1rem;
+                gap: clamp(1.5rem, 3vw, 2rem);
             }
 
             .form-grid {
                 grid-template-columns: 1fr;
             }
-
-            .contact-form {
-                padding: 2rem;
-            }
-
-            .form-group label {
-                font-size: 1.1rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 1rem;
-                padding: 1rem;
-            }
-
-            .services-page h1 {
-                font-size: 2.2rem;
-            }
-
-            .company-text h2,
-            .services-header h2,
-            .cta-header h2,
-            .contact-header h2 {
-                font-size: 2rem;
-            }
-
-            .company-text p,
-            .services-header p {
-                font-size: 1rem;
-            }
-
-
-
-            .carousel-section,
-            .company-section,
-            .services-section,
-            .cta-section,
-            .contact-section {
-                padding: 4rem 1.5rem;
-            }
         }
 
         @media (max-width: 480px) {
-        .hero-text h1 {
-            font-size: 1.8rem;
+            .carousel-slide {
+                height: clamp(250px, 40vh, 300px);
+            }
+
+            .service-card {
+                padding: clamp(1.5rem, 4vw, 2rem);
+            }
+
+            .contact-form {
+                padding: clamp(1.5rem, 4vw, 2rem);
+            }
         }
 
-        .hero-text .subtitle {
-            font-size: 1rem;
+        /* Zoom and High DPI Support */
+        @media (min-resolution: 2dppx) {
+            body {
+                font-size: clamp(15px, 1.6vw, 17px);
+            }
         }
 
-        .logo-container {
-            width: 120px;
-            height: 40px;
+        /* Ultra-wide screens */
+        @media (min-width: 1600px) {
+            .nav-container,
+            .hero-content,
+            .services-container,
+            .cta-container,
+            .contact-container,
+            .footer-container {
+                max-width: 1600px;
+            }
         }
 
-        .logo {
-            font-size: 1.8rem;
+        /* Very small screens */
+        @media (max-width: 320px) {
+            .hero-buttons {
+                gap: 0.8rem;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                min-width: 120px;
+                padding: 0.8rem 1.2rem;
+            }
         }
 
-        .nav-menu a {
-            font-size: 1.1rem;
+        /* Landscape mobile orientation */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: 100vh;
+                padding-top: 60px;
+            }
+            
+            .hero-content {
+                gap: 2rem;
+            }
         }
 
-        .carousel-slide {
-            height: 250px;
+        /* Print styles */
+        @media print {
+            .header,
+            .mobile-menu-btn,
+            .hero-buttons,
+            .cta-section,
+            .contact-section,
+            .footer {
+                display: none;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+            }
         }
-
-        .slide-content h3 {
-            font-size: 1.5rem;
-        }
-
-        .company-text h2,
-        .services-header h2,
-        .cta-header h2,
-        .contact-header h2 {
-            font-size: 1.8rem;
-        }
-
-        .service-card {
-            padding: 2rem;
-        }
-
-        .service-icon {
-            font-size: 3.5rem;
-        }
-
-        .contact-form {
-            padding: 1.5rem;
-        }
-    }
-
-    /* —— FIX header/tablet (antes de llegar a móvil) —— */
-@media (max-width: 1100px) and (min-width: 769px){
-    .nav-container{
-        padding: .8rem 1.5rem;
-        gap: 1rem;
-        flex-wrap: nowrap;          /* que no brinque a otra línea */
-    }
-
-    .logo-container{
-        width: 220px;               /* antes 400px */
-        height: 80px;               /* antes 150px */
-    }
-
-    .nav-menu{
-        gap: 1.25rem;               /* menos separación */
-        align-items: center;
-        flex-wrap: nowrap;          /* evita wrap del menú */
-    }
-
-    .nav-menu a{
-        font-size: 1.2rem;          /* más compacto */
-        padding: .4rem .8rem;
-        white-space: nowrap;        /* no parte “Startseite/Kontakt” */
-    }
-
-    .nav-menu a::after{
-        height: 2px;
-        bottom: -4px;               /* sube la línea para que no “salte” */
-    }
-    }
-
-    /* Afinar un poco más cuando se acerca a 900px */
-    @media (max-width: 900px) and (min-width: 769px){
-    .logo-container{ width: 180px; height: 60px; }
-    .nav-menu{ gap: .9rem; }
-    .nav-menu a{ font-size: 1rem; padding: .35rem .7rem; }
-    .nav-menu a::after{ bottom: -3px; }
-    }
