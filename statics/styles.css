@@ -327,6 +327,36 @@
             filter: drop-shadow(0 18px 34px rgba(0,0,0,.16));
         }
 
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: clamp(3rem, 6vw, 4rem);
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+
+        .carousel-dot.active {
+            background: #D2691E;
+            opacity: 1;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+
         /* About Section */
         .about-section-home {
             padding: clamp(4rem, 8vw, 6rem) 0;
