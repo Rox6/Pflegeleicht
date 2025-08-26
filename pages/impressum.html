@@ -9,20 +9,22 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo-container" onclick="showPage('startseite')">
-                <img src="../statics/img/logo.png" alt="PflegeLeicht Logo" style="max-height: 100%; max-width: 100%; object-fit: contain;">
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#" onclick="showPage('startseite')">Startseite</a></li>
-                <li><a href="#" onclick="showPage('services')">Services</a></li>
-                <li><a href="#kontakt" onclick="showPage('startseite'); setTimeout(() => scrollToContact(), 100)">Kontakt</a></li>
-                <li><a href="#" onclick="showPage('ueber-uns')">Über uns</a></li>
-            </ul>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">?</button>
-        </nav>
-    </header>
+<header class="header">
+  <nav class="nav-container">
+    <a class="logo-container" href="../index.html#startseite">
+      <img src="../statics/img/logo.png" alt="PflegeLeicht Logo" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="../index.html#startseite">Startseite</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#kontakt">Kontakt</a></li>
+      <li><a href="../index.html#ueber-uns">Über uns</a></li>
+    </ul>
+
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+  </nav>
+</header>
     <!-- Impressum Page -->
     <div id="impressum" class="page legal-page active">
         <div class="legal-container">
@@ -100,28 +102,28 @@
     </div>
         <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Navigation</h3>
-                <a href="#" onclick="showPage('startseite')">Startseite</a>
-                <a href="#" onclick="showPage('services')">Services</a>
-                <a href="#" onclick="showPage('startseite'); setTimeout(() => scrollToContact(), 100)">Kontakt</a>
-                <a href="#" onclick="showPage('startseite')">Über uns</a>
-            </div>
-            <div class="footer-section">
-                <h3>Kontakt</h3>
-                <p>?? Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
-                <p>?? +49 (0) 123 456 789</p>
-                <p>?? info@pflegeleicht.team</p>
-                <p>?? Mo-Fr: 8:00-18:00 Uhr</p>
-            </div>
+    <div class="footer-container">
+        <div class="footer-section">
+        <h3>Navigation</h3>
+        <a href="../index.html#startseite">Startseite</a>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+        <a href="../index.html#ueber-uns">Über uns</a>
+        </div>
+
+      <div class="footer-section">
+        <h3>Kontakt</h3>
+        <p><i class="fa-solid fa-location-dot"></i> Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
+        <p><i class="fa-solid fa-phone"></i> +49 (0) 123 456 789</p>
+        <p><i class="fa-solid fa-envelope"></i> info@pflegeleicht.team</p>
+        <p><i class="fa-solid fa-clock"></i> Mo-Fr: 8:00-18:00 Uhr</p>
+      </div>
             <div class="footer-section">
                 <h3>Rechtliches</h3>
-                <a href="#"  onclick="showPage('Impressum');">Impressum</a>
-                <a href="#">Datenschutzerklärung</a>
-                <a href="#">AGB</a>
-                <a href="#">Firmenregister</a>
-                <a href="#">Widerrufsrecht</a>
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutzerklärung</a>
+                <a href="AGB.html">AGB</a>
+                <a href="widerrufsrecht.html">Widerrufsrecht</a>
             </div>
             <div class="footer-section">
                 <h3>Folgen Sie uns</h3>
