@@ -18,8 +18,8 @@
         <ul class="nav-menu" id="navMenu">
         <li><a href="#" onclick="showPage('startseite')">Startseite</a></li>
         <li><a href="#" onclick="showPage('services')">Services</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#kontakt" onclick="navigateTo('kontakt')">Kontakt</a></li>
+        <li><a href="#ueber-uns" onclick="navigateTo('ueber-uns')">Über uns</a></li>
         </ul>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">☰</button>
     </nav>
@@ -372,158 +372,183 @@
 
     <!-- JS -->
 <script>
-        // Page Navigation
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Close mobile menu if open
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.remove('active');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
+  // ---------- Page Navigation ----------
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const page = document.getElementById(pageId);
+    if (page) page.classList.add('active');
+
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  // Navegar a una sección (ancla) que está dentro de #startseite
+  function navigateTo(anchorId) {
+    // Asegura que la página correcta esté visible
+    showPage('startseite');
+
+    // Espera un frame para que el reflow ocurra y luego hace scroll suave
+    requestAnimationFrame(() => {
+      const el = document.getElementById(anchorId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  // ---------- Mobile Menu ----------
+  function toggleMobileMenu() {
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.toggle('active');
+  }
+
+  // Cerrar menú móvil al hacer click fuera
+  document.addEventListener('click', function (event) {
+    const navMenu = document.getElementById('navMenu');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    if (!navMenu || !mobileMenuBtn) return;
+
+    const clickedInsideMenu = navMenu.contains(event.target);
+    const clickedButton = mobileMenuBtn.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedButton) {
+      navMenu.classList.remove('active');
+    }
+  });
+
+  // Cerrar menú móvil si se agranda la ventana
+  window.addEventListener('resize', function () {
+    const navMenu = document.getElementById('navMenu');
+    if (window.innerWidth > 768 && navMenu) {
+      navMenu.classList.remove('active');
+    }
+  });
+
+  // ---------- Form Submission ----------
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    // Validación basada en los nombres reales de tus inputs
+    if (!data.name || !data.phone || !data.email) {
+      alert('Bitte füllen Sie alle Pflichtfelder aus.');
+      return;
+    }
+    if (!data.privacy) {
+      alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
+      return;
+    }
+
+    // Simular envío
+    alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
+    event.target.reset();
+  }
+
+  // ---------- Smooth scrolling genérico para anchors ----------
+  // Nota: Los enlaces que usen navigateTo(...) no necesitan este handler.
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      // Si el link también usa navigateTo en el onclick, salimos para no duplicar lógica
+      const hasNavigateTo = this.getAttribute('onclick') && this.getAttribute('onclick').includes('navigateTo');
+      if (hasNavigateTo) return;
+
+      const href = this.getAttribute('href');
+      const id = href && href.startsWith('#') ? href.slice(1) : null;
+      if (!id) return;
+
+      e.preventDefault();
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ---------- Carousel ----------
+  let currentSlide = 0;
+  let carouselInterval = null;
+  const totalSlides = 3;
+
+  function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    const carousel = document.getElementById('carousel');
+    if (!carousel) return;
+
+    carousel.style.transform = `translateX(${-slideIndex * 100}%)`;
+
+    document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+      if (index === slideIndex) {
+        dot.classList.add('active');
+        dot.style.background = '#D2691E';
+        dot.style.opacity = '1';
+      } else {
+        dot.classList.remove('active');
+        dot.style.background = '#cbd5e0';
+        dot.style.opacity = '0.5';
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    goToSlide(currentSlide);
+  }
+
+  function startCarousel() {
+    if (carouselInterval) clearInterval(carouselInterval);
+    carouselInterval = setInterval(nextSlide, 4000);
+  }
+
+  function stopCarousel() {
+    if (carouselInterval) clearInterval(carouselInterval);
+    carouselInterval = null;
+  }
+
+  // ---------- On DOM Ready ----------
+  document.addEventListener('DOMContentLoaded', function () {
+    // Iniciar carrusel
+    startCarousel();
+
+    // Pausar carrusel al hover
+    const carouselWrapper = document.querySelector('.carousel-wrapper');
+    if (carouselWrapper) {
+      carouselWrapper.addEventListener('mouseenter', stopCarousel);
+      carouselWrapper.addEventListener('mouseleave', startCarousel);
+    }
+
+    // Animaciones de aparición
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
-        }
+    document.querySelectorAll('.service-card, .value-preview, .cta-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
 
-        // Form Submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.firstName || !data.lastName || !data.email || !data.message) {
-                alert('Bitte füllen Sie alle Pflichtfelder aus.');
-                return;
-            }
-            
-            if (!data.privacy) {
-                alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
-                return;
-            }
-            
-            // Simulate form submission
-            alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
-            event.target.reset();
-        }
+    // Wire del formulario de contacto (si existe)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', handleSubmit);
+    }
+  });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const navMenu = document.getElementById('navMenu');
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            
-            if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
+  // Exponer funciones globales usadas por los atributos onclick en el HTML
+  window.showPage = showPage;
+  window.toggleMobileMenu = toggleMobileMenu;
+  window.navigateTo = navigateTo;
+  window.goToSlide = goToSlide;
+</script>
 
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            const navMenu = document.getElementById('navMenu');
-            if (window.innerWidth > 768) {
-                navMenu.classList.remove('active');
-            }
-        });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Carousel functionality
-        let currentSlide = 0;
-        let carouselInterval;
-        const totalSlides = 3;
-
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            const carousel = document.getElementById('carousel');
-            const translateX = -slideIndex * 100;
-            carousel.style.transform = `translateX(${translateX}%)`;
-            
-            // Update dots
-            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-                if (index === slideIndex) {
-                    dot.classList.add('active');
-                    dot.style.background = '#D2691E';
-                    dot.style.opacity = '1';
-                } else {
-                    dot.classList.remove('active');
-                    dot.style.background = '#cbd5e0';
-                    dot.style.opacity = '0.5';
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            goToSlide(currentSlide);
-        }
-
-        function startCarousel() {
-            carouselInterval = setInterval(nextSlide, 4000); // Change slide every 4 seconds
-        }
-
-        function stopCarousel() {
-            clearInterval(carouselInterval);
-        }
-
-        // Add loading states for better UX
-        document.addEventListener('DOMContentLoaded', function() {
-            // Start carousel auto-play
-            startCarousel();
-            
-            // Pause carousel on hover
-            const carouselWrapper = document.querySelector('.carousel-wrapper');
-            if (carouselWrapper) {
-                carouselWrapper.addEventListener('mouseenter', stopCarousel);
-                carouselWrapper.addEventListener('mouseleave', startCarousel);
-            }
-
-            // Add fade-in animation to elements
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Observe elements for animation
-            document.querySelectorAll('.service-card, .value-preview, .cta-card').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-        });
-    </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974cd686c7226c5f',t:'MTc1NjE0MzI0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
