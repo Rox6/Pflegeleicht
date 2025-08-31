@@ -951,7 +951,7 @@
         /* Page Navigation */
         .page {
             display: none;
-            padding-top: clamp(100px, 12vh, 140px);
+            
         }
 
         .page.active {
