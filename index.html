@@ -11,13 +11,13 @@
 <body>
     <!-- Header -->
     <header class="header">
-    <nav class="nav-container">
+    <nav class="nav-container" href="#startseite">
         <div class="logo-container" onclick="showPage('startseite')">
         <img src="statics/img/logo.png" alt="PflegeLeicht Logo" style="max-height: 100%; max-width: 100%; object-fit: contain;">
         </div>
         <ul class="nav-menu" id="navMenu">
         <li><a href="#" onclick="showPage('startseite')">Startseite</a></li>
-        <li><a href="#" onclick="showPage('services')">Services</a></li>
+        <li><a href="#services" onclick="navigateTo('services')">Services</a></li>
         <li><a href="#kontakt" onclick="navigateTo('kontakt')">Kontakt</a></li>
         <li><a href="#ueber-uns" onclick="navigateTo('ueber-uns')">Über uns</a></li>
         </ul>
@@ -547,6 +547,27 @@
   window.toggleMobileMenu = toggleMobileMenu;
   window.navigateTo = navigateTo;
   window.goToSlide = goToSlide;
+
+  function routeFromHash() {
+  const h = (location.hash || '#startseite').slice(1);
+  if (h === 'services') {
+    showPage('services');
+  } else if (h === 'kontakt') {
+    // si "kontakt" es sección dentro de startseite:
+    if (typeof navigateTo === 'function') navigateTo('kontakt');
+    else showPage('startseite');
+  } else if (h === 'ueber-uns') {
+    // si "ueber-uns" es sección dentro de startseite:
+    if (typeof navigateTo === 'function') navigateTo('ueber-uns');
+    else showPage('startseite');
+  } else {
+    showPage('startseite');
+  }
+}
+document.addEventListener('DOMContentLoaded', routeFromHash);
+window.addEventListener('hashchange', routeFromHash);
+
+
 </script>
 
 

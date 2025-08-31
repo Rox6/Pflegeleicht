@@ -1,25 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/statics/styles.css" />
+    <title>PflegeLeicht - Wir machen Pflege einfach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../statics/styles.css">
 </head>
 <body>
-        <!--Header-->
-    <header class="header">
-        <h1>Willkommen auf PflegeLeicht</h1>
-        <nav>
-            <ul>
-                <li><a href="./../index.html">Startseite</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./kontakt.html">Kontakt</a></li>
-                <li><a href="./impressum.html">Impressum</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+<header class="header">
+  <nav class="nav-container">
+    <a class="logo-container" href="../index.html#startseite">
+      <img src="../statics/img/logo.png" alt="PflegeLeicht Logo" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+    </a>
         
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" onclick="showPage('startseite')">Startseite</a></li>
+                <li><a href="#" onclick="showPage('services')">Services</a></li>
+                <li><a href="#kontakt" onclick="showPage('startseite'); setTimeout(() => scrollToContact(), 100)">Kontakt</a></li>
+                <li><a href="#" onclick="showPage('ueber-uns')">Über uns</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+        </nav>
     </header>
+    
+    <!-- AGB Page -->
+    <div id="agb" class="page legal-page active">
+        <div class="legal-container">
+            <div class="legal-header">
+                <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
+                <p class="legal-subtitle">PflegeLeicht GmbH - Beratungsdienstleistungen im Bereich Pflege und Sozialanträge</p>
+                <div class="company-info">
+                    <p><strong>PflegeLeicht GmbH</strong><br>
+                    Marktplatz 5, 65779 Kelkheim<br>
+                    Stand: Januar 2024</p>
+                </div>
+            </div>
+            
+            <div class="legal-content">
+                <section class="legal-section">
+                    <h2>§ 1 Geltungsbereich</h2>
+                    <p>Diese AGB gelten für sämtliche Verträge zwischen der PflegeLeicht GmbH, Marktplatz 5, 65779 Kelkheim (Auftragnehmer) und Ihren Kunden (Auftraggeber), welche Beratungsdienstleistungen im Bereich Pflege und Sozialanträge in Anspruch nehmen. Mit Nutzung unserer Leistungen gelten diese AGB als vereinbart.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 2 Vertragsgegenstand</h2>
+                    <p>PflegeLeicht bietet Beratungsleistungen im pflegenahen Umfeld an, u. a. zur Beantragung von Pflegegraden, Verhinderungspflege, Wohnraumanpassung u. v. m. Die konkreten Leistungen ergeben sich aus dem jeweiligen Angebot.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 3 Vertragsschluss</h2>
+                    <p>Der Vertrag kommt durch Annahme des schriftlichen Angebots von Pflegeleicht durch den Kunden zustande. Mündliche Nebenabreden bestehen nicht. Änderungen bedürfen der Schriftform.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 4 Vergütung</h2>
+                    <ul class="legal-list">
+                        <li>Die Vergütung richtet sich nach dem jeweiligen Modulangebot (siehe Angebotsblatt). Bei erfolgsabhängigen Leistungen (z. B. Pflegegrad-Einstufung) fällt die Vergütung nur bei Erfolg an. Im Übrigen gelten Festpreise. Alle Preise verstehen sich inkl. gesetzlicher Umsatzsteuer.</li>
+                        <li>Die Vergütung ist binnen 14 Tagen nach Zugang der Rechnung fällig.</li>
+                        <li>Verzug tritt automatisch ein (§ 286 II BGB).</li>
+                    </ul>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 5 Mitwirkungspflichten</h2>
+                    <p>Der Kunde verpflichtet sich zur aktiven Mitwirkung, Bereitstellung notwendiger Informationen und Unterlagen sowie zur Einhaltung vereinbarter Termine. Unterbleibt diese Mitwirkung, ist PflegeLeicht zur Kündigung berechtigt.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 6 Kommunikation & Datenschutz</h2>
+                    <p>Die Kommunikation erfolgt über E-Mail, Fax, Mobiltelefon und ggf. WhatsApp. Der Kunde willigt mit Vertragsabschluss sowie Unterzeichnung der Einwilligungserklärung zur Datenübermittlung in diese Kanäle ein. Pflegeleicht verpflichtet sich zur Einhaltung der DSGVO sowie BDSG und informiert den Kunden über Risiken bei der digitalen Kommunikation. Details siehe Datenschutzhinweise (Anlage 3).</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 7 Laufzeit, Rücktritt & Kündigung</h2>
+                    <ul class="legal-list">
+                        <li>Der Vertrag beginnt mit Unterzeichnung und endet nach Abschluss der beauftragten Leistungen.</li>
+                        <li>Kunden haben das Recht zum Rücktritt binnen 14 Tagen nach Vertragsschluss. Erfolgt der Rücktritt nach Beginn der Leistung, ist der bis dahin entstandene Aufwand anteilig zu vergüten. Pflegeleicht kann kündigen, wenn Mitwirkung dauerhaft ausbleibt.</li>
+                    </ul>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 8 Haftung</h2>
+                    <ul class="legal-list">
+                        <li>Der Auftragnehmer haftet bei einfacher Fahrlässigkeit nur für die Verletzung vertragswesentlicher Pflichten (Kardinalpflichten) und ist dabei auf den typischerweise vorhersehbaren Schaden begrenzt.</li>
+                        <li>Eine Haftung für entgangenen Gewinn, mittelbare Schäden oder Folgeschäden ist ausgeschlossen. Die Haftung für Vorsatz, grobe Fahrlässigkeit sowie für Verletzung von Leben, Körper oder Gesundheit bleibt unberührt.</li>
+                        <li>Keine Haftung besteht für insbesondere für behördliche Entscheidungen oder ausbleibende Bewilligungen trotz ordnungsgemäßer Antragstellung. Der Kunde verpflichtet sich zur wahrheitsgemäßen Angabe aller vertraglich benötigten Informationen, für unwahre Angaben wird jegliche Haftung ausgeschlossen und PflegeLeicht ist in diesem Falle berechtigt alle hierdurch entstehenden Forderungen auf den Kunden zu übertragen.</li>
+                    </ul>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 9 RDG-Hinweis</h2>
+                    <p>Pflegeleicht erbringt keine Rechtsdienstleistungen i.S.d. RDG. Bei rechtlicher Vertretung wird auf Wunsch an zugelassene Anwälte vermittelt.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 10 Streitbeilegung</h2>
+                    <ul class="legal-list">
+                        <li>Pflegeleicht ist nicht verpflichtet und nicht bereit, an Verbraucherschlichtungsverfahren teilzunehmen.</li>
+                        <li>Plattform der EU-Kommission zur Online Streitbeilegung: <a href="https://consumer-redress.ec.europa.eu/index_de" target="_blank" rel="noopener noreferrer">https://consumer-redress.ec.europa.eu/index_de</a></li>
+                    </ul>
+                </section>
+
+                <section class="legal-section">
+                    <h2>§ 11 Gerichtsstand & Schlussbestimmungen</h2>
+                    <p>Gerichtsstand ist Königstein im Taunus. Es gilt deutsches Recht. Sollte eine Klausel unwirksam sein, bleiben die übrigen Bestimmungen unberührt.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+        <h3>Navigation</h3>
+        <a href="../index.html#startseite" onclick="showPage('startseite')">Startseite</a>
+        <a href="../index.html#services" onclick="showPage('services')">Services</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+        <a href="../index.html#ueber-uns">Über uns</a>
+        </div>
+        <div class="footer-section">
+        <h3>Kontakt</h3>
+        <p>📍 Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
+        <p>📞 +49 (0) 123 456 789</p>
+        <p>✉️ info@pflegeleicht.team</p>
+        <p>🕒 Mo-Fr: 8:00-18:00 Uhr</p>
+        </div>
+        <div class="footer-section">
+        <h3>Rechtliches</h3>
+        <a href="../pages/impressum.html">Impressum</a>
+        <a href="../pages/datenschutz.html">Datenschutzerklärung</a>
+        <a href="../pages/AGB.html">AGB</a>
+        <a href="../pages/widerrufsrecht.html">Widerrufsrecht</a>
+        </div>
+        <div class="footer-section">
+        <h3>Folgen Sie uns</h3>
+        <p>Bleiben Sie über Neuigkeiten informiert</p>
+        <div class="social-icons">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="LinkedIn">💼</a>
+            <a href="#" title="Xing">🔗</a>
+            <a href="#" title="Instagram">📷</a>
+        </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 PflegeLeicht GmbH. Alle Rechte vorbehalten.</p>
+    </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Close mobile menu if open
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.firstName || !data.lastName || !data.email || !data.message) {
+                alert('Bitte füllen Sie alle Pflichtfelder aus.');
+                return;
+            }
+            
+            if (!data.privacy) {
+                alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
+            event.target.reset();
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const navMenu = document.getElementById('navMenu');
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        let carouselInterval;
+        const totalSlides = 3;
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            const carousel = document.getElementById('carousel');
+            const translateX = -slideIndex * 100;
+            carousel.style.transform = `translateX(${translateX}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                if (index === slideIndex) {
+                    dot.classList.add('active');
+                    dot.style.background = '#D2691E';
+                    dot.style.opacity = '1';
+                } else {
+                    dot.classList.remove('active');
+                    dot.style.background = '#cbd5e0';
+                    dot.style.opacity = '0.5';
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        function startCarousel() {
+            carouselInterval = setInterval(nextSlide, 4000); // Change slide every 4 seconds
+        }
+
+        function stopCarousel() {
+            clearInterval(carouselInterval);
+        }
+
+        // Add loading states for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start carousel auto-play
+            startCarousel();
+            
+            // Pause carousel on hover
+            const carouselWrapper = document.querySelector('.carousel-wrapper');
+            if (carouselWrapper) {
+                carouselWrapper.addEventListener('mouseenter', stopCarousel);
+                carouselWrapper.addEventListener('mouseleave', startCarousel);
+            }
+
+            // Add fade-in animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.service-card, .value-preview, .cta-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974d2d4e2153360b',t:'MTc1NjE0Njc5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
 </body>
 </html>
