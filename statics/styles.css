@@ -195,8 +195,7 @@
             background: #B8860B;
             border-color: #B8860B;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.5);
-            outline: 4px solid #0f3159;
+            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.5);;
         }
 
         .btn-secondary {
@@ -220,9 +219,7 @@
         .btn-secondary:hover,
         .btn-secondary:focus {
             background: #f8f9fa;
-            color: #0f3159;
             transform: translateY(-3px);
-            outline: 4px solid #2E8B57;
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
         }
 
@@ -766,7 +763,6 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: 4px solid #D2691E;
-            border-color: #0f3159;
             box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.2);
             background: #fefefe;
         }
@@ -815,7 +811,59 @@
             box-shadow: 0 10px 30px rgba(210, 105, 30, 0.5);
             outline: 4px solid #0f3159;
         }
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+        }
 
+        
+        .btn {
+            padding: clamp(0.8rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border: none;
+            border-radius: 8px;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #D2691E;
+            color: white;
+        }
+
+        
+        .btn-primary:hover {
+            background: #B8591A;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #64748b;
+            color: white;
+        }
+
+                .btn-secondary:hover {
+            background: #475569;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            border: 2px solid #D2691E;
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .highlight-box p {
+            color: #0f3159;
+            font-weight: 600;
+            margin: 0;
+        }
         /* Footer */
         .footer {
             background: #0f3159;
@@ -1084,7 +1132,7 @@
 
         .legal-section a:hover,
         .legal-section a:focus {
-            color: #0f3159;
+            color: #D2691E;
             text-decoration: underline;
         }
 
@@ -1132,7 +1180,6 @@
             color: white;
             text-decoration: underline;
         }
-
 
         /* Enhanced Responsive Design */
         @media (max-width: 1200px) {
@@ -1228,6 +1275,14 @@
             .logo-container {
                 height: clamp(70px, 15vw, 120px);
                 width: clamp(220px, 45vw, 350px);
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                text-align: center;
             }
         }
 
