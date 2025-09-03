@@ -842,14 +842,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            background: #64748b;
-            color: white;
-        }
-
-                .btn-secondary:hover {
-            background: #475569;
-        }
 
         .highlight-box {
             background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
@@ -1179,6 +1171,10 @@
         .contact-info a:focus {
             color: white;
             text-decoration: underline;
+        }
+
+        .btn-secondary-legal{
+            background: #cbd5e0;
         }
 
         /* Enhanced Responsive Design */
