@@ -165,7 +165,6 @@
         <p>📍 Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
         <p>📞 +49 (0) 6195 3044299</p>
         <p>✉️ info@pflegeleicht.team</p>
-        <p>🕒 Mo-Fr: 8:00-18:00 Uhr</p>
         </div>
         <div class="footer-section">
         <h3>Rechtliches</h3>
@@ -231,10 +230,8 @@
   </style>
 </head>
 <body>
-  <!-- Logo centrado arriba -->
   <img src="../statics/img/logo.png" alt="PflegeLeicht Logo" class="logo">
 
-  <!-- Texto inicial -->
   <p>
     <span class="label">An:</span> Pflegeleicht GmbH, Marktplatz 5, 65779 Kelkheim, 
     E-Mail: widerruf@pflegeleicht.team
@@ -245,14 +242,12 @@
     über die Erbringung der folgenden
   </p>
 
-  <!-- Campos del formulario -->
   <p class="block"><span class="label">Dienstleistung:</span><br>${escapeHtml(service).replace(/\n/g, '<br>')}</p>
   <p class="block"><span class="label">Bestellt am / abgeschlossen am:</span> ${formatDate(contractDate)}</p>
   <p class="block"><span class="label">Name des/der Verbraucher(s):</span> ${escapeHtml(customerName)}</p>
   <p class="block"><span class="label">Anschrift des/der Verbraucher(s):</span><br>${escapeHtml(address).replace(/\n/g, '<br>')}</p>
   <p class="block"><span class="label">Datum:</span> ${formatDate(currentDate)}</p>
 
-  <!-- Espacio para la firma -->
   <div class="signature">
     <p>______________________________</p>
     <p>Unterschrift des/der Verbraucher(s)<br><span style="font-size: 0.9em;">(nur bei Mitteilung auf Papier)</span></p>
