@@ -81,51 +81,60 @@
                     </ul>
                 </div>
 
-                <div class="form-section">
-                    <h2>Muster-Widerrufsformular</h2>
-                    
-                    <p style="font-style: italic; margin-bottom: 2rem;">(Wenn Sie einen mit uns abgeschlossenen Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)</p>
-                    
-                    <div style="background: #e2e8f0; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-                        <p style="margin: 0; font-weight: 600;">An:</p>
-                        <p style="margin: 0.5rem 0 0 0;">PflegeLeicht GmbH<br>
-                        Am Marktplatz 5<br>
-                        65779 Kelkheim (Taunus)<br>
-                        E-Mail: widerruf@pflegeleicht.team</p>
-                    </div>
-                    
-                    <form onsubmit="generateForm(event)">
-                        <div class="form-group">
-                            <label class="form-label">Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Erbringung der folgenden Dienstleistung (*):</label>
-                            <textarea class="form-textarea" placeholder="Beschreibung der Dienstleistung"></textarea>
-                        </div>
+                <div class="form-container">
+            <div class="info-box">
+                <h3>ℹ️ Wichtige Information</h3>
+                <p>Füllen Sie alle Felder aus, um ein vollständiges Widerrufsformular zu erstellen. Das Formular wird automatisch formatiert und kann gedruckt werden.</p>
+            </div>
 
-                        <div class="form-group">
-                            <label class="form-label">Abgeschlossen am (*):</label>
-                            <input type="date" class="form-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Name des/der Verbraucher(s):</label>
-                            <input type="text" class="form-input" placeholder="Vor- und Nachname">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Anschrift des/der Verbraucher(s):</label>
-                            <textarea class="form-textarea" placeholder="Straße, Hausnummer&#10;PLZ, Ort"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Datum:</label>
-                            <input type="date" class="form-input" id="currentDate">
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="submit" class="btn btn-primary">📄 Formular drucken</button>
-                            <button type="button" onclick="resetForm()" class="btn btn-secondary-legal">🔄 Zurücksetzen</button>
-                        </div>
-                    </form>
+            <form onsubmit="generateForm(event)">
+                <div class="form-group">
+                    <label for="service">Beschreibung der Dienstleistung *</label>
+                    <textarea 
+                        placeholder="Beschreibung der Dienstleistung"
+                        required
+                    ></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="contractDate">Vertragsdatum *</label>
+                    <input type="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerName">Name des Verbrauchers *</label>
+                    <input 
+                        type="text" 
+                        placeholder="Vor- und Nachname"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Anschrift des Verbrauchers *</label>
+                    <textarea 
+                        class="address-textarea"
+                        placeholder="Max Mustermann&#10;Musterstraße 123&#10;12345 Musterstadt"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="currentDate">Datum des Widerrufs</label>
+                    <input type="date" id="currentDate">
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">
+                        🖨️ Formular Erstellen & Drucken
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                        🔄 Formular Zurücksetzen
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
             <br>
                     <br>
                 <div class="legal-section">
@@ -190,91 +199,150 @@
         <p>&copy; 2025 PflegeLeicht GmbH. Alle Rechte vorbehalten.</p>
     </div>
     </footer>
+    </head>
+<body>
 
-<script>
-  document.getElementById('currentDate').valueAsDate = new Date();
+    <script>
+        document.getElementById('currentDate').valueAsDate = new Date();
 
-  function formatDate(dateString) {
-    if (!dateString) return '';
-    const date = new Date(dateString + 'T00:00:00');
-    return date.toLocaleDateString('de-DE');
-  }
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString + 'T00:00:00');
+            return date.toLocaleDateString('de-DE');
+        }
 
-  function escapeHtml(str) {
-    return (str || '').replace(/[&<>"']/g, (ch) => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[ch]));
-  }
+        function escapeHtml(str) {
+            return (str || '').replace(/[&<>"']/g, (ch) => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[ch]));
+        }
 
-  function generateForm(event) {
-    event.preventDefault();
+        function formatGermanAddress(address) {
+            if (!address) return '';
+            // Split by line breaks and format each line properly
+            const lines = address.split('\n').map(line => line.trim()).filter(line => line);
+            return lines.join('<br>');
+        }
 
-    const form = event.target;
-    const service      = form.querySelector('textarea[placeholder="Beschreibung der Dienstleistung"]').value || '';
-    const contractDate = form.querySelectorAll('input[type="date"]')[0]?.value || '';
-    const customerName = form.querySelector('input[placeholder="Vor- und Nachname"]').value || '';
-    const address      = form.querySelector('textarea[placeholder*="Straße"]').value || '';
-    const currentDate  = document.getElementById('currentDate').value || '';
+        function generateForm(event) {
+            event.preventDefault();
 
-    const printContent = `
-<!DOCTYPE html>
+            const form = event.target;
+            const service      = form.querySelector('textarea[placeholder="Beschreibung der Dienstleistung"]').value || '';
+            const contractDate = form.querySelectorAll('input[type="date"]')[0]?.value || '';
+            const customerName = form.querySelector('input[placeholder="Vor- und Nachname"]').value || '';
+            const address      = form.querySelector('textarea.address-textarea').value || '';
+            const currentDate  = document.getElementById('currentDate').value || '';
+
+            const printContent = `<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Widerrufsformular</title>
-  <link rel="stylesheet" href="../statics/styles.css">
-  <style>
-    body { font-family: Inter, Arial, sans-serif; margin: 60px; }
-    .logo { display: block; margin: 0 auto 30px auto; height: 70px; }
-    .block { margin-bottom: 18px; }
-    .label { font-weight: bold; }
-    .signature { margin-top: 60px; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Widerrufsformular</title>
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; 
+            margin: 60px; 
+            line-height: 1.4;
+            color: #333;
+        }
+        .logo { 
+            display: block; 
+            margin: 0 auto 30px auto; 
+            height: 70px; 
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .block { 
+            margin-bottom: 18px; 
+        }
+        .label { 
+            font-weight: bold; 
+        }
+        .signature { 
+            margin-top: 60px; 
+        }
+        .address-block {
+            margin: 20px 0;
+            padding: 10px 0;
+        }
+        .company-address {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        @media print {
+            body { margin: 40px; }
+        }
+    </style>
 </head>
 <body>
-  <img src="../statics/img/logo.png" alt="PflegeLeicht Logo" class="logo">
+    <img src="../statics/img/logo.png" alt="PflegeLeicht Logo" class="logo">
 
-  <p>
-    <span class="label">An:</span> Pflegeleicht GmbH, Marktplatz 5, 65779 Kelkheim, 
-    E-Mail: widerruf@pflegeleicht.team
-  </p>
+    <div class="company-address">
+        <p><span class="label"></span></p>
+        <p>PflegeLeicht GmbH<br>
+        Marktplatz 5<br>
+        65779 Kelkheim</p>
+        <p>E-Mail: widerruf@pflegeleicht.team</p>
+    </div>
 
-  <p>
-    <span class="label">Hiermit widerrufe(n) ich/wir</span> den von mir/uns abgeschlossenen Vertrag 
-    über die Erbringung der folgenden
-  </p>
+    <p><span class="label">Hiermit widerrufe(n) ich/wir den von mir/uns abgeschlossenen Vertrag</span> über die Erbringung der folgenden Dienstleistung:</p>
 
-  <p class="block"><span class="label">Dienstleistung:</span><br>${escapeHtml(service).replace(/\n/g, '<br>')}</p>
-  <p class="block"><span class="label">Bestellt am / abgeschlossen am:</span> ${formatDate(contractDate)}</p>
-  <p class="block"><span class="label">Name des/der Verbraucher(s):</span> ${escapeHtml(customerName)}</p>
-  <p class="block"><span class="label">Anschrift des/der Verbraucher(s):</span><br>${escapeHtml(address).replace(/\n/g, '<br>')}</p>
-  <p class="block"><span class="label">Datum:</span> ${formatDate(currentDate)}</p>
+    <div class="block">
+        <span class="label">Dienstleistung:</span>
+        ${escapeHtml(service).replace(/\n/g, '<br>')}
+    </div>
 
-  <div class="signature">
-    <p>______________________________</p>
-    <p>Unterschrift des/der Verbraucher(s)<br><span style="font-size: 0.9em;">(nur bei Mitteilung auf Papier)</span></p>
-  </div>
+    <div class="block">
+        <span class="label">Bestellt am / abgeschlossen am:</span> ${formatDate(contractDate)}
+    </div>
 
-  <script>window.onload = function(){ window.print(); }<\/script>
+    <div class="block">
+        <span class="label">Name des/der Verbraucher(s):</span> ${escapeHtml(customerName)}
+    </div>
+
+    <div class="address-block">
+        <span class="label">Anschrift des/der Verbraucher(s):</span>
+        ${formatGermanAddress(escapeHtml(address))}
+    </div>
+
+    <div class="block">
+        <span class="label">Datum:</span> ${formatDate(currentDate)}
+    </div>
+
+    <div class="signature">
+        <p>______________________________</p>
+        <p>Unterschrift des/der Verbraucher(s)<br>
+        <span style="font-size: 0.9em; color: #666;"></span></p>
+    </div>
+
+    <script>
+        window.onload = function(){ 
+            setTimeout(() => window.print(), 500); 
+        };
+    <\/script>
 </body>
 </html>
-    `;
+            `;
 
-    const win = window.open('', '_blank', 'width=900,height=700');
-    if (!win) {
-      alert('Bitte Pop-ups zulassen, um das Formular zu drucken.');
-      return;
-    }
-    win.document.open();
-    win.document.write(printContent);
-    win.document.close();
-  }
+            const win = window.open('', '_blank', 'width=900,height=700');
+            if (!win) {
+                alert('Bitte Pop-ups zulassen, um das Formular zu drucken.');
+                return;
+            }
+            win.document.open();
+            win.document.write(printContent);
+            win.document.close();
+        }
 
-  function resetForm() {
-    document.querySelector('form').reset();
-    document.getElementById('currentDate').valueAsDate = new Date();
-  }
-</script>    
-</body>
+        function resetForm() {
+            document.querySelector('form').reset();
+            document.getElementById('currentDate').valueAsDate = new Date();
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97d1110a424c1d88',t:'MTc1NzUyOTc2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
 
