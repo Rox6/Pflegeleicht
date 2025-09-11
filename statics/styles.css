@@ -998,6 +998,30 @@
             display: block;
         }
 
+        /* Igualar estilo de inputs y textarea */
+        input,
+        textarea,
+        select {
+        font-family: inherit;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #333;
+        padding: 10px;
+        border: 1px solid #ccd6dd;
+        border-radius: 6px;
+        width: 100%;
+        box-sizing: border-box;
+        }
+
+        /* Estilo unificado para los placeholders */
+        input::placeholder,
+        textarea::placeholder,
+        select::placeholder {
+        font-family: inherit;
+        font-size: 1.3rem;
+        color: #999;
+        }
+
         /* Generic Legal Pages */
         .legal-page {
             padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 4rem);

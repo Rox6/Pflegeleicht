@@ -205,54 +205,93 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="kontakt">
-        <div class="contact-container">
-        <div class="contact-header">
-            <h2>Kontaktieren Sie uns</h2>
-            <p>Wir sind hier, um Ihnen zu helfen. Kontaktieren Sie uns für eine kostenlose Erstberatung.</p>
+<!-- Contact Section -->
+<section class="contact-section" id="kontakt">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2>Kontaktieren Sie uns</h2>
+      <p>Wir sind hier, um Ihnen zu helfen. Kontaktieren Sie uns für eine kostenlose Erstberatung.</p>
+    </div>
+
+    <!-- Bloque de mensajes -->
+    <div id="contactAlert" style="display:none;margin-bottom:16px;padding:12px;border-radius:8px;border:1px solid #cfe9cf;background:#eaf7ea;color:#205c20;"></div>
+
+    <div class="contact-form">
+      <!-- ➜ CAMBIO: action + method -->
+      <form id="contactForm" action="php/process.php" method="post">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Vorname *</label>
+            <input type="text" id="name" name="name" placeholder="Ihr Vorname" required oninvalid="this.setCustomValidity('Bitte geben Sie Ihren Vornamen ein.')" oninput="this.setCustomValidity('')">
+          </div>
+          <div class="form-group">
+            <label for="name">Nachname *</label>
+            <input type="text" id="name" name="name"  placeholder="Ihr Nachname" required oninvalid="this.setCustomValidity('Bitte geben Sie Ihren Nachnamen ein.')" oninput="this.setCustomValidity('')">
+          </div>
         </div>
-        <div class="contact-form">
-            <form id="contactForm">
-            <div class="form-grid">
-                <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                <label for="phone">Telefonnummer *</label>
-                <input type="tel" id="phone" name="phone" required>
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="email">E-Mail-Adresse *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="concern">Ihr Anliegen *</label>
-                <select id="concern" name="concern" required>
-                <option value="">Bitte wählen Sie...</option>
-                <option value="pflegegrad-beantragen">Pflegegrad beantragen</option>
-                <option value="pflegegrad-anpassen">Pflegegrad anpassen/Höherstufung</option>
-                <option value="widerspruch">Widerspruch einlegen</option>
-                <option value="entlastungsleistungen">Entlastungsleistungen</option>
-                <option value="wohnumfeld">Wohnumfeldverbessernde Maßnahmen</option>
-                <option value="anders">Anderes Anliegen</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message">Ihre Nachricht</label>
-                <textarea id="message" name="message" placeholder="Beschreiben Sie hier Ihr Anliegen detaillierter..."></textarea>
-            </div>
-            <div class="privacy-notice">
-                <input type="checkbox" id="privacy" name="privacy" required>
-              <label for="privacy">Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu und bin damit einverstanden, dass PflegeLeicht mich bezüglich meiner Anfrage kontaktiert. *</label>
-            </div>
-            <button type="submit" class="submit-btn">Nachricht senden</button>
-            </form>
+        <div class="form-group">
+            <label for="phone">Telefonnummer *</label>
+            <input  type="text" id="phone"  name="phone"  placeholder="Ihre Telefonnummer"  inputmode="numeric" pattern="[0-9]+"  required  oninvalid="this.setCustomValidity('Bitte geben Sie eine gültige Telefonnummer ein.')"  oninput="this.setCustomValidity(''); this.value = this.value.replace(/[^0-9]/g,'')">
+          </div>
+          <div class="form-group">
+          <label for="email">E-Mail-Adresse *</label>
+          <input type="email" id="email" name="email" placeholder="Ihre E-Mail" required oninvalid="this.setCustomValidity('Bitte geben Sie eine gültige E-Mail ein.')" oninput="this.setCustomValidity('')">
         </div>
+
+        <div class="form-group">
+          <label for="concern">Ihr Anliegen *</label>
+          <select id="concern" name="concern" required oninvalid="this.setCustomValidity('Bitte wählen Sie einen Eintrag aus der Liste aus.')" oninput="this.setCustomValidity('')">
+            <option value="">Bitte wählen Sie einen Eintrag aus</option>
+            <option value="pflegegrad-beantragen">Pflegegrad beantragen</option>
+            <option value="pflegegrad-anpassen">Pflegegrad anpassen/Höherstufung</option>
+            <option value="widerspruch">Widerspruch einlegen</option>
+            <option value="entlastungsleistungen">Entlastungsleistungen</option>
+            <option value="wohnumfeld">Wohnumfeldverbessernde Maßnahmen</option>
+            <option value="anders">Anderes Anliegen</option>
+          </select>
         </div>
-    </section>
+
+        <div class="form-group">
+          <label for="message">Ihre Nachricht</label>
+          <textarea type="text" id="message" name="message" placeholder="Bitte beschreiben Sie Ihr Anliegen" required oninvalid="this.setCustomValidity('Bitte beschreiben Sie Ihr Anliegen.')" oninput="this.setCustomValidity('')"></textarea>
+        </div>
+
+        <div class="privacy-notice">
+          <input type="checkbox" id="privacy" name="privacy" value="1" required required oninvalid="this.setCustomValidity('Bitte geben Sie Ihre Zustimmung um fortzufahren.')" oninput="this.setCustomValidity('')">
+          <label for="privacy">Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu und bin damit einverstanden, dass PflegeLeicht mich bezüglich meiner Anfrage kontaktiert. *</label>
+        </div>
+        <!-- Campo oculto para bots -->
+        <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <label for="company">Firma</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="submit-btn">Nachricht senden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Mostrar mensaje si ?ok=1 o ?err=... -->
+<script>
+  (function(){
+    const params = new URLSearchParams(location.search);
+    const ok = params.get('ok');
+    const err = params.get('err');
+    const box = document.getElementById('contactAlert');
+    if (!box) return;
+    if (ok) {
+      box.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.';
+      box.style.display = 'block';
+    } else if (err) {
+      box.textContent = decodeURIComponent(err);
+      box.style.display = 'block';
+      box.style.background = '#fdeaea';
+      box.style.borderColor = '#f3b7b7';
+      box.style.color = '#7a1f1f';
+    }
+  })();
+</script>
 
     <!-- Über uns (About) - dentro de Startseite -->
     <section id="ueber-uns" class="about-section-home">
@@ -424,28 +463,6 @@
       navMenu.classList.remove('active');
     }
   });
-
-  // ---------- Form Submission ----------
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-
-    // Validación basada en los nombres reales de tus inputs
-    if (!data.name || !data.phone || !data.email) {
-      alert('Bitte füllen Sie alle Pflichtfelder aus.');
-      return;
-    }
-    if (!data.privacy) {
-      alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
-      return;
-    }
-
-    // Simular envío
-    alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
-    event.target.reset();
-  }
 
   // ---------- Smooth scrolling genérico para anchors ----------
   // Nota: Los enlaces que usen navigateTo(...) no necesitan este handler.
