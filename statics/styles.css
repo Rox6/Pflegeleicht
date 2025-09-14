@@ -1198,7 +1198,21 @@
         }
 
         .btn-secondary-legal{
-            background: #cbd5e0;
+            background: rgba(128, 128, 123, 0.126);
+            color: #0f3159;
+            padding: clamp(1rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+            border: 3px solid white;
+            border-radius: 12px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            min-width: 150px;
         }
 
         /* Enhanced Responsive Design */
