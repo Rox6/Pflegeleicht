@@ -195,7 +195,8 @@
             background: #B8860B;
             border-color: #B8860B;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.5);;
+            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.5);
+            outline: 4px solid #0f3159;
         }
 
         .btn-secondary {
@@ -219,7 +220,9 @@
         .btn-secondary:hover,
         .btn-secondary:focus {
             background: #f8f9fa;
+            color: #0f3159;
             transform: translateY(-3px);
+            outline: 4px solid #2E8B57;
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
         }
 
@@ -257,102 +260,271 @@
             margin-bottom: 1rem;
         }
 
-        /* Carousel */
+        /* Carousel Styles */
+        .carousel-section {
+            padding: clamp(2rem, 5vw, 3rem) 0; /* menos espacio arriba/abajo */
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            max-width: min(1400px, 95vw);
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 3rem);
+        }
+
+        .carousel-header {
+            text-align: center;
+            margin-bottom: clamp(3rem, 6vw, 4rem);
+        }
+
+        .carousel-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #0f3159;
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 700;
+        }
+
+        .carousel-header p {
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            color: #4a5568;
+            max-width: min(700px, 95vw);
+            margin: 0 auto;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 450px; 
+            max-height: 60vh; 
+            background: #f8fafc; 
+            }
+
         .carousel {
             display: flex;
-            flex-wrap: nowrap;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
+            height: 100%;
         }
 
         .carousel-slide {
             flex: 0 0 100%;
             min-width: 100%;
-            height: clamp(300px, 50vh, 600px);
+            height: 65vh; 
+            max-height: 700px; 
+            min-height: 400px; 
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-slide img,
-        .slide-image {
-            max-width: min(520px, 90vw);
-            width: clamp(300px, 60vw, 400px);
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
+            justify-content: flex-start; /* texto a la izquierda */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            }
+        
+        .carousel-slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            z-index: 1;
+            }
 
         .slide-content {
-            text-align: center;
-            color: #111827;
-            max-width: min(600px, 90vw);
-            padding: clamp(1rem, 3vw, 2rem);
+        position: relative;
+        z-index: 2;
+        color: white;
+        text-align: left;
+        max-width: 40%;
+        margin-left: 5%;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
+
+        .slide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(210, 105, 30, 0.9);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-icon {
+            font-size: 1.2rem;
         }
 
         .slide-content h3 {
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            font-weight: 800;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.2px;
-        }
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            }
+
+    .slide-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.5;
+            }
 
         .slide-content h3::after {
-            content: "";
-            display: block;
-            width: 64px;
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
             height: 4px;
-            border-radius: 999px;
-            margin: 0.6rem auto 0;
-            background: linear-gradient(90deg, #D2691E, #ff9a4d);
+            background: linear-gradient(90deg, #D2691E, #0f3159);
+            border-radius: 2px;
         }
 
-        .slide-content p {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            line-height: 1.7;
-            color: #374151;
-            opacity: 1;
+        .slide-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
-        .carousel-slide img,
-        .slide-image {
-            filter: drop-shadow(0 14px 28px rgba(0,0,0,.12));
-            transition: transform .3s ease, filter .3s ease;
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(15, 49, 89, 0.05);
+            border: 1px solid rgba(15, 49, 89, 0.1);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #0f3159;
+            transition: all 0.3s ease;
         }
 
-        .carousel-slide:hover .slide-image {
+        .feature-item:hover {
+            background: rgba(210, 105, 30, 0.1);
+            border-color: rgba(210, 105, 30, 0.3);
             transform: translateY(-2px);
-            filter: drop-shadow(0 18px 34px rgba(0,0,0,.16));
+        }
+
+        .feature-icon {
+            color: #D2691E;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Navigation */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f3159;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .carousel-nav:hover {
+            background: rgba(210, 105, 30, 0.9);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
         }
 
         .carousel-controls {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: clamp(3rem, 6vw, 4rem);
+            margin-top: clamp(2rem, 4vw, 3rem);
         }
 
         .carousel-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: #cbd5e0;
             cursor: pointer;
             transition: all 0.3s ease;
             opacity: 0.5;
+            border: 2px solid transparent;
         }
 
         .carousel-dot.active {
             background: #D2691E;
             opacity: 1;
+            border-color: #0f3159;
+            transform: scale(1.2);
         }
 
-        .carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        .carousel-dot:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .carousel-wrapper {
+                height: auto;
+                min-height: clamp(600px, 70vh, 700px);
+            }
+
+            .carousel-slide {
+                flex-direction: column;
+                text-align: center;
+                padding: clamp(1.5rem, 4vw, 2rem);
+                gap: clamp(1.5rem, 4vw, 2rem);
+            }
+
+            .slide-image-container,
+            .slide-content {
+                max-width: 100%;
+                flex: none;
+            }
+
+            .slide-image {
+                max-height: 250px;
+            }
+            
+            .slide-features {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            
+            .feature-item {
+                width: fit-content;
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .carousel-prev {
+                left: 10px;
+            }
+            
+            .carousel-next {
+                right: 10px;
+            }
+        }
 
         /* About Section */
         .about-section-home {
@@ -694,23 +866,21 @@
         }
 
         /* Contact Form */
+        /* Contact Form */
         .contact-section {
             padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem);
             background: white;
             padding-top: clamp(100px, 12vh, 140px);
         }
-
         .contact-container {
             max-width: min(1000px, 95vw);
             margin: 0 auto;
             padding-top: 0;
         }
-
         .contact-header {
             text-align: center;
             margin-bottom: clamp(2rem, 5vw, 4rem);
         }
-
         .contact-header h2 {
             font-size: clamp(2rem, 5vw, 3rem);
             color: #0f3159;
@@ -718,25 +888,21 @@
             margin-bottom: clamp(1rem, 2vw, 1.5rem);
             font-weight: 700;
         }
-
         .contact-form {
             background: #f8fafc;
             padding: clamp(2rem, 5vw, 4rem);
             border-radius: 25px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
-
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
             gap: clamp(1rem, 3vw, 2rem);
             margin-bottom: clamp(1rem, 3vw, 2rem);
         }
-
         .form-group {
             margin-bottom: clamp(1rem, 3vw, 2rem);
         }
-
         .form-group label {
             display: block;
             margin-bottom: 1rem;
@@ -745,7 +911,6 @@
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
             line-height: 1.5;
         }
-
         .form-group input,
         .form-group select,
         .form-group textarea {
@@ -758,7 +923,6 @@
             background: white;
             min-height: 60px;
         }
-
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
@@ -766,12 +930,10 @@
             box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.2);
             background: #fefefe;
         }
-
         .form-group textarea {
             height: clamp(120px, 20vh, 150px);
             resize: vertical;
         }
-
         .privacy-notice {
             display: flex;
             align-items: flex-start;
@@ -780,14 +942,12 @@
             font-size: clamp(0.85rem, 1.8vw, 0.95rem);
             color: #64748b;
         }
-
         .privacy-notice input[type="checkbox"] {
             width: auto;
             margin: 0;
             min-width: 20px;
             min-height: 20px;
         }
-
         .submit-btn {
             background: #D2691E;
             color: white;
@@ -802,7 +962,6 @@
             box-shadow: 0 6px 20px rgba(210, 105, 30, 0.4);
             min-height: 60px;
         }
-
         .submit-btn:hover,
         .submit-btn:focus {
             background: #B8860B;
@@ -818,7 +977,6 @@
             margin-top: clamp(1.5rem, 3vw, 2rem);
         }
 
-        
         .btn {
             padding: clamp(0.8rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
             border: none;
@@ -830,18 +988,15 @@
             text-decoration: none;
             display: inline-block;
         }
-
         .btn-primary {
             background: #D2691E;
             color: white;
         }
 
-        
         .btn-primary:hover {
             background: #B8591A;
             transform: translateY(-2px);
         }
-
 
         .highlight-box {
             background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
@@ -850,12 +1005,12 @@
             padding: clamp(1.5rem, 3vw, 2rem);
             margin: clamp(1.5rem, 3vw, 2rem) 0;
         }
-
         .highlight-box p {
             color: #0f3159;
             font-weight: 600;
             margin: 0;
         }
+
         /* Footer */
         .footer {
             background: #0f3159;
@@ -991,12 +1146,13 @@
         /* Page Navigation */
         .page {
             display: none;
-            
+            padding-top: clamp(100px, 12vh, 140px);
         }
 
         .page.active {
             display: block;
         }
+
 
         /* Igualar estilo de inputs y textarea */
         input,
@@ -1149,51 +1305,6 @@
         .legal-section a:hover,
         .legal-section a:focus {
             color: #D2691E;
-            text-decoration: underline;
-        }
-
-        .legal-footer {
-            background: linear-gradient(135deg, #0f3159 0%, #1a5490 100%);
-            color: white;
-            padding: clamp(2rem, 4vw, 3rem);
-            border-radius: 15px;
-            text-align: center;
-            margin-top: clamp(3rem, 6vw, 4rem);
-        }
-
-        .last-updated {
-            margin-bottom: clamp(1.5rem, 3vw, 2rem);
-            padding-bottom: clamp(1rem, 2vw, 1.5rem);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .last-updated p {
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            margin: 0;
-            opacity: 0.9;
-        }
-
-        .contact-info p {
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            margin-bottom: 0.8rem;
-            opacity: 0.9;
-        }
-
-        .contact-info p:first-child {
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 600;
-        }
-
-        .contact-info a {
-            color: #F57C00;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover,
-        .contact-info a:focus {
-            color: white;
             text-decoration: underline;
         }
 
