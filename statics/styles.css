@@ -866,23 +866,21 @@
         }
 
         /* Contact Form */
+        /* Contact Form */
         .contact-section {
             padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem);
             background: white;
             padding-top: clamp(100px, 12vh, 140px);
         }
-
         .contact-container {
             max-width: min(1000px, 95vw);
             margin: 0 auto;
             padding-top: 0;
         }
-
         .contact-header {
             text-align: center;
             margin-bottom: clamp(2rem, 5vw, 4rem);
         }
-
         .contact-header h2 {
             font-size: clamp(2rem, 5vw, 3rem);
             color: #0f3159;
@@ -890,25 +888,21 @@
             margin-bottom: clamp(1rem, 2vw, 1.5rem);
             font-weight: 700;
         }
-
         .contact-form {
             background: #f8fafc;
             padding: clamp(2rem, 5vw, 4rem);
             border-radius: 25px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
-
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
             gap: clamp(1rem, 3vw, 2rem);
             margin-bottom: clamp(1rem, 3vw, 2rem);
         }
-
         .form-group {
             margin-bottom: clamp(1rem, 3vw, 2rem);
         }
-
         .form-group label {
             display: block;
             margin-bottom: 1rem;
@@ -917,7 +911,6 @@
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
             line-height: 1.5;
         }
-
         .form-group input,
         .form-group select,
         .form-group textarea {
@@ -930,21 +923,17 @@
             background: white;
             min-height: 60px;
         }
-
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: 4px solid #D2691E;
-            border-color: #0f3159;
             box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.2);
             background: #fefefe;
         }
-
         .form-group textarea {
             height: clamp(120px, 20vh, 150px);
             resize: vertical;
         }
-
         .privacy-notice {
             display: flex;
             align-items: flex-start;
@@ -953,14 +942,12 @@
             font-size: clamp(0.85rem, 1.8vw, 0.95rem);
             color: #64748b;
         }
-
         .privacy-notice input[type="checkbox"] {
             width: auto;
             margin: 0;
             min-width: 20px;
             min-height: 20px;
         }
-
         .submit-btn {
             background: #D2691E;
             color: white;
@@ -975,7 +962,6 @@
             box-shadow: 0 6px 20px rgba(210, 105, 30, 0.4);
             min-height: 60px;
         }
-
         .submit-btn:hover,
         .submit-btn:focus {
             background: #B8860B;
@@ -983,6 +969,46 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(210, 105, 30, 0.5);
             outline: 4px solid #0f3159;
+        }
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .btn {
+            padding: clamp(0.8rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border: none;
+            border-radius: 8px;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: #D2691E;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #B8591A;
+            transform: translateY(-2px);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            border: 2px solid #D2691E;
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+        .highlight-box p {
+            color: #0f3159;
+            font-weight: 600;
+            margin: 0;
         }
 
         /* Footer */
@@ -1279,51 +1305,6 @@
         .legal-section a:hover,
         .legal-section a:focus {
             color: #D2691E;
-            text-decoration: underline;
-        }
-
-        .legal-footer {
-            background: linear-gradient(135deg, #0f3159 0%, #1a5490 100%);
-            color: white;
-            padding: clamp(2rem, 4vw, 3rem);
-            border-radius: 15px;
-            text-align: center;
-            margin-top: clamp(3rem, 6vw, 4rem);
-        }
-
-        .last-updated {
-            margin-bottom: clamp(1.5rem, 3vw, 2rem);
-            padding-bottom: clamp(1rem, 2vw, 1.5rem);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .last-updated p {
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            margin: 0;
-            opacity: 0.9;
-        }
-
-        .contact-info p {
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            margin-bottom: 0.8rem;
-            opacity: 0.9;
-        }
-
-        .contact-info p:first-child {
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 600;
-        }
-
-        .contact-info a {
-            color: #F57C00;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover,
-        .contact-info a:focus {
-            color: white;
             text-decoration: underline;
         }
 
