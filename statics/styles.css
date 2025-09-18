@@ -259,7 +259,7 @@
 
         /* Carousel Styles */
         .carousel-section {
-            padding: clamp(4rem, 8vw, 6rem) 0;
+            padding: clamp(2rem, 5vw, 3rem) 0; /* menos espacio arriba/abajo */
             background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
             overflow: hidden;
         }
@@ -292,11 +292,12 @@
         .carousel-wrapper {
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            height: clamp(600px, 70vh, 800px);
-            background: white;
-        }
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 450px; 
+            max-height: 60vh; 
+            background: #f8fafc; 
+            }
 
         .carousel {
             display: flex;
@@ -308,7 +309,9 @@
         .carousel-slide {
             flex: 0 0 100%;
             min-width: 100%;
-            height: 100vh; /* pantalla completa */
+            height: 65vh; 
+            max-height: 700px; 
+            min-height: 400px; 
             position: relative;
             display: flex;
             align-items: center;
