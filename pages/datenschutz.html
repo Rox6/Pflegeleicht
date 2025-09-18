@@ -1,384 +1,344 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutz - PflegeLeicht</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PflegeLeicht - Wir machen Pflege einfach</title>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            overflow-x: hidden;
-            font-size: 16px;
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            min-height: 100vh;
-        }
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
+  <!-- Iconos: Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        referrerpolicy="no-referrer" />
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .back-button {
-            background: linear-gradient(135deg, #0f3159 0%, #1a5490 50%, #2563eb 100%);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(66, 153, 225, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-
-        .back-button:hover {
-            background: linear-gradient(135deg, #3182ce, #4299e1);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
-        }
-
-        .back-button:focus {
-            outline: 2px solid #4299e1;
-            outline-offset: 2px;
-        }
-
-        .datenschutz-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-            padding-top: 180px;
-        }
-
-        .datenschutz-header {
-            text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 2rem;
-        }
-
-        .datenschutz-header h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #2d3748;
-            background: linear-gradient(135deg, #0f3159 0%, #1a5490 50%, #2563eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .datenschutz-header p {
-            font-size: 1.1rem;
-            color: #718096;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .datenschutz-content {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .datenschutz-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        .datenschutz-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .datenschutz-card h2 {
-            color: #2d3748;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid #e2e8f0;
-            position: relative;
-        }
-
-        .datenschutz-card h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, #4299e1, #63b3ed);
-            border-radius: 1px;
-        }
-
-        .datenschutz-card h3 {
-            color: (135deg, #0f3159 0%, #1a5490 50%, #2563eb 100%);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .datenschutz-card h4 {
-            color: #2d3748;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            margin-top: 1.25rem;
-        }
-
-        .datenschutz-card p {
-            color: #4a5568;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .datenschutz-card ul {
-            color: #4a5568;
-            line-height: 1.7;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .datenschutz-card li {
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #0f3159 0%, #1a5490 50%, #2563eb 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
-        }
-
-        .contact-info h3 {
-            color: white !important;
-            margin-top: 0;
-            font-size: 1.3rem;
-        }
-
-        .contact-info p {
-            color: white;
-            opacity: 0.95;
-        }
-
-        .contact-info strong {
-            color: white;
-            font-weight: 600;
-        }
-
-        .datenschutz-card a {
-            color: #4299e1;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .datenschutz-card a:hover {
-            color: #2b6cb0;
-            text-decoration: underline;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 1rem 1.5rem;
-            }
-
-            .back-button {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-
-            .datenschutz-container {
-                padding: 1rem;
-                padding-top: 140px;
-            }
-
-            .datenschutz-header h1 {
-                font-size: 2rem;
-            }
-
-            .datenschutz-card {
-                padding: 1.5rem;
-            }
-
-            .datenschutz-card h2 {
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .datenschutz-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .datenschutz-card {
-                padding: 1.25rem;
-            }
-
-            .contact-info {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Focus styles for accessibility */
-        *:focus {
-            outline: 2px solid #4299e1;
-            outline-offset: 2px;
-        }
-    </style>
+  <!-- Tu CSS principal -->
+  <link rel="stylesheet" href="../statics/styles.css" />
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <a href="./../index.html" class="back-button">← Zurück zur Startseite</a>
-        </nav>
-    </header>
+  <!-- Header -->
+<header class="header">
+  <nav class="nav-container">
+    <a class="logo-container" href="../index.html#startseite">
+      <img src="../statics/img/logo.png" alt="PflegeLeicht Logo" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+    </a>
 
-    <div class="datenschutz-container">
-        <div class="datenschutz-header">
-            <h1>Datenschutzhinweise</h1>
-            <p>Informationen über die Verarbeitung Ihrer Daten gemäß Datenschutz-Grundverordnung</p>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="../index.html#startseite">Startseite</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#kontakt">Kontakt</a></li>
+      <li><a href="../index.html#ueber-uns">Über uns</a></li>
+    </ul>
+
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+  <!-- Datenschutz Page -->
+  <div id="datenschutz" class="page legal-page active">
+    <div class="legal-container">
+      <div class="legal-header">
+        <h1>Datenschutzhinweise</h1>
+        <p class="legal-subtitle">Informationen über die Verarbeitung Ihrer Daten gemäß Art. 13 der Datenschutz-Grundverordnung (DSGVO)</p>
+        <div class="company-info">
+          <p>
+            <strong>PflegeLeicht GmbH</strong><br>
+            Am Marktplatz 5, 65779 Kelkheim (Taunus)<br>
+            Vertreten durch: Can Kulens
+          </p>
         </div>
+      </div>
 
-        <div class="datenschutz-content">
-            <div class="datenschutz-card">
-                <h2>I. Informationen über die Verarbeitung Ihrer Daten gemäß Art. 13 der Datenschutz-Grundverordnung (DS-GVO)</h2>
-                
-                <h3>1. Verantwortlicher und Datenschutzbeauftragter</h3>
-                <p>Verantwortlich für diese Website ist die</p>
-                <div class="contact-info">
-                    <h3>PflegeLeicht GmbH</h3>
-                    <p><strong>Adresse:</strong> Am Marktplatz 5, 65779 Kelkheim (Taunus)</p>
-                    <p><strong>Vertreten durch:</strong> Can Kulens</p>
-                    <p><strong>Den Datenschutzbeauftragten erreichen Sie per E-Mail unter: </strong> info@pflegeleicht.team</p>
-                </div>
-            </div>
+      <div class="legal-content">
+        <section class="legal-section">
+          <h2>I. Informationen über die Verarbeitung Ihrer Daten</h2>
 
-            <div class="datenschutz-card">
-                <h3>2. Daten, die für die Bereitstellung der Website und die Erstellung der Protokolldateien verarbeitet werden</h3>
-                <h4>a. Welche Daten werden für welchen Zweck verarbeitet?</h4>
-                <p>Bei jedem Zugriff auf Inhalte der Website werden vorübergehend Daten gespeichert, die möglicherweise eine Identifizierung zulassen. Die folgenden Daten werden hierbei erhoben:</p>
-                <ul>
-                    <li>Datum und Uhrzeit des Zugriffs</li>
-                    <li>IP-Adresse</li>
-                    <li>Hostname des zugreifenden Rechners</li>
-                    <li>Website, von der aus die Website aufgerufen wurde</li>
-                    <li>Websites, die über die Website aufgerufen werden</li>
-                    <li>Besuchte Seite auf unserer Website</li>
-                    <li>Meldung, ob der Abruf erfolgreich war</li>
-                    <li>Übertragene Datenmenge</li>
-                    <li>Informationen über den Browsertyp und die verwendete Version</li>
-                    <li>Betriebssystem</li>
-                </ul>
-                <p>Die vorübergehende Speicherung der Daten ist für den Ablauf eines Websitebesuchs erforderlich, um eine Auslieferung der Website zu ermöglichen. Eine weitere Speicherung in Protokolldateien erfolgt, um die Funktionsfähigkeit der Website und die Sicherheit der informationstechnischen Systeme sicherzustellen. In diesen Zwecken liegt auch unser berechtigtes Interesse an der Datenverarbeitung.</p>
+          <h3 style="color: #0f3159; font-size: clamp(1.1rem, 2.3vw, 1.3rem); margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.8rem, 1.5vw, 1rem); font-weight: 600;">1. Verantwortlicher und Datenschutzbeauftragter</h3>
+          <p>Verantwortlich für diese Website ist die<br>
+            <strong>PflegeLeicht GmbH, Am Marktplatz 5, 65779 Kelkheim (Taunus).</strong><br>
+            Vertreten durch: Can Kulens
+          </p>
+          <p>Den Datenschutzbeauftragten erreichen Sie per E-Mail unter: <a href="mailto:datenschutz@pflegeleicht.team">datenschutz@pflegeleicht.team</a></p>
+        </section>
 
-                <h4>b. Auf welcher Rechtsgrundlage werden diese Daten verarbeitet?</h4>
-                <p>Die Daten werden auf der Grundlage des Art. 6 Abs. 1 Buchstabe f DS-GVO verarbeitet.</p>
+        <section class="legal-section">
+          <h3 style="color: #0f3159; font-size: clamp(1.1rem, 2.3vw, 1.3rem); margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.8rem, 1.5vw, 1rem); font-weight: 600;">2. Daten, die für die Bereitstellung der Website und die Erstellung der Protokolldateien verarbeitet werden</h3>
 
-                <h4>c. Gibt es neben dem Verantwortlichen weitere Empfänger der personenbezogenen Daten?</h4>
-                <p>Die Website wird bei STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin gehostet. Der Hoster empfängt die oben genannten Daten als Auftragsverarbeiter.</p>
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">a. Welche Daten werden für welchen Zweck verarbeitet?</h4>
+          <p>Bei jedem Zugriff auf Inhalte der Website werden vorübergehend Daten gespeichert, die möglicherweise eine Identifizierung zulassen. Die folgenden Daten werden hierbei erhoben:</p>
+          <ul class="legal-list">
+            <li>Datum und Uhrzeit des Zugriffs</li>
+            <li>IP-Adresse</li>
+            <li>Hostname des zugreifenden Rechners</li>
+            <li>Website, von der aus die Website aufgerufen wurde</li>
+            <li>Websites, die über die Website aufgerufen werden</li>
+            <li>Besuchte Seite auf unserer Website</li>
+            <li>Meldung, ob der Abruf erfolgreich war</li>
+            <li>Übertragene Datenmenge</li>
+            <li>Informationen über den Browsertyp und die verwendete Version</li>
+            <li>Betriebssystem</li>
+          </ul>
+          <p>Die vorübergehende Speicherung der Daten ist für den Ablauf eines Websitebesuchs erforderlich, um eine Auslieferung der Website zu ermöglichen. Eine weitere Speicherung in Protokolldateien erfolgt, um die Funktionsfähigkeit der Website und die Sicherheit der informationstechnischen Systeme sicherzustellen. In diesen Zwecken liegt auch unser berechtigtes Interesse an der Datenverarbeitung.</p>
 
-                <h4>d. Wie lange werden die Daten gespeichert?</h4>
-                <p>Die Daten werden gelöscht, sobald sie für die Erreichung des Zwecks ihrer Erhebung nicht mehr erforderlich sind. Bei der Bereitstellung der Website ist dies der Fall, wenn die jeweilige Sitzung beendet ist. Die Protokolldateien werden maximal bis zu 24 Stunden direkt und ausschließlich für Administratoren zugänglich aufbewahrt. Danach sind sie nur noch indirekt über die Rekonstruktion von Sicherungsbändern verfügbar und werden nach maximal vier Wochen endgültig gelöscht.</p>
-            </div>
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">b. Auf welcher Rechtsgrundlage werden diese Daten verarbeitet?</h4>
+          <p>Die Daten werden auf der Grundlage des Art. 6 Abs. 1 Buchstabe f DSGVO verarbeitet.</p>
 
-            <div class="datenschutz-card">
-                <h3>3. Betroffenenrechte</h3>
-                <p>Als betroffene Person haben Sie verschiedene Rechte bezüglich Ihrer personenbezogenen Daten:</p>
-                
-                        <h4>a. Recht auf Auskunft</h4>
-                        <p>Sie können Auskunft nach Art. 15 DS-GVO über Ihre personenbezogenen Daten verlangen, die wir verarbeiten.</p>
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">c. Gibt es neben dem Verantwortlichen weitere Empfänger der personenbezogenen Daten?</h4>
+          <p>Die Website wird bei STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin gehostet. Der Hoster empfängt die oben genannten Daten als Auftragsverarbeiter.</p>
 
-                        <h4>b. Recht auf Widerspruch</h4>
-                        <p>Sie haben ein Recht auf Widerspruch aus besonderen Gründen (siehe unter Punkt II).</p>
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">d. Wie lange werden die Daten gespeichert?</h4>
+          <p>Die Daten werden gelöscht, sobald sie für die Erreichung des Zwecks ihrer Erhebung nicht mehr erforderlich sind. Bei der Bereitstellung der Website ist dies der Fall, wenn die jeweilige Sitzung beendet ist. Die Protokolldateien werden maximal bis zu 24 Stunden direkt und ausschließlich für Administratoren zugänglich aufbewahrt. Danach sind sie nur noch indirekt über die Rekonstruktion von Sicherungsbändern verfügbar und werden nach maximal vier Wochen endgültig gelöscht.</p>
+        </section>
 
-                        <h4>c. Recht auf Berichtigung</h4>
-                        <p>Sollten die Sie betreffenden Angaben nicht (mehr) zutreffend sein, können Sie nach Art. 16 DS-GVO eine Berichtigung verlangen. Sollten Ihre Daten unvollständig sein, können Sie eine Vervollständigung verlangen.</p>
+        <section class="legal-section">
+          <h3 style="color: #0f3159; font-size: clamp(1.1rem, 2.3vw, 1.3rem); margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.8rem, 1.5vw, 1rem); font-weight: 600;">3. Betroffenenrechte</h3>
 
-                        <h4>d. Recht auf Löschung</h4>
-                        <p>Sie können nach Art. 17 DS-GVO die Löschung Ihrer personenbezogenen Daten verlangen.</p>
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">a. Recht auf Auskunft</h4>
+          <p>Sie können Auskunft nach Art. 15 DSGVO über Ihre personenbezogenen Daten verlangen, die wir verarbeiten.</p>
 
-                        <h4>e. Recht auf Einschränkung der Verarbeitung</h4>
-                        <p>Sie haben nach Art. 18 DS-GVO das Recht, eine Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</p>
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">b. Recht auf Widerspruch</h4>
+          <p>Sie haben ein Recht auf Widerspruch aus besonderen Gründen (siehe unter Punkt II).</p>
 
-                        <h4>f. Recht auf Beschwerde</h4>
-                        <p>Wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen Datenschutzrecht verstößt, haben Sie nach Art. 77 Abs. 1 DS-GVO das Recht, sich bei einer Datenschutzaufsichtsbehörde eigener Wahl zu beschweren. Hierzu gehört auch die für den Verantwortlichen zuständige Datenschutzaufsichtsbehörde.</p>
-                        <h4>g.	Recht auf Datenübertragbarkeit</h4>
-                        <p>Für den Fall, dass die Voraussetzungen des Art. 20 Abs. 1 DS-GVO vorliegen, steht Ihnen das Recht zu, sich Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an Dritte aushändigen zu lassen. Die Erfassung der Daten zur Bereitstellung der Website und die Speicherung der Protokolldateien sind für den Betrieb der Internetseite zwingend erforderlich. Sie beruhen daher nicht auf einer Einwilligung nach Art. 6 Abs. 1 Buchstabe a DS-GVO oder auf einem Vertrag nach Art. 6 Abs. 1 Buchstabe b DS-GVO, sondern sind nach Art. 6 Abs. 1 Buchstabe f DS-GVO gerechtfertigt. Die Voraussetzungen des Art. 20 Abs. 1 DS- GVO sind demnach insoweit nicht erfüllt.</p>
-                    </div>
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">c. Recht auf Berichtigung</h4>
+          <p>Sollten die Sie betreffenden Angaben nicht (mehr) zutreffend sein, können Sie nach Art. 16 DSGVO eine Berichtigung verlangen. Sollten Ihre Daten unvollständig sein, können Sie eine Vervollständigung verlangen.</p>
 
-            <div class="datenschutz-card">
-                <h2>II.	Recht auf Widerspruch gemäß Art. 21 Abs. 1 DS-GVO</h2>
-                <p>Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Ihrer personenbezogenen Daten, die aufgrund von Artikel 6 Abs. 1 Buchstabe f DS-GVO erfolgt, Widerspruch einzulegen. Der Verantwortliche verarbeitet die personenbezogenen Daten dann nicht mehr, es sei denn, er kann zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die die Interessen, Rechte und Freiheiten der betroffenen Person überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen. Die Erfassung der Daten zur Bereitstellung der Website und die Speicherung der Protokolldateien sind für den Betrieb der Internetseite zwingend erforderlich.</p>
-            </div>
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">d. Recht auf Löschung</h4>
+          <p>Sie können nach Art. 17 DSGVO die Löschung Ihrer personenbezogenen Daten verlangen.</p>
+
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">e. Recht auf Einschränkung der Verarbeitung</h4>
+          <p>Sie haben nach Art. 18 DSGVO das Recht, eine Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</p>
+
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">f. Recht auf Beschwerde</h4>
+          <p>Wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen Datenschutzrecht verstößt, haben Sie nach Art. 77 Abs. 1 DS-GVO das Recht, sich bei einer Datenschutzaufsichtsbehörde eigener Wahl zu beschweren. Hierzu gehört auch die für den Verantwortlichen zuständige Datenschutzaufsichtsbehörde: Der Hessische Beauftragte für Datenschutz und Informationsfreiheit, Gustav-Stresemann-Ring 1, 65189 Wiesbaden.</p>
+
+          <h4 style="color: #2d3748; font-size: clamp(1rem, 2.1vw, 1.15rem); margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.8rem); font-weight: 600;">g. Recht auf Datenübertragbarkeit</h4>
+          <p>Für den Fall, dass die Voraussetzungen des Art. 20 Abs. 1 DSGVO vorliegen, haben Sie das Recht, sich Ihre personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format aushändigen zu lassen oder die Übermittlung an einen anderen Verantwortlichen zu verlangen.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>II. Recht auf Widerspruch gemäß Art. 21 Abs. 1 DSGVO</h2>
+          <p>Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund von Artikel 6 Absatz 1 Buchstabe f DSGVO erfolgt, Widerspruch einzulegen.</p>
+          <p>Der Verantwortliche verarbeitet die personenbezogenen Daten dann nicht mehr, es sei denn, er kann zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die die Interessen, Rechte und Freiheiten der betroffenen Person überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</p>
+        </section>
+      </div> <!-- .legal-content -->
+    </div>   <!-- .legal-container -->
+  </div>     <!-- #datenschutz.page -->
+
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+        <h3>Navigation</h3>
+        <a href="../index.html#startseite" onclick="showPage('startseite')">Startseite</a>
+        <a href="../index.html#services" onclick="showPage('services')">Services</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+        <a href="../index.html#ueber-uns">Über uns</a>
         </div>
-
-            <div class="datenschutz-card">
-                <h3>Kontakt für Datenschutzanfragen</h3>
-                <p>Wenn Sie Fragen zum Datenschutz haben oder Ihre Rechte ausüben möchten, kontaktieren Sie uns gerne:</p>
-                <div class="contact-info">
-                    <p><strong>E-Mail:</strong> info@pflegeleicht.team</p>
-                    <p><strong>Adresse:</strong> PflegeLeicht GmbH<br>
-                    Am Marktplatz 5<br>
-                    65779 Kelkheim (Taunus)</p>
-                </div>
-            </div>
+        <div class="footer-section">
+        <h3>Kontakt</h3>
+        <p>📍 Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
+        <p>📞 +49 (0) 6195 3044299</p>
+        <p>✉️ info@pflegeleicht.team</p>
         </div>
+        <div class="footer-section">
+        <h3>Rechtliches</h3>
+        <a href="../pages/impressum.html">Impressum</a>
+        <a href="../pages/datenschutz.html">Datenschutzerklärung</a>
+        <a href="../pages/AGB.html">AGB</a>
+        <a href="../pages/widerrufsrecht.html">Widerrufsrecht</a>
+        </div>
+        <!--Platzhalter für Social Media Icons
+        <div class="footer-section">
+        <h3>Folgen Sie uns</h3>
+        <p>Bleiben Sie über Neuigkeiten informiert</p>
+        <div class="social-icons">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="LinkedIn">💼</a>
+            <a href="#" title="Xing">🔗</a>
+            <a href="#" title="Instagram">📷</a>
+        </div>
+        </div>
+        --> 
     </div>
 
-    <script>
-        // Smooth scroll for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+  <!-- Scripts -->
+  <script>
+    // Navegación entre "pages" (secciones con class .page)
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+
+      const target = document.getElementById(pageId);
+      if (target) target.classList.add('active');
+
+      const navMenu = document.getElementById('navMenu');
+      if (navMenu) navMenu.classList.remove('active');
+
+      window.scrollTo(0, 0);
+    }
+
+    // Scroll suave a #kontakt (si existe)
+    function scrollToContact() {
+      const el = document.querySelector('#kontakt');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Menú móvil
+    function toggleMobileMenu() {
+      const navMenu = document.getElementById('navMenu');
+      if (navMenu) navMenu.classList.toggle('active');
+    }
+
+    // Envío de formulario (si existiera en esta vista)
+    function handleSubmit(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData);
+
+      if (!data.firstName || !data.lastName || !data.email || !data.message) {
+        alert('Bitte füllen Sie alle Pflichtfelder aus.');
+        return;
+      }
+      if (!data.privacy) {
+        alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
+        return;
+      }
+
+      alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
+      event.target.reset();
+    }
+
+    // Cerrar menú móvil al hacer click fuera
+    document.addEventListener('click', function (event) {
+      const navMenu = document.getElementById('navMenu');
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      if (!navMenu || !mobileMenuBtn) return;
+
+      if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Reset del menú al redimensionar
+    window.addEventListener('resize', function () {
+      const navMenu = document.getElementById('navMenu');
+      if (navMenu && window.innerWidth > 768) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Scroll suave para anchors (si hay anchors locales)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return; // evita bloquear links "#"
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // --- Carrusel: proteger si no existe en esta página ---
+    let currentSlide = 0;
+    let carouselInterval = null;
+    const totalSlides = 3;
+
+    function goToSlide(slideIndex) {
+      const carousel = document.getElementById('carousel');
+      if (!carousel) return; // protección
+      currentSlide = slideIndex;
+      const translateX = -slideIndex * 100;
+      carousel.style.transform = `translateX(${translateX}%)`;
+
+      document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+        if (index === slideIndex) {
+          dot.classList.add('active');
+          dot.style.background = '#D2691E';
+          dot.style.opacity = '1';
+        } else {
+          dot.classList.remove('active');
+          dot.style.background = '#cbd5e0';
+          dot.style.opacity = '0.5';
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      goToSlide(currentSlide);
+    }
+
+    function startCarousel() {
+      const carousel = document.getElementById('carousel');
+      if (!carousel) return; // no iniciar si no existe
+      if (carouselInterval) clearInterval(carouselInterval);
+      carouselInterval = setInterval(nextSlide, 4000);
+    }
+
+    function stopCarousel() {
+      if (carouselInterval) clearInterval(carouselInterval);
+      carouselInterval = null;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Iniciar carrusel solo si existe
+      startCarousel();
+
+      // Pausar en hover si existe wrapper
+      const carouselWrapper = document.querySelector('.carousel-wrapper');
+      if (carouselWrapper) {
+        carouselWrapper.addEventListener('mouseenter', stopCarousel);
+        carouselWrapper.addEventListener('mouseleave', startCarousel);
+      }
+
+      // Animaciones de aparición (si hay elementos)
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
         });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'971c30e0f3d5dbb1',t:'MTc1NTYzMzE0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+      }, observerOptions);
+
+      document.querySelectorAll('.service-card, .value-preview, .cta-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
+
+  <!-- (Opcional) Script Cloudflare inyectado: lo dejo tal cual -->
+  <script>
+    (function(){
+      function c(){
+        var b=a.contentDocument||a.contentWindow.document;
+        if(b){
+          var d=b.createElement('script');
+          d.innerHTML="window.__CF$cv$params={r:'974d2d4e2153360b',t:'MTc1NjE0Njc5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+          b.getElementsByTagName('head')[0].appendChild(d)
+        }
+      }
+      if(document.body){
+        var a=document.createElement('iframe');
+        a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';
+        document.body.appendChild(a);
+        if('loading'!==document.readyState)c();
+        else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);
+        else{
+          var e=document.onreadystatechange||function(){};
+          document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}
+        }
+      }
+    })();
+  </script>
+</body>
 </html>

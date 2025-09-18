@@ -5,391 +5,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PflegeLeicht - Wir machen Pflege einfach</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            overflow-x: hidden;
-            font-size: 16px;
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            min-height: 100vh;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 500;
-            font-size: 1.1rem;
-            position: relative;
-            transition: all 0.3s ease;
-            padding: 0.75rem 1.25rem;
-            border-radius: 12px;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a:focus {
-            color: #2d3748;
-            background: rgba(237, 242, 247, 0.7);
-            outline: none;
-            transform: translateY(-1px);
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 4px;
-            left: 50%;
-            background: linear-gradient(90deg, #4299e1, #63b3ed);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-            border-radius: 1px;
-        }
-
-        .nav-menu a:hover::after,
-        .nav-menu a:focus::after {
-            width: 80%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #4a5568;
-            padding: 0.5rem;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .mobile-menu-btn:hover {
-            background: rgba(237, 242, 247, 0.7);
-        }
-
-        .impressum-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-            padding-top: 180px;
-        }
-
-        .impressum-header {
-            text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 2rem;
-        }
-
-        .impressum-header h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #2d3748;
-            background: linear-gradient(135deg, #0f3159 0%, #1a5490 50%, #2563eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .impressum-header p {
-            font-size: 1.1rem;
-            color: #718096;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .impressum-content {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .impressum-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        .impressum-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .impressum-card h2 {
-            color: #2d3748;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid #e2e8f0;
-            position: relative;
-        }
-
-        .impressum-card h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, #4299e1, #63b3ed);
-            border-radius: 1px;
-        }
-
-        .impressum-card h3 {
-            color: #4299e1;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .impressum-card p {
-            color: #4a5568;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .impressum-card ul {
-            color: #4a5568;
-            line-height: 1.7;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .impressum-card li {
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #0f3159 0%, #1a5490 50%, #2563eb 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
-        }
-
-        .contact-info h3 {
-            color: white !important;
-            margin-top: 0;
-            font-size: 1.3rem;
-        }
-
-        .contact-info p {
-            color: white;
-            opacity: 0.95;
-        }
-
-        .contact-info strong {
-            color: white;
-            font-weight: 600;
-        }
-
-        .impressum-card a {
-            color: #4299e1;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .impressum-card a:hover {
-            color: #2b6cb0;
-            text-decoration: underline;
-        }
-
-                /* Responsive Design */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(15px);
-                flex-direction: column;
-                padding: 1.5rem 0;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                gap: 0.5rem;
-                border-top: 1px solid rgba(226, 232, 240, 0.8);
-            }
-            
-            .nav-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .nav-container {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-menu a {
-                font-size: 1rem;
-                padding: 0.75rem 1.5rem;
-                margin: 0 1rem;
-            }
-
-            .impressum-container {
-                padding: 1rem;
-                padding-top: 140px;
-            }
-
-            .impressum-header h1 {
-                font-size: 2rem;
-            }
-
-            .impressum-card {
-                padding: 1.5rem;
-            }
-
-            .impressum-card h2 {
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .impressum-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .impressum-card {
-                padding: 1.25rem;
-            }
-
-            .contact-info {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Focus styles for accessibility */
-        *:focus {
-            outline: 2px solid #4299e1;
-            outline-offset: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="../statics/styles.css">
 </head>
 <body>
-        <!--Header-->
-    <header class="header">
-    <nav class="nav-container">
-        </div>
-        <a href="./../index.html" class="back-button">← Zurück </a>
-    </nav>
-    </header>
-    <div class="impressum-container">
-        <div class="impressum-header">
-            <h1>Impressum</h1>
-            <p>Rechtliche Informationen</p>
-        </div>
-        <div class="impressum-content">
-        <div class="impressum-card">
-                <h2>Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</h2>
-                <div class="contact-info">
-                    <h3>PflegeLeicht GmbH</h3>
-                    <p><strong>Geschäftsführer:</strong> Can Kulens </p>
+    <!-- Header -->
+<header class="header">
+  <nav class="nav-container">
+    <a class="logo-container" href="../index.html#startseite">
+      <img src="../statics/img/logo.png" alt="PflegeLeicht Logo" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="../index.html#startseite">Startseite</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#kontakt">Kontakt</a></li>
+      <li><a href="../index.html#ueber-uns">Über uns</a></li>
+    </ul>
+
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+  </nav>
+</header>
+    <!-- Impressum Page -->
+    <div id="impressum" class="page legal-page active">
+        <div class="legal-container">
+            <div class="legal-header">
+                <h1>Impressum</h1>
+                <p class="legal-subtitle">Rechtliche Informationen</p>
+                <div class="company-info">
+                    <p><strong>Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</strong></p>
+                </div>
+            </div>
+            
+            <div class="legal-content">
+                <section class="legal-section">
+                    <h2>Unternehmensinformationen</h2>
+                    <p><strong>PflegeLeicht GmbH</strong><br>
+                    Geschäftsführer: Can Kulens</p>
                     <p><strong>Adresse:</strong><br>
                     Am Marktplatz 5<br>
                     65779 Kelkheim (Taunus)<br>
                     Deutschland</p>
-                    <p><strong>Telefon:</strong> +49 (0) 000 000 000<br>
-                    <strong>E-Mail:</strong> info@pflegeleicht.team<br>
-                    <strong>Website:</strong> www.pflegeleicht.team</p>
-                </div>
-        </div>
-        <div class="impressum-card">
-                <h2>Registereintrag</h2>
-                <p><strong>Handelsregister:</strong> XXX XXXX<br>
-                <strong>Registernummer:</strong> XXX 12345<br>
-                <strong>Umsatzsteuer-ID:</strong> DE123456789</p>
-        </div>
-        <div class="impressum-card">
-                <h2>Berufshaftpflichtversicherung:</h2>
-                <p>Name und Sitz des Versicherers: XXXX Geltungsbereich der Versicherung: Deutschland </p>
-        <div class="impressum-card">
-                <h2>Online-Streitbeilegung:</h2>
-                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
-                <a href="https://consumer-redress.ec.europa.eu/index_de" target="_blank">https://consumer-redress.ec.europa.eu/index_de</a></p>
-                <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+                    <p><strong>Telefon:</strong> +49 (0) 6195 3044299<br>
+                    <strong>E-Mail:</strong> <a href="mailto:info@pflegeleicht.team">info@pflegeleicht.team</a><br>
+                    <strong>Website:</strong> <a href="https://www.pflegeleicht.team" target="_blank" rel="noopener noreferrer">www.pflegeleicht.team</a></p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Registereintrag</h2>
+                    <p><strong>Handelsregister:</strong> XXX XXXX<br>
+                    <strong>Registernummer:</strong> XXX 12345<br>
+                    <strong>Umsatzsteuer-ID:</strong> DE123456789</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Berufshaftpflichtversicherung</h2>
+                    <p><strong>Name und Sitz des Versicherers:</strong> XXXX<br>
+                    <strong>Geltungsbereich der Versicherung:</strong> Deutschland</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+                    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Haftung für Inhalte</h2>
+                    <p>Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Als Diensteanbieter sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+                    <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Haftung für Links</h2>
+                    <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
+                    <p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Urheberrecht</h2>
+                    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+                    <p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Geltung für Social Media</h2>
+                    <p>Dieses Impressum gilt ebenfalls für unsere Auftritte auf sozialen Netzwerken.</p>
+                </section>
             </div>
-        <div class="impressum-card">
-                <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
-                <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-        </div>
-        <div class="impressum-card">
-                <h2>Haftung für Inhalte</h2>
-                <p>Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Als Diensteanbieter sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-                
-                <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
-        </div>
-        <div class="impressum-card">
-                <h2>Haftung für Links</h2>
-                <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
-                
-                <p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
-        </div>
-        <div class="impressum-card">
-                <h2>Urheberrecht</h2>
-                <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
-                
-                <p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
-        </div>
-        <div class="impressum-card">
-                <h2>Geltung für Social Media:</h2>
-                <p>Dieses Impressum gilt ebenfalls für unsere Auftritte auf sozialen Netzwerken.</p>
-        </div>
+
         </div>
     </div>
-</body>
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+        <h3>Navigation</h3>
+        <a href="../index.html#startseite">Startseite</a>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+        <a href="../index.html#ueber-uns">Über uns</a>
+        </div>
+        <div class="footer-section">
+        <h3>Kontakt</h3>
+        <p>📍 Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
+        <p>📞 +49 (0) 6195 3044299</p>
+        <p>✉️ info@pflegeleicht.team</p>
+        </div>
+        <div class="footer-section">
+        <h3>Rechtliches</h3>
+        <a href="../pages/impressum.html">Impressum</a>
+        <a href="../pages/datenschutz.html">Datenschutzerklärung</a>
+        <a href="../pages/AGB.html">AGB</a>
+        <a href="../pages/widerrufsrecht.html">Widerrufsrecht</a>
+        </div>
+        <!--Platzhalter für Social Media Icons
+        <div class="footer-section">
+        <h3>Folgen Sie uns</h3>
+        <p>Bleiben Sie über Neuigkeiten informiert</p>
+        <div class="social-icons">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="LinkedIn">💼</a>
+            <a href="#" title="Xing">🔗</a>
+            <a href="#" title="Instagram">📷</a>
+        </div>
+        </div>
+        --> 
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 PflegeLeicht GmbH. Alle Rechte vorbehalten.</p>
+    </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Close mobile menu if open
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.firstName || !data.lastName || !data.email || !data.message) {
+                alert('Bitte füllen Sie alle Pflichtfelder aus.');
+                return;
+            }
+            
+            if (!data.privacy) {
+                alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
+            event.target.reset();
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const navMenu = document.getElementById('navMenu');
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        let carouselInterval;
+        const totalSlides = 3;
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            const carousel = document.getElementById('carousel');
+            const translateX = -slideIndex * 100;
+            carousel.style.transform = `translateX(${translateX}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                if (index === slideIndex) {
+                    dot.classList.add('active');
+                    dot.style.background = '#D2691E';
+                    dot.style.opacity = '1';
+                } else {
+                    dot.classList.remove('active');
+                    dot.style.background = '#cbd5e0';
+                    dot.style.opacity = '0.5';
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        function startCarousel() {
+            carouselInterval = setInterval(nextSlide, 4000); // Change slide every 4 seconds
+        }
+
+        function stopCarousel() {
+            clearInterval(carouselInterval);
+        }
+
+        // Add loading states for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start carousel auto-play
+            startCarousel();
+            
+            // Pause carousel on hover
+            const carouselWrapper = document.querySelector('.carousel-wrapper');
+            if (carouselWrapper) {
+                carouselWrapper.addEventListener('mouseenter', stopCarousel);
+                carouselWrapper.addEventListener('mouseleave', startCarousel);
+            }
+
+            // Add fade-in animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.service-card, .value-preview, .cta-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974d2d4e2153360b',t:'MTc1NjE0Njc5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
