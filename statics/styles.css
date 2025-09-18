@@ -195,7 +195,8 @@
             background: #B8860B;
             border-color: #B8860B;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.5);;
+            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.5);
+            outline: 4px solid #0f3159;
         }
 
         .btn-secondary {
@@ -219,7 +220,9 @@
         .btn-secondary:hover,
         .btn-secondary:focus {
             background: #f8f9fa;
+            color: #0f3159;
             transform: translateY(-3px);
+            outline: 4px solid #2E8B57;
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
         }
 
@@ -763,6 +766,7 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: 4px solid #D2691E;
+            border-color: #0f3159;
             box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.2);
             background: #fefefe;
         }
@@ -811,51 +815,7 @@
             box-shadow: 0 10px 30px rgba(210, 105, 30, 0.5);
             outline: 4px solid #0f3159;
         }
-        .form-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: clamp(1.5rem, 3vw, 2rem);
-        }
 
-        
-        .btn {
-            padding: clamp(0.8rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
-            border: none;
-            border-radius: 8px;
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #D2691E;
-            color: white;
-        }
-
-        
-        .btn-primary:hover {
-            background: #B8591A;
-            transform: translateY(-2px);
-        }
-
-
-        .highlight-box {
-            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
-            border: 2px solid #D2691E;
-            border-radius: 12px;
-            padding: clamp(1.5rem, 3vw, 2rem);
-            margin: clamp(1.5rem, 3vw, 2rem) 0;
-        }
-
-        .highlight-box p {
-            color: #0f3159;
-            font-weight: 600;
-            margin: 0;
-        }
         /* Footer */
         .footer {
             background: #0f3159;
@@ -991,228 +951,11 @@
         /* Page Navigation */
         .page {
             display: none;
-            
+            padding-top: clamp(100px, 12vh, 140px);
         }
 
         .page.active {
             display: block;
-        }
-
-        /* Igualar estilo de inputs y textarea */
-        input,
-        textarea,
-        select {
-        font-family: inherit;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #333;
-        padding: 10px;
-        border: 1px solid #ccd6dd;
-        border-radius: 6px;
-        width: 100%;
-        box-sizing: border-box;
-        }
-
-        /* Estilo unificado para los placeholders */
-        input::placeholder,
-        textarea::placeholder,
-        select::placeholder {
-        font-family: inherit;
-        font-size: 1.3rem;
-        color: #999;
-        }
-
-        /* Generic Legal Pages */
-        .legal-page {
-            padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 4rem);
-            background: white;
-            min-height: 100vh;
-            padding-top: clamp(100px, 12vh, 140px);
-        }
-
-        .legal-container {
-            max-width: min(1000px, 95vw);
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .legal-header {
-            text-align: center;
-            margin-bottom: clamp(3rem, 6vw, 4rem);
-            padding-bottom: clamp(2rem, 4vw, 3rem);
-            border-bottom: 3px solid #e2e8f0;
-        }
-
-        .legal-header h1 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: #0f3159;
-            margin-top: clamp(50px, 10vh, 100px);
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 700;
-        }
-
-        .legal-subtitle {
-            font-size: clamp(1rem, 2.2vw, 1.2rem);
-            color: #64748b;
-            margin-bottom: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 500;
-        }
-
-        .company-info {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: clamp(1.5rem, 3vw, 2rem);
-            border-radius: 12px;
-            border-left: 4px solid #D2691E;
-            margin-top: clamp(1.5rem, 3vw, 2rem);
-        }
-
-        .company-info p {
-            color: #0f3159;
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            margin: 0;
-            font-weight: 500;
-        }
-
-        .legal-content {
-            margin-bottom: clamp(3rem, 6vw, 4rem);
-        }
-
-        .legal-section {
-            margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
-            padding: clamp(2rem, 4vw, 2.5rem);
-            background: #fafbfc;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .legal-section:hover {
-            border-color: #D2691E;
-            box-shadow: 0 4px 15px rgba(210, 105, 30, 0.1);
-        }
-
-        .legal-section h2 {
-            color: #0f3159;
-            font-size: clamp(1.3rem, 2.8vw, 1.6rem);
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 700;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #D2691E;
-            display: inline-block;
-        }
-
-        .legal-section p {
-            color: #2d3748;
-            font-size: clamp(0.9rem, 1.9vw, 1.05rem);
-            line-height: 1.8;
-            margin: 0;
-            text-align: justify;
-        }
-
-        .legal-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .legal-list li {
-            color: #2d3748;
-            font-size: clamp(0.9rem, 1.9vw, 1.05rem);
-            line-height: 1.8;
-            margin-bottom: clamp(1rem, 2vw, 1.2rem);
-            padding-left: clamp(1.5rem, 3vw, 2rem);
-            position: relative;
-            text-align: justify;
-        }
-
-        .legal-list li:before {
-            content: "•";
-            color: #D2691E;
-            font-weight: bold;
-            font-size: 1.2em;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        .legal-list li:last-child {
-            margin-bottom: 0;
-        }
-
-        .legal-section a {
-            color: #D2691E;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .legal-section a:hover,
-        .legal-section a:focus {
-            color: #D2691E;
-            text-decoration: underline;
-        }
-
-        .legal-footer {
-            background: linear-gradient(135deg, #0f3159 0%, #1a5490 100%);
-            color: white;
-            padding: clamp(2rem, 4vw, 3rem);
-            border-radius: 15px;
-            text-align: center;
-            margin-top: clamp(3rem, 6vw, 4rem);
-        }
-
-        .last-updated {
-            margin-bottom: clamp(1.5rem, 3vw, 2rem);
-            padding-bottom: clamp(1rem, 2vw, 1.5rem);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .last-updated p {
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            margin: 0;
-            opacity: 0.9;
-        }
-
-        .contact-info p {
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            margin-bottom: 0.8rem;
-            opacity: 0.9;
-        }
-
-        .contact-info p:first-child {
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 600;
-        }
-
-        .contact-info a {
-            color: #F57C00;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover,
-        .contact-info a:focus {
-            color: white;
-            text-decoration: underline;
-        }
-
-        .btn-secondary-legal{
-            background: rgba(128, 128, 123, 0.126);
-            color: #0f3159;
-            padding: clamp(1rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
-            border: 3px solid white;
-            border-radius: 12px;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 50px;
-            min-width: 150px;
         }
 
         /* Enhanced Responsive Design */
@@ -1309,14 +1052,6 @@
             .logo-container {
                 height: clamp(70px, 15vw, 120px);
                 width: clamp(220px, 45vw, 350px);
-            }
-
-            .form-buttons {
-                flex-direction: column;
-            }
-            
-            .btn {
-                text-align: center;
             }
         }
 
