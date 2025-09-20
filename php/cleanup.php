@@ -21,7 +21,7 @@ try {
                 // Importante: tener índice en created_at
                 $pdo->exec("
                     DELETE FROM contact_requests
-                    WHERE created_at < (NOW() - INTERVAL 30 DAY)
+                    WHERE created_at < (NOW() - INTERVAL 1 DAY)
                     LIMIT 2000
                 ");
 
