@@ -1,28 +1,50 @@
 <?php
-// cleanup.php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-// Conectar a la base de datos
-require __DIR__ . '/db.php';
+// php/cleanup_prepend.php
+// Se ejecuta al inicio de TODA petición PHP (si auto_prepend está activo)
 
 try {
-    // Borrar registros con más de 1 día
-    $sql = "DELETE FROM contact_requests
-            WHERE created_at < (NOW() - INTERVAL 1 DAY)";
-    $rows = $pdo->exec($sql);
+    // Asegúrate de que la ruta apunta bien a tu db.php
+    require __DIR__ . '/db.php'; // debe definir $pdo
 
-    // Log simple en archivo (lo puedes revisar en tu webspace)
-    $logFile = __DIR__ . '/cleanup.log';
-    $msg = date('Y-m-d H:i:s') . " - Cleanup ejecutado, filas borradas: $rows\n";
-    file_put_contents($logFile, $msg, FILE_APPEND);
+    // Archivo bandera para ejecutar máximo 1 vez cada 24h
+    $flag = __DIR__ . '/last_cleanup.flag';
+    $now  = time();
+    $last = is_file($flag) ? filemtime($flag) : 0;
 
-    echo "Cleanup OK, filas borradas: $rows";
+    // ¿Han pasado 24h?
+    if ($last === 0 || ($now - $last) >= 24 * 3600) {
+        // Lock para evitar que múltiples peticiones limpien a la vez
+        $fp = @fopen($flag, 'c+');
+        if ($fp && flock($fp, LOCK_EX | LOCK_NB)) {
+            try {
+                // Borrar > 30 días (ajusta el plazo a tu política)
+                // Importante: tener índice en created_at
+                $pdo->exec("
+                    DELETE FROM contact_requests
+                    WHERE created_at < (NOW() - INTERVAL 30 DAY)
+                    LIMIT 2000
+                ");
 
+                // Marca timestamp
+                ftruncate($fp, 0);
+                rewind($fp);
+                fwrite($fp, (string)$now);
+
+                // Log opcional sin datos personales
+                // file_put_contents(__DIR__.'/cleanup.log',
+                //     date('Y-m-d H:i:s')." cleanup ok\n", FILE_APPEND);
+            } catch (Throwable $e) {
+                error_log('cleanup_prepend ERROR: '.$e->getMessage());
+            } finally {
+                fflush($fp);
+                flock($fp, LOCK_UN);
+                fclose($fp);
+            }
+        } elseif ($fp) {
+            fclose($fp);
+        }
+    }
 } catch (Throwable $e) {
-    $logFile = __DIR__ . '/cleanup.log';
-    $msg = date('Y-m-d H:i:s') . " - ERROR: " . $e->getMessage() . "\n";
-    file_put_contents($logFile, $msg, FILE_APPEND);
-
-    echo "Error en cleanup: " . $e->getMessage();
+    // Nunca rompas la petición del usuario
+    error_log('cleanup_prepend bootstrap ERROR: '.$e->getMessage());
 }
