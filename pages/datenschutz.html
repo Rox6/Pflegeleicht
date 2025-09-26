@@ -139,7 +139,7 @@
         <h3>Kontakt</h3>
         <p>📍 Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
         <p>📞 +49 (0) 6195 3044299</p>
-        <p><a href="mailto:widerruf@pflegeleicht.team">✉️ info@pflegeleicht.team </p></a>
+        <p><a href="mailto:info@pflegeleicht.team">✉️ info@pflegeleicht.team </p></a>
         </div>
         <div class="footer-section">
         <h3>Rechtliches</h3>
@@ -186,10 +186,12 @@
       }
     }
 
-    // Menú móvil
+    // Función para el menú hamburguesa móvil
     function toggleMobileMenu() {
       const navMenu = document.getElementById('navMenu');
-      if (navMenu) navMenu.classList.toggle('active');
+      if (navMenu) {
+        navMenu.classList.toggle('active');
+      }
     }
 
     // Envío de formulario (si existiera en esta vista)
@@ -212,14 +214,26 @@
     }
 
     // Cerrar menú móvil al hacer click fuera
-    document.addEventListener('click', function (event) {
+    document.addEventListener('click', function(event) {
       const navMenu = document.getElementById('navMenu');
-      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-      if (!navMenu || !mobileMenuBtn) return;
+      const menuBtn = document.querySelector('.mobile-menu-btn');
 
-      if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+      if (navMenu && menuBtn &&
+          !navMenu.contains(event.target) &&
+          !menuBtn.contains(event.target) &&
+          navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
       }
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', function() {
+        const navMenu = document.getElementById('navMenu');
+        if (navMenu) {
+          navMenu.classList.remove('active');
+        }
+      });
     });
 
     // Reset del menú al redimensionar

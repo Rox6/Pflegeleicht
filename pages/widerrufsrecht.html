@@ -87,7 +87,7 @@
                 <p>Füllen Sie alle Felder aus, um ein vollständiges Widerrufsformular zu erstellen. Das Formular wird automatisch formatiert und kann gedruckt werden.</p>
             </div>
 
-            <form onsubmit="generateForm(event)">
+            <form class="widerruf-form" onsubmit="generateForm(event)">
                 <div class="form-group">
                     <label for="service">Beschreibung der Dienstleistung *</label>
                     <textarea 
@@ -173,7 +173,7 @@
         <h3>Kontakt</h3>
         <p>📍 Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
         <p>📞 +49 (0) 6195 3044299</p>
-        <p><a href="mailto:widerruf@pflegeleicht.team">✉️ info@pflegeleicht.team </p></a>
+        <p><a href="mailto:info@pflegeleicht.team">✉️ info@pflegeleicht.team </p></a>
         </div>
         <div class="footer-section">
         <h3>Rechtliches</h3>
@@ -342,6 +342,37 @@
             document.querySelector('form').reset();
             document.getElementById('currentDate').valueAsDate = new Date();
         }
+
+        // Función para el menú hamburguesa móvil
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+            }
+        }
+
+        // Cerrar menú móvil al hacer click fuera
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+
+            if (navMenu && menuBtn &&
+                !navMenu.contains(event.target) &&
+                !menuBtn.contains(event.target) &&
+                navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                const navMenu = document.getElementById('navMenu');
+                if (navMenu) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97d1110a424c1d88',t:'MTc1NzUyOTc2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
