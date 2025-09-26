@@ -187,14 +187,24 @@
     <div class="contact-form">
       <!-- ➜ CAMBIO: action + method -->
       <form id="contactForm" action="/php/process.php" method="post">
+        <div class="form-group">
+          <label for="anrede">Anrede *</label>
+          <select id="anrede" name="anrede" required oninvalid="this.setCustomValidity('Bitte wählen Sie eine Anrede aus der Liste aus.')" oninput="this.setCustomValidity('')">
+            <option value="">--</option>
+            <option value="Frau">Frau</option>
+            <option value="Herr">Herr</option>
+            <option value="Diverse">Diverse</option>
+          </select>
+        </div>
+
         <div class="form-grid">
           <div class="form-group">
-            <label for="name">Vorname *</label>
-            <input type="text" id="name" name="name" placeholder="Ihr Vorname" required oninvalid="this.setCustomValidity('Bitte geben Sie Ihren Vornamen ein.')" oninput="this.setCustomValidity('')">
+            <label for="vorname">Vorname *</label>
+            <input type="text" id="vorname" name="vorname" placeholder="Ihr Vorname" required oninvalid="this.setCustomValidity('Bitte geben Sie Ihren Vornamen ein.')" oninput="this.setCustomValidity('')">
           </div>
           <div class="form-group">
-            <label for="name">Nachname *</label>
-            <input type="text" id="name" name="name"  placeholder="Ihr Nachname" required oninvalid="this.setCustomValidity('Bitte geben Sie Ihren Nachnamen ein.')" oninput="this.setCustomValidity('')">
+            <label for="nachname">Nachname *</label>
+            <input type="text" id="nachname" name="nachname" placeholder="Ihr Nachname" required oninvalid="this.setCustomValidity('Bitte geben Sie Ihren Nachnamen ein.')" oninput="this.setCustomValidity('')">
           </div>
         </div>
         <div class="form-group">

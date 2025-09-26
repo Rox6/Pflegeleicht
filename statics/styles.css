@@ -903,15 +903,20 @@
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-            gap: clamp(1rem, 3vw, 2rem);
-            margin-bottom: clamp(1rem, 3vw, 2rem);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         .form-group {
-            margin-bottom: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Remove extra margin from form-groups inside form-grid */
+        .form-grid .form-group {
+            margin-bottom: 0;
         }
         .form-group label {
             display: block;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: #0f3159;
             font-weight: 700;
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
@@ -1534,12 +1539,6 @@
     background-size: 1.2em;
 }
 
-/* Highlight last two options */
-.form-group select option[value="GdB Antrag"],
-.form-group select option[value="anders"] {
-    background-color: #fff3e6;
-    color: #D2691E;
-}
 
 /* iPad specific fixes */
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait),
@@ -1599,10 +1598,17 @@ only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: la
 }
 
 /* Logo size adjustments */
+@media (max-width: 767px) {
+    .logo-container {
+        height: 60px;
+        width: 200px;
+    }
+}
+
 @media (max-width: 480px) {
     .logo-container {
-        height: 50px;
-        width: 180px;
+        height: 65px;
+        width: 220px;
     }
 }
 
@@ -1819,4 +1825,35 @@ and (-webkit-min-device-pixel-ratio: 1) {
         justify-self: stretch !important;
         width: 100% !important;
     }
+}
+
+/* Anrede field styling - make it smaller */
+.form-group select#anrede {
+    max-width: 250px;
+    width: auto;
+    min-width: 200px;
+}
+
+@media (max-width: 767px) {
+    .form-group select#anrede {
+        max-width: 200px;
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-group select#anrede {
+        max-width: 100%;
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+/* Form spacing consistency */
+.contact-form .submit-btn {
+    margin-top: 1.5rem;
+}
+
+.privacy-notice {
+    margin-bottom: 1.5rem;
 }
