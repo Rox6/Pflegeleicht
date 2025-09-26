@@ -1786,3 +1786,37 @@ and (-webkit-min-device-pixel-ratio: 1) {
         font-size: 16px !important;
     }
 }
+
+/* Specific fix for resolution around 826px width - Values Preview Layout */
+@media (min-width: 590px) and (max-width: 850px) {
+    .values-preview {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: clamp(1.5rem, 3vw, 2rem) !important;
+        justify-items: center !important;
+        align-items: start !important;
+    }
+
+    .values-preview .value-preview:nth-child(3) {
+        grid-column: 1 / -1 !important;
+        justify-self: center !important;
+        width: calc(50% - 0.75rem) !important;
+    }
+}
+
+/* Fix for screens 590px and below - single column layout */
+@media (max-width: 590px) {
+    .values-preview {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        justify-items: stretch !important;
+        align-items: start !important;
+    }
+
+    .values-preview .value-preview:nth-child(3) {
+        grid-column: 1 !important;
+        justify-self: stretch !important;
+        width: 100% !important;
+    }
+}
