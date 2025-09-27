@@ -1,18 +1,20 @@
+/* Global reset and base styles */
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Inter', sans-serif; 
-            line-height: 1.7;
-            color: #1a1a1a;
-            overflow-x: hidden;
-            font-size: clamp(14px, 1.5vw, 16px); /* Better readability on all screens */
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    overflow-x: hidden;
+    font-size: clamp(14px, 1.5vw, 16px); /* Better readability on all screens */
+}
 
-        /* Header */
-        .header {
+/* Header styles */
+.header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
@@ -102,8 +104,8 @@
             padding: 0.5rem;
         }
 
-        /* Hero Section */
-        .hero {
+/* Hero section styles */
+.hero {
             background: linear-gradient(135deg, #0f3159 0%, #1a5490 50%, #2563eb 100%);
             min-height: 100vh;
             display: flex;
@@ -261,9 +263,9 @@
             margin-bottom: 1rem;
         }
 
-        /* Carousel Styles */
-        .carousel-section {
-            padding: clamp(2rem, 5vw, 3rem) 0; /* menos espacio arriba/abajo */
+/* Carousel section styles */
+.carousel-section {
+            padding: clamp(2rem, 5vw, 3rem) 0; /* Reduced top/bottom spacing */
             background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
             overflow: hidden;
         }
@@ -313,13 +315,13 @@
         .carousel-slide {
             flex: 0 0 100%;
             min-width: 100%;
-            height: 80vh; 
-            max-height: 700px; 
+            height: 80vh;
+            max-height: 700px;
             min-height: 400px; 
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* texto a la izquierda */
+            justify-content: flex-start; /* Text aligned to left */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -533,8 +535,8 @@
             }
         }
 
-        /* About Section */
-        .about-section-home {
+/* About section styles */
+.about-section-home {
             padding: clamp(4rem, 8vw, 6rem) 0;
             background: #f7fafc;
         }
@@ -693,8 +695,8 @@
             font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
-        /* Services Section */
-        .services-section {
+/* Services section styles */
+.services-section {
             padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem);
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
@@ -790,8 +792,8 @@
             text-align: center;
         }
 
-        /* CTA Section */
-        .cta-section {
+/* Call-to-action section styles */
+.cta-section {
             padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem);
             background: linear-gradient(135deg, #0f3159 0%, #1a5490 100%);
             position: relative;
@@ -872,8 +874,8 @@
             font-size: clamp(0.9rem, 1.8vw, 1rem);
         }
 
-        /* Contact Form */
-        .contact-section {
+/* Contact form styles */
+.contact-section {
             padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem);
             background: white;
             padding-top: clamp(100px, 12vh, 140px);
@@ -1022,8 +1024,8 @@
             margin: 0;
         }
 
-        /* Footer */
-        .footer {
+/* Footer styles */
+.footer {
             background: #0f3159;
             color: white;
             padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 3rem) clamp(1rem, 3vw, 2rem);
@@ -1096,8 +1098,8 @@
             font-size: clamp(0.8rem, 1.6vw, 0.9rem);
         }
 
-        /* Services Page */
-        .services-page {
+/* Services page styles */
+.services-page {
             padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 4rem);
             background: white;
             min-height: 100vh;
@@ -1154,8 +1156,8 @@
             font-size: clamp(0.9rem, 2vw, 1.1rem);
         }
 
-        /* Page Navigation */
-        .page {
+/* Page navigation styles */
+.page {
             display: none;
             padding-top: clamp(100px, 12vh, 140px);
         }
@@ -1165,32 +1167,32 @@
         }
 
 
-        /* Igualar estilo de inputs y textarea */
-        input,
-        textarea,
-        select {
-        font-family: inherit;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #333;
-        padding: 10px;
-        border: 1px solid #ccd6dd;
-        border-radius: 6px;
-        width: 100%;
-        box-sizing: border-box;
-        }
+/* Unified input and textarea styling */
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccd6dd;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-        /* Estilo unificado para los placeholders */
-        input::placeholder,
-        textarea::placeholder,
-        select::placeholder {
-        font-family: inherit;
-        font-size: 1.3rem;
-        color: #999;
-        }
+/* Unified placeholder styling */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+    font-family: inherit;
+    font-size: 1.3rem;
+    color: #999;
+}
 
-        /* Generic Legal Pages */
-        .legal-page {
+/* Legal pages styling */
+.legal-page {
             padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 4rem);
             background: white;
             min-height: 100vh;
@@ -1337,7 +1339,7 @@
             min-width: 150px;
         }
 
-        /* Enhanced Responsive Design */
+/* Enhanced responsive design */
         @media (max-width: 1200px) {
             .nav-container {
                 padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 2.5vw, 2rem);
@@ -1348,7 +1350,7 @@
             }
         }
 
-        /* Tablet (non-iPad) styles */
+/* Tablet (non-iPad) specific styles */
         @media (min-width: 768px) and (max-width: 1023px) and (not (min-device-width: 768px)) {
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1448,7 +1450,7 @@
             }
         }
 
-        /* Print optimization */
+/* Print media optimization */
         @media print {
             .hero,
             .carousel-section,
@@ -1457,7 +1459,7 @@
             }
         }
 
-        /* Widerruf Form Styles */
+/* Widerruf (withdrawal) form styles */
         .widerruf-form {
             max-width: min(1000px, 95vw);
             margin: 0 auto;
@@ -1522,7 +1524,7 @@
             }
         }
 
-        /* Form specific styles - Updated select dropdown */
+        /* Enhanced select dropdown styling */
 .form-group select {
     width: 100%;
     padding: 1rem 2.5rem 1rem 1rem;
@@ -1768,7 +1770,11 @@ and (-webkit-min-device-pixel-ratio: 1) {
 
     /* Carousel fixes */
     .carousel-wrapper {
-        height: 450px !important;/* Nav menu fixes for specific resolutions */
+        height: 450px !important;
+    }
+}
+
+/* Navigation menu fixes for specific screen resolutions */
 @media screen and (min-width: 754px) and (max-width: 1024px) {
     .nav-menu {
         gap: clamp(0.4rem, 1.5vw, 1rem);
@@ -1793,7 +1799,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
     }
 }
 
-/* Specific fix for resolution around 826px width - Values Preview Layout */
+/* Values preview layout fix for medium screens (590px-850px) */
 @media (min-width: 590px) and (max-width: 850px) {
     .values-preview {
         display: grid !important;
@@ -1810,7 +1816,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
     }
 }
 
-/* Fix for screens 590px and below - single column layout */
+/* Single column layout for small screens (590px and below) */
 @media (max-width: 590px) {
     .values-preview {
         display: grid !important;
@@ -1827,7 +1833,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
     }
 }
 
-/* Anrede field styling - make it smaller */
+/* Anrede (salutation) field - smaller width */
 .form-group select#anrede {
     max-width: 250px;
     width: auto;
@@ -1838,6 +1844,26 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .form-group select#anrede {
         max-width: 200px;
         min-width: 180px;
+    }
+}
+
+/* Phone number links - simple approach for mobile devices */
+.footer-section a[href^="tel:"] {
+    color: #F57C00;
+    text-decoration: none;
+}
+
+.footer-section a[href^="tel:"]:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Disable phone links only on large screens (desktops) */
+@media (min-width: 1025px) {
+    .footer-section a[href^="tel:"] {
+        color: rgba(255, 255, 255, 0.8);
+        pointer-events: none;
+        cursor: default;
     }
 }
 

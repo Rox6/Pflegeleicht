@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>PflegeLeicht - Wir machen Pflege einfach</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-    <!-- Tu CSS -->
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="statics/styles.css"/>
 </head>
 <body>
@@ -17,7 +17,7 @@
         </div>
         <ul class="nav-menu" id="navMenu">
         <li><a href="#" onclick="showPage('startseite')">Startseite</a></li>
-        <li></li><a href="#services" onclick="showPage('services')">Services</a></li>
+        <li><a href="#services" onclick="showPage('services')">Services</a></li>
         <li><a href="#kontakt" onclick="navigateTo('kontakt')">Kontakt</a></li>
         <li><a href="#ueber-uns" onclick="navigateTo('ueber-uns')">Über uns</a></li>
         </ul>
@@ -181,11 +181,11 @@
       <p>Wir sind hier, um Ihnen zu helfen. Kontaktieren Sie uns für eine kostenlose Erstberatung.</p>
     </div>
 
-    <!-- Bloque de mensajes -->
+    <!-- Message container for form feedback -->
     <div id="contactAlert" style="display:none;margin-bottom:16px;padding:12px;border-radius:8px;border:1px solid #cfe9cf;background:#eaf7ea;color:#205c20;"></div>
 
     <div class="contact-form">
-      <!-- ➜ CAMBIO: action + method -->
+      <!-- Contact form submission -->
       <form id="contactForm" action="/php/process.php" method="post">
         <div class="form-group">
           <label for="anrede">Anrede *</label>
@@ -236,10 +236,10 @@
         </div>
 
         <div class="privacy-notice">
-          <input type="checkbox" id="privacy" name="privacy" value="1" required required oninvalid="this.setCustomValidity('Bitte geben Sie Ihre Zustimmung um fortzufahren.')" oninput="this.setCustomValidity('')">
+          <input type="checkbox" id="privacy" name="privacy" value="1" required oninvalid="this.setCustomValidity('Bitte geben Sie Ihre Zustimmung um fortzufahren.')" oninput="this.setCustomValidity('')">
           <label for="privacy">Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu und bin damit einverstanden, dass PflegeLeicht mich bezüglich meiner Anfrage kontaktiert. *</label>
         </div>
-        <!-- Campo oculto para bots -->
+        <!-- Honeypot field for bot protection -->
         <div style="position:absolute;left:-9999px" aria-hidden="true">
           <label for="company">Firma</label>
           <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
@@ -251,7 +251,7 @@
   </div>
 </section>
 
-<!-- Mostrar mensaje si ?ok=1 o ?err=... -->
+<!-- Display success/error message based on URL parameters -->
 <script>
   (function(){
     const params = new URLSearchParams(location.search);
@@ -272,7 +272,7 @@
   })();
 </script>
 
-    <!-- Über uns (About) - dentro de Startseite -->
+    <!-- About section within homepage -->
     <section id="ueber-uns" class="about-section-home">
         <div class="about-container">
         <div class="about-header">
@@ -308,7 +308,7 @@
     </div>
     <!-- /#startseite -->
 
-    <!-- Services Page (detalle) -->
+    <!-- Services detailed page -->
     <div id="services" class="page">
     <div class="services-page">
         <div class="services-page-container">
@@ -368,7 +368,7 @@
         <div class="footer-section">
         <h3>Kontakt</h3>
         <p>📍 Am Marktplatz 5<br>65779 Kelkheim (Taunus), Deutschland</p>
-        <p>📞 +49 (0) 6195 3044299</p>
+        <p>📞 <a href="tel:+4961953044299">+49 (0) 6195 3044299</a></p>
         <p><a href="mailto:info@pflegeleicht.team">✉️ info@pflegeleicht.team </p></a>
         </div>
         <div class="footer-section">
@@ -378,7 +378,7 @@
         <a href="./pages/AGB.html">AGB</a>
         <a href="./pages/widerrufsrecht.html">Widerrufsrecht</a>
         </div>
-        <!--Platzhalter für Social Media Icons
+        <!-- Social media section placeholder (currently disabled)
         <div class="footer-section">
         <h3>Folgen Sie uns</h3>
         <p>Bleiben Sie über Neuigkeiten informiert</p>
@@ -396,9 +396,9 @@
     </div>
     </footer>
 
-    <!-- JS -->
+    <!-- Main JavaScript functionality -->
 <script>
-  // ---------- Page Navigation ----------
+  // Page navigation system
   function showPage(pageId) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const page = document.getElementById(pageId);
@@ -410,25 +410,25 @@
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
-  // Navegar a una sección (ancla) que está dentro de #startseite
+  // Navigate to section anchor within homepage
   function navigateTo(anchorId) {
-    // Asegura que la página correcta esté visible
+    // Ensure homepage is visible
     showPage('startseite');
 
-    // Espera un frame para que el reflow ocurra y luego hace scroll suave
+    // Wait for reflow then smooth scroll to target
     requestAnimationFrame(() => {
       const el = document.getElementById(anchorId);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
-  // ---------- Mobile Menu ----------
+  // Mobile menu functionality
   function toggleMobileMenu() {
     const navMenu = document.getElementById('navMenu');
     if (navMenu) navMenu.classList.toggle('active');
   }
 
-  // Cerrar menú móvil al hacer click fuera
+  // Close mobile menu when clicking outside
   document.addEventListener('click', function (event) {
     const navMenu = document.getElementById('navMenu');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -442,7 +442,7 @@
     }
   });
 
-  // Cerrar menú móvil si se agranda la ventana
+  // Close mobile menu on window resize
   window.addEventListener('resize', function () {
     const navMenu = document.getElementById('navMenu');
     if (window.innerWidth > 768 && navMenu) {
@@ -450,11 +450,11 @@
     }
   });
 
-  // ---------- Smooth scrolling genérico para anchors ----------
-  // Nota: Los enlaces que usen navigateTo(...) no necesitan este handler.
+  // Generic smooth scrolling for anchor links
+  // Note: Links using navigateTo() don't need this handler
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      // Si el link también usa navigateTo en el onclick, salimos para no duplicar lógica
+      // Skip if link uses navigateTo to avoid duplicate logic
       const hasNavigateTo = this.getAttribute('onclick') && this.getAttribute('onclick').includes('navigateTo');
       if (hasNavigateTo) return;
 
@@ -470,7 +470,7 @@
     });
   });
 
-// ---------- Carousel ----------
+// Carousel functionality
 let currentSlide = 0;
 let carouselInterval = null;
 const totalSlides = 3;
@@ -511,12 +511,12 @@ function stopCarousel() {
     carouselInterval = null;
 }
 
-// ---------- On DOM Ready ----------
+// DOM ready initialization
 document.addEventListener('DOMContentLoaded', function () {
-    // Iniciar carrusel
+    // Start carousel
     startCarousel();
 
-    // Pausar carrusel al hover
+    // Pause carousel on hover
     const carouselWrapper = document.querySelector('.carousel-wrapper');
     if (carouselWrapper) {
         carouselWrapper.addEventListener('mouseenter', stopCarousel);
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // Animaciones de aparición
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -578,29 +578,27 @@ document.addEventListener('DOMContentLoaded', function () {
       observer.observe(el);
     });
 
-    // Wire del formulario de contacto (si existe)
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-      contactForm.addEventListener('submit', handleSubmit);
-    }
+    // Contact form could be enhanced here if needed
     });
 
-  // Exponer funciones globales usadas por los atributos onclick en el HTML
+  // Expose global functions used by onclick attributes in HTML
   window.showPage = showPage;
   window.toggleMobileMenu = toggleMobileMenu;
   window.navigateTo = navigateTo;
   window.goToSlide = goToSlide;
+  window.nextSlide = nextSlide;
+  window.prevSlide = prevSlide;
 
   function routeFromHash() {
   const h = (location.hash || '#startseite').slice(1);
   if (h === 'services') {
     showPage('services');
   } else if (h === 'kontakt') {
-    // si "kontakt" es sección dentro de startseite:
+    // Contact section within homepage
     if (typeof navigateTo === 'function') navigateTo('kontakt');
     else showPage('startseite');
   } else if (h === 'ueber-uns') {
-    // si "ueber-uns" es sección dentro de startseite:
+    // About section within homepage
     if (typeof navigateTo === 'function') navigateTo('ueber-uns');
     else showPage('startseite');
   } else {
@@ -612,5 +610,6 @@ window.addEventListener('hashchange', routeFromHash);
 
 
 </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974cd686c7226c5f',t:'MTc1NjE0MzI0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</body>
 </html>

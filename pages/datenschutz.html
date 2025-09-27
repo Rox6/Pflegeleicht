@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PflegeLeicht - Wir machen Pflege einfach</title>
 
-  <!-- Fuente -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Iconos: Font Awesome -->
+  <!-- Icons: Font Awesome -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         referrerpolicy="no-referrer" />
 
-  <!-- Tu CSS principal -->
+  <!-- Main CSS -->
   <link rel="stylesheet" href="../statics/styles.css" />
 </head>
 <body>
@@ -148,7 +148,7 @@
         <a href="../pages/AGB.html">AGB</a>
         <a href="../pages/widerrufsrecht.html">Widerrufsrecht</a>
         </div>
-        <!--Platzhalter für Social Media Icons
+        <!-- Placeholder for Social Media Icons
         <div class="footer-section">
         <h3>Folgen Sie uns</h3>
         <p>Bleiben Sie über Neuigkeiten informiert</p>
@@ -159,12 +159,12 @@
             <a href="#" title="Instagram">📷</a>
         </div>
         </div>
-        --> 
+        -->
     </div>
 
   <!-- Scripts -->
   <script>
-    // Navegación entre "pages" (secciones con class .page)
+    // Navigation between pages (sections with class .page)
     function showPage(pageId) {
       const pages = document.querySelectorAll('.page');
       pages.forEach(p => p.classList.remove('active'));
@@ -178,7 +178,7 @@
       window.scrollTo(0, 0);
     }
 
-    // Scroll suave a #kontakt (si existe)
+    // Smooth scroll to #kontakt (if it exists)
     function scrollToContact() {
       const el = document.querySelector('#kontakt');
       if (el) {
@@ -186,7 +186,7 @@
       }
     }
 
-    // Función para el menú hamburguesa móvil
+    // Mobile hamburger menu function
     function toggleMobileMenu() {
       const navMenu = document.getElementById('navMenu');
       if (navMenu) {
@@ -194,7 +194,7 @@
       }
     }
 
-    // Envío de formulario (si existiera en esta vista)
+    // Form submission (if it existed in this view)
     function handleSubmit(event) {
       event.preventDefault();
       const formData = new FormData(event.target);
@@ -213,7 +213,7 @@
       event.target.reset();
     }
 
-    // Cerrar menú móvil al hacer click fuera
+    // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
       const navMenu = document.getElementById('navMenu');
       const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -226,7 +226,7 @@
       }
     });
 
-    // Cerrar menú al hacer click en un enlace
+    // Close menu when clicking on a link
     document.querySelectorAll('.nav-menu a').forEach(link => {
       link.addEventListener('click', function() {
         const navMenu = document.getElementById('navMenu');
@@ -236,7 +236,7 @@
       });
     });
 
-    // Reset del menú al redimensionar
+    // Reset menu on resize
     window.addEventListener('resize', function () {
       const navMenu = document.getElementById('navMenu');
       if (navMenu && window.innerWidth > 768) {
@@ -244,11 +244,11 @@
       }
     });
 
-    // Scroll suave para anchors (si hay anchors locales)
+    // Smooth scroll for anchors (if there are local anchors)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href === '#') return; // evita bloquear links "#"
+        if (href === '#') return; // avoid blocking "#" links
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
@@ -257,102 +257,11 @@
       });
     });
 
-    // --- Carrusel: proteger si no existe en esta página ---
-    let currentSlide = 0;
-    let carouselInterval = null;
-    const totalSlides = 3;
-
-    function goToSlide(slideIndex) {
-      const carousel = document.getElementById('carousel');
-      if (!carousel) return; // protección
-      currentSlide = slideIndex;
-      const translateX = -slideIndex * 100;
-      carousel.style.transform = `translateX(${translateX}%)`;
-
-      document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-        if (index === slideIndex) {
-          dot.classList.add('active');
-          dot.style.background = '#D2691E';
-          dot.style.opacity = '1';
-        } else {
-          dot.classList.remove('active');
-          dot.style.background = '#cbd5e0';
-          dot.style.opacity = '0.5';
-        }
-      });
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      goToSlide(currentSlide);
-    }
-
-    function startCarousel() {
-      const carousel = document.getElementById('carousel');
-      if (!carousel) return; // no iniciar si no existe
-      if (carouselInterval) clearInterval(carouselInterval);
-      carouselInterval = setInterval(nextSlide, 4000);
-    }
-
-    function stopCarousel() {
-      if (carouselInterval) clearInterval(carouselInterval);
-      carouselInterval = null;
-    }
-
+    // Page initialization
     document.addEventListener('DOMContentLoaded', function () {
-      // Iniciar carrusel solo si existe
-      startCarousel();
-
-      // Pausar en hover si existe wrapper
-      const carouselWrapper = document.querySelector('.carousel-wrapper');
-      if (carouselWrapper) {
-        carouselWrapper.addEventListener('mouseenter', stopCarousel);
-        carouselWrapper.addEventListener('mouseleave', startCarousel);
-      }
-
-      // Animaciones de aparición (si hay elementos)
-      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.service-card, .value-preview, .cta-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-      });
+      // Page is ready
     });
   </script>
 
-  <!-- (Opcional) Script Cloudflare inyectado: lo dejo tal cual -->
-  <script>
-    (function(){
-      function c(){
-        var b=a.contentDocument||a.contentWindow.document;
-        if(b){
-          var d=b.createElement('script');
-          d.innerHTML="window.__CF$cv$params={r:'974d2d4e2153360b',t:'MTc1NjE0Njc5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-          b.getElementsByTagName('head')[0].appendChild(d)
-        }
-      }
-      if(document.body){
-        var a=document.createElement('iframe');
-        a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';
-        document.body.appendChild(a);
-        if('loading'!==document.readyState)c();
-        else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);
-        else{
-          var e=document.onreadystatechange||function(){};
-          document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}
-        }
-      }
-    })();
-  </script>
 </body>
 </html>

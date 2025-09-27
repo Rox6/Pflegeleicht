@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../statics/styles.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Navigation header -->
 <header class="header">
   <nav class="nav-container">
     <a class="logo-container" href="../index.html#startseite">
@@ -25,7 +25,7 @@
         </nav>
     </header>
     
-    <!-- AGB Page -->
+    <!-- Terms and conditions page content -->
     <div id="agb" class="page legal-page active">
         <div class="legal-container">
             <div class="legal-header">
@@ -132,7 +132,7 @@
         <a href="../pages/AGB.html">AGB</a>
         <a href="../pages/widerrufsrecht.html">Widerrufsrecht</a>
         </div>
-        <!--Platzhalter für Social Media Icons
+        <!-- Placeholder for Social Media Icons
         <div class="footer-section">
         <h3>Folgen Sie uns</h3>
         <p>Bleiben Sie über Neuigkeiten informiert</p>
@@ -143,7 +143,7 @@
             <a href="#" title="Instagram">📷</a>
         </div>
         </div>
-        --> 
+        -->
     </div>
     <div class="footer-bottom">
         <p>&copy; 2025 PflegeLeicht GmbH. Alle Rechte vorbehalten.</p>
@@ -174,29 +174,6 @@
             navMenu.classList.toggle('active');
         }
 
-        // Form Submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.firstName || !data.lastName || !data.email || !data.message) {
-                alert('Bitte füllen Sie alle Pflichtfelder aus.');
-                return;
-            }
-            
-            if (!data.privacy) {
-                alert('Bitte stimmen Sie der Datenschutzerklärung zu.');
-                return;
-            }
-            
-            // Simulate form submission
-            alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
-            event.target.reset();
-        }
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
@@ -230,81 +207,10 @@
             });
         });
 
-        // Carousel functionality
-        let currentSlide = 0;
-        let carouselInterval;
-        const totalSlides = 3;
-
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            const carousel = document.getElementById('carousel');
-            const translateX = -slideIndex * 100;
-            carousel.style.transform = `translateX(${translateX}%)`;
-            
-            // Update dots
-            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-                if (index === slideIndex) {
-                    dot.classList.add('active');
-                    dot.style.background = '#D2691E';
-                    dot.style.opacity = '1';
-                } else {
-                    dot.classList.remove('active');
-                    dot.style.background = '#cbd5e0';
-                    dot.style.opacity = '0.5';
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            goToSlide(currentSlide);
-        }
-
-        function startCarousel() {
-            carouselInterval = setInterval(nextSlide, 4000); // Change slide every 4 seconds
-        }
-
-        function stopCarousel() {
-            clearInterval(carouselInterval);
-        }
-
-        // Add loading states for better UX
+        // Page initialization
         document.addEventListener('DOMContentLoaded', function() {
-            // Start carousel auto-play
-            startCarousel();
-            
-            // Pause carousel on hover
-            const carouselWrapper = document.querySelector('.carousel-wrapper');
-            if (carouselWrapper) {
-                carouselWrapper.addEventListener('mouseenter', stopCarousel);
-                carouselWrapper.addEventListener('mouseleave', startCarousel);
-            }
-
-            // Add fade-in animation to elements
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Observe elements for animation
-            document.querySelectorAll('.service-card, .value-preview, .cta-card').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
+            // Page is ready
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974d2d4e2153360b',t:'MTc1NjE0Njc5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
 </body>
 </html>

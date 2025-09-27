@@ -1,17 +1,21 @@
 <?php
+// Database configuration and connection
 $cfg = [
   'host' => 'database-5018641644.webspace-host.com',
-  'db'   => 'dbs14775351',   
+  'db'   => 'dbs14775351',
   'user' => 'dbu747924',
-  'pass' => 'ProbandoProbando!',               
+  'pass' => 'ProbandoProbando!',
 ];
 
+// Build DSN string for MySQL connection
 $dsn = "mysql:host=".$cfg['host'].";dbname=".$cfg['db'].";charset=utf8mb4";
 
+// PDO configuration options
 $opt = [
   PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
   PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
+// Create PDO database connection
 $pdo = new PDO($dsn, $cfg['user'], $cfg['pass'], $opt);
