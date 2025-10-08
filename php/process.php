@@ -125,13 +125,23 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 $SMTP_HOST = 'smtp.strato.de';
-$SMTP_USER = 'info@570875270.swh.strato-hosting.eu';
+$SMTP_USER = 'info@570903987.swh.strato-hosting.eu';
 $SMTP_PASS = 'ProbandoProbando123!';  
 $SMTP_PORT = 587;
 
 $MAIL_FROM      = $SMTP_USER;
 $MAIL_FROM_NAME = 'PflegeLeicht';
-$MAIL_TO_ADMIN  = 'info@570875270.swh.strato-hosting.eu';
+$MAIL_TO_ADMIN  = 'info@570903987.swh.strato-hosting.eu';
+
+// Generate base64 logo for email
+$logoPath = __DIR__ . '/../statics/img/logo.png';
+$logoBase64 = '';
+if (file_exists($logoPath)) {
+  $logoData = file_get_contents($logoPath);
+  $logoBase64 = 'data:image/png;base64,' . base64_encode($logoData);
+} else {
+  $logoBase64 = 'https://pflegeleicht.team/statics/img/logo.png';
+}
 
 // Email content templates
 $subjectAdmin = 'Neue Kontaktanfrage von ' . $anrede . ' ' . $last_name;
@@ -151,70 +161,61 @@ $bodyAdminHtml = "
 <html>
 <head>
     <meta charset='UTF-8'>
-    <style>
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
-        .email-container { max-width: 600px; margin: 20px auto; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .header { background: #0f3159; color: white; padding: 20px; text-align: center; }
-        .header h2 { margin: 0; color: #D2691E; }
-        .content { padding: 30px; }
-        .contact-section { background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0; }
-        .contact-section h3 { color: #0f3159; margin-bottom: 15px; border-bottom: 2px solid #D2691E; padding-bottom: 5px; }
-        .contact-detail { display: flex; margin: 10px 0; }
-        .contact-label { font-weight: bold; min-width: 80px; color: #0f3159; }
-        .contact-value { flex: 1; }
-        .message-section { background: #fff; border-left: 4px solid #D2691E; padding: 20px; margin: 20px 0; }
-        .message-section h3 { color: #0f3159; margin-bottom: 15px; }
-        .message-text { background: #f9f9f9; padding: 15px; border-radius: 5px; font-style: italic; }
-        .footer { background: #0f3159; color: white; padding: 15px; text-align: center; font-size: 14px; }
-        .action-buttons { text-align: center; margin: 20px 0; }
-        .btn { display: inline-block; padding: 10px 20px; margin: 5px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .btn-email { background: #D2691E; color: white; }
-        .btn-phone { background: #2563eb; color: white; }
-    </style>
 </head>
-<body>
-    <div class='email-container'>
-        <div class='header'>
-            <h2>Neue Kontaktanfrage</h2>
-            <p>Ein neuer Kunde möchte Kontakt aufnehmen</p>
+<body style='font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4;'>
+    <div style='max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'>
+
+        <!-- Header with Logo -->
+        <div style='background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 3px solid #e0e0e0;'>
+            <img src='{$logoBase64}' alt='PflegeLeicht Logo' style='max-width: 250px; height: auto; display: block; margin: 0 auto;'>
         </div>
 
-        <div class='content'>
-            <div class='contact-section'>
-                <h3>👤 Kontaktdaten</h3>
-                <div class='contact-detail'>
-                    <span class='contact-label'>Name:</span>
-                    <span class='contact-value'><strong>$anrede $first_name $last_name</strong></span>
-                </div>
-                <div class='contact-detail'>
-                    <span class='contact-label'>E-Mail:</span>
-                    <span class='contact-value'>$email</span>
-                </div>
-                <div class='contact-detail'>
-                    <span class='contact-label'>Telefon:</span>
-                    <span class='contact-value'>$phone</span>
-                </div>
-                <div class='contact-detail'>
-                    <span class='contact-label'>Anliegen:</span>
-                    <span class='contact-value'><strong>$concern</strong></span>
-                </div>
-            </div>
-
-            <div class='message-section'>
-                <h3>💬 Nachricht vom Kunden</h3>
-                <div class='message-text'>$message</div>
-            </div>
-
-            <div class='action-buttons'>
-                <a href='mailto:$email' class='btn btn-email'>📧 E-Mail antworten</a>
-                <a href='tel:$phone' class='btn btn-phone'>📞 Anrufen</a>
-            </div>
-
-            <p><strong>⏰ Bitte setzen Sie sich zeitnah mit dem Kunden in Verbindung.</strong></p>
+        <!-- Alert Banner -->
+        <div style='background-color: #4a90e2; color: white; padding: 20px; text-align: center;'>
+            <h2 style='margin: 0; font-size: 22px;'>Neue Kontaktanfrage</h2>
+            <p style='margin: 5px 0 0 0; font-size: 14px;'>Ein neuer Kunde möchte Kontakt aufnehmen</p>
         </div>
 
-        <div class='footer'>
-            <p>PflegeLeicht - Automatische Benachrichtigung</p>
+        <!-- Content -->
+        <div style='padding: 30px;'>
+            <!-- Contact Details Section -->
+            <div style='background: #f9f9f9; padding: 20px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #4a90e2;'>
+                <h3 style='color: #333333; margin: 0 0 15px 0; font-size: 18px;'>Kontaktdaten</h3>
+                <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                    Name: $anrede $first_name $last_name
+                </p>
+                <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                    E-Mail: <a href='mailto:$email' style='color: #4a90e2; text-decoration: none;'>$email</a>
+                </p>
+                <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                    Telefon: <a href='tel:$phone' style='color: #4a90e2; text-decoration: none;'>$phone</a>
+                </p>
+                <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                    Anliegen: $concern
+                </p>
+            </div>
+
+            <!-- Message Section -->
+            <div style='background: #ffffff; border-left: 4px solid #4a90e2; padding: 20px; margin: 20px 0; border: 1px solid #e0e0e0; border-radius: 6px;'>
+                <h3 style='color: #333333; margin: 0 0 15px 0; font-size: 18px;'>Nachricht vom Kunden</h3>
+                <div style='background: #f9f9f9; padding: 15px; border-radius: 4px; color: #555555; line-height: 1.6;'>$message</div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style='text-align: center; margin: 30px 0;'>
+                <a href='mailto:$email' style='display: inline-block; padding: 12px 24px; margin: 5px; background-color: #4a90e2; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;'>E-Mail antworten</a>
+                <a href='tel:$phone' style='display: inline-block; padding: 12px 24px; margin: 5px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;'>Anrufen</a>
+            </div>
+
+            <div style='background-color: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 6px; margin-top: 20px;'>
+                <p style='margin: 0; color: #856404; text-align: center;'>⏰ Bitte setzen Sie sich zeitnah mit dem Kunden in Verbindung.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style='background-color: #f7f7f7; color: #999999; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; font-size: 12px;'>
+            <p style='margin: 0;'>PflegeLeicht - Automatische Benachrichtigung</p>
+            <p style='margin: 10px 0 0 0;'>© 2025 PflegeLeicht GmbH. Alle Rechte vorbehalten.</p>
         </div>
     </div>
 </body>
@@ -227,276 +228,55 @@ $bodyUserTxt = "Hallo {$anrede} {$last_name},\n\nvielen Dank für Ihre Anfrage, 
 "📧 info@pflegeleicht.team\n" .
 "📞 +49 (0) 6195 3044299\n" .
 "📍 Am Marktplatz 5, 65779 Kelkheim (Taunus), Deutschland\n";
-// Create mobile-optimized HTML version of user email
+// Create simple HTML email version
 $bodyUserHtml = "
 <html>
 <head>
     <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta name='format-detection' content='telephone=no'>
-    <style>
-        /* Reset styles for email clients */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: Arial, sans-serif !important;
-            line-height: 1.6;
-            color: #333333;
-            background-color: #f5f5f5;
-            margin: 0 !important;
-            padding: 0 !important;
-            width: 100% !important;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-
-        table {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-        }
-
-        .email-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-        }
-
-        .header {
-            background-color: #0f3159;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .logo {
-            max-width: 150px;
-            height: auto;
-            display: block;
-            margin: 0 auto 15px auto;
-            border: 0;
-        }
-
-        .brand-text h2 {
-            color: #D2691E !important;
-            margin: 10px 0 5px 0;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .brand-text p {
-            color: #ffffff;
-            margin: 0;
-            font-size: 14px;
-        }
-
-        .header-title {
-            font-size: 20px;
-            color: #D2691E !important;
-            margin: 20px 0 0 0;
-            font-weight: bold;
-        }
-
-        .content {
-            padding: 30px 20px;
-            background-color: #ffffff;
-        }
-
-        .greeting {
-            font-size: 24px;
-            color: #0f3159;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: normal;
-        }
-
-        .message-box {
-            background-color: #f8fafc;
-            padding: 20px;
-            border-left: 4px solid #D2691E;
-            margin: 20px 0;
-            font-size: 16px;
-        }
-
-        .message-box p {
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .message-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .signature {
-            text-align: center;
-            margin-top: 25px;
-            font-style: italic;
-            color: #666666;
-            font-size: 16px;
-        }
-
-        .footer {
-            background-color: #0f3159;
-            color: #ffffff;
-            padding: 25px 20px;
-            text-align: center;
-        }
-
-        .company-name {
-            color: #D2691E !important;
-            margin-bottom: 15px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .tagline {
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .divider {
-            height: 2px;
-            background-color: #D2691E;
-            margin: 15px 0;
-        }
-
-        .contact-info {
-            text-align: left;
-            margin-top: 15px;
-        }
-
-        .contact-item {
-            margin-bottom: 12px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .contact-icon {
-            display: inline-block;
-            width: 20px;
-            color: #D2691E;
-            font-size: 16px;
-        }
-
-        .contact-label {
-            font-weight: bold;
-            color: #D2691E;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .contact-value {
-            color: #ffffff;
-            font-size: 14px;
-            margin-left: 25px;
-        }
-
-        /* Mobile responsive */
-        @media only screen and (max-width: 600px) {
-            .email-container {
-                width: 100% !important;
-                margin: 0 !important;
-            }
-
-            .header {
-                padding: 20px 15px !important;
-            }
-
-            .content {
-                padding: 20px 15px !important;
-            }
-
-            .greeting {
-                font-size: 20px !important;
-            }
-
-            .message-box {
-                padding: 15px !important;
-                font-size: 14px !important;
-            }
-
-            .footer {
-                padding: 20px 15px !important;
-            }
-
-            .logo {
-                max-width: 120px !important;
-            }
-
-            .brand-text h2 {
-                font-size: 20px !important;
-            }
-        }
-    </style>
 </head>
-<body>
-    <div class='email-container'>
-        <div class='header'>
-            <!-- Company logo with fallback -->
-            <img src='data:image/png;base64," . file_get_contents(__DIR__ . "/../statics/img/logo_base64.txt") . "' alt='PflegeLeicht Logo' class='logo'>
+<body style='font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4;'>
 
-            <!-- Always visible brand text -->
-            <div class='brand-text'>
-                <h2>PflegeLeicht</h2>
-                <p>Wir machen Pflege einfach</p>
-            </div>
+    <div style='max-width: 600px; margin: 0 auto; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'>
 
-            <h1 class='header-title'>Bestätigung Ihrer Anfrage</h1>
+        <!-- Header with Logo -->
+        <div style='background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 3px solid #e0e0e0;'>
+            <img src='{$logoBase64}' alt='PflegeLeicht Logo' style='max-width: 250px; height: auto; display: block; margin: 0 auto;'>
         </div>
 
-        <div class='content'>
-            <h2 class='greeting'>Hallo {$anrede} {$last_name}! 👋</h2>
+        <!-- Content -->
+        <div style='padding: 40px 30px;'>
+            <h2 style='color: #333333; text-align: center; margin-bottom: 10px; font-size: 24px;'>Bestätigung Ihrer Anfrage</h2>
 
-            <div class='message-box'>
-                <p><strong>Vielen Dank für Ihre Anfrage!</strong></p>
-                <p>Wir werden uns schnellstmöglich mit Ihnen in Verbindung setzen und Ihnen gerne bei Ihrem Anliegen behilflich sein.</p>
-                <p>Unser Team steht Ihnen für alle Fragen rund um die Pflege zur Verfügung.</p>
+            <p style='color: #666666; text-align: center; margin-bottom: 30px; font-size: 16px;'>Hallo {$anrede} {$last_name},</p>
+
+            <div style='background-color: #f9f9f9; padding: 25px; border-radius: 6px; margin: 25px 0; border-left: 4px solid #4a90e2;'>
+                <p style='color: #333333; margin: 0 0 15px 0; line-height: 1.6;'><strong>Vielen Dank für Ihre Anfrage!</strong></p>
+                <p style='color: #555555; margin: 0; line-height: 1.6;'>Wir haben Ihre Nachricht erhalten und werden uns schnellstmöglich mit Ihnen in Verbindung setzen. Gerne stehen wir Ihnen für alle Fragen rund um die Pflege zur Verfügung.</p>
             </div>
 
-            <div class='signature'>
-                Mit freundlichen Grüßen<br>
-                <strong>Ihr PflegeLeicht Team</strong>
+            <div style='text-align: center; margin-top: 30px; color: #666666;'>
+                <p style='margin: 5px 0;'>Mit freundlichen Grüßen</p>
+                <p style='margin: 5px 0;'><strong>Ihr PflegeLeicht Team</strong></p>
             </div>
         </div>
 
-        <div class='footer'>
-            <h3 class='company-name'>PflegeLeicht</h3>
-            <p class='tagline'>Wir machen Pflege einfach</p>
-
-            <div class='divider'></div>
-
-            <div class='contact-info'>
-                <div class='contact-item'>
-                    <span class='contact-icon'>🌐</span>
-                    <div class='contact-label'>Website</div>
-                    <div class='contact-value'>www.pflegeleicht.team</div>
-                </div>
-
-                <div class='contact-item'>
-                    <span class='contact-icon'>📧</span>
-                    <div class='contact-label'>E-Mail</div>
-                    <div class='contact-value'>info@pflegeleicht.team</div>
-                </div>
-
-                <div class='contact-item'>
-                    <span class='contact-icon'>📞</span>
-                    <div class='contact-label'>Telefon</div>
-                    <div class='contact-value'>+49 (0) 6195 3044299</div>
-                </div>
-
-                <div class='contact-item'>
-                    <span class='contact-icon'>📍</span>
-                    <div class='contact-label'>Adresse</div>
-                    <div class='contact-value'>Am Marktplatz 5<br>65779 Kelkheim (Taunus)</div>
-                </div>
-            </div>
+        <!-- Footer with contact info -->
+        <div style='background-color: #f7f7f7; color: #555555; padding: 30px; border-top: 1px solid #e0e0e0; text-align: center;'>
+            <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                Website: www.pflegeleicht.team
+            </p>
+            <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                E-Mail: info@pflegeleicht.team
+            </p>
+            <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                Telefon: +49 (0) 6195 3044299
+            </p>
+            <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                Adresse: Am Marktplatz 5, 65779 Kelkheim (Taunus), Deutschland
+            </p>
+            <p style='margin: 20px 0 0 0; color: #999999; font-size: 12px;'>
+                © 2025 PflegeLeicht GmbH. Alle Rechte vorbehalten.
+            </p>
         </div>
     </div>
 </body>

@@ -31,7 +31,7 @@ try {
         if ($oldRecords > 0) {
             // Delete records older than 30 days
             $cleanupSql = "DELETE FROM contact_requests
-                          WHERE created_at < (NOW() - INTERVAL 30 DAY)";
+                          WHERE created_at < (NOW() - INTERVAL 1 DAY)";
             $deletedRows = $pdo->exec($cleanupSql);
 
             // Log the automatic cleanup

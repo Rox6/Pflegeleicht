@@ -1,9 +1,9 @@
 <?php
 // Database configuration and connection
 $cfg = [
-  'host' => 'database-5018641644.webspace-host.com',
-  'db'   => 'dbs14775351',
-  'user' => 'dbu747924',
+  'host' => 'database-5018755722.webspace-host.com',
+  'db'   => 'dbs14831558',
+  'user' => 'dbu4896585',
   'pass' => 'ProbandoProbando!',
 ];
 
