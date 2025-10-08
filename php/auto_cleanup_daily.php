@@ -23,13 +23,13 @@ try {
 
         // Check how many old records exist before cleanup
         $checkSql = "SELECT COUNT(*) as count FROM contact_requests
-                     WHERE created_at < (NOW() - INTERVAL 30 DAY)";
+                     WHERE created_at < (NOW() - INTERVAL 1 DAY)";
         $stmt = $pdo->query($checkSql);
         $oldRecords = $stmt->fetch()['count'];
 
         // Only run cleanup if there are old records to delete
         if ($oldRecords > 0) {
-            // Delete records older than 30 days
+            // Delete records older than 1 day
             $cleanupSql = "DELETE FROM contact_requests
                           WHERE created_at < (NOW() - INTERVAL 1 DAY)";
             $deletedRows = $pdo->exec($cleanupSql);
@@ -37,7 +37,7 @@ try {
             // Log the automatic cleanup
             $logFile = __DIR__ . '/cleanup.log';
             $msg = date('Y-m-d H:i:s') . " - DAILY AUTO CLEANUP executed\n";
-            $msg .= "  - Records older than 30 days: $oldRecords\n";
+            $msg .= "  - Records older than 1 day: $oldRecords\n";
             $msg .= "  - Records deleted: $deletedRows\n";
             $msg .= "  - Triggered by website visit\n";
             $msg .= "  - Last cleanup was: " . ($lastCleanupDate ?: 'Never') . "\n\n";
