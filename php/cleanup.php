@@ -13,7 +13,7 @@ try {
   // Log
   $logFile = __DIR__ . '/cleanup.log';
   file_put_contents($logFile,
-      date('Y-m-d H:i:s')." - borradas: $rows\n", FILE_APPEND);
+      date('Y-m-d H:i:s')." - Deleted: $rows\n", FILE_APPEND);
 
   http_response_code(204); // No Content
 } catch (Throwable $e) {
