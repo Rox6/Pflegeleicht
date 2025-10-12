@@ -607,8 +607,24 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 document.addEventListener('DOMContentLoaded', routeFromHash);
 window.addEventListener('hashchange', routeFromHash);
+</script>
 
+  <!-- Daily cleanup task -->
+<script>
+(function() {
+  // Guardamos la última ejecución en el navegador
+  const lastCleanup = localStorage.getItem('lastCleanup');
+  const now = Date.now();
+  const oneDay = 24 * 60 * 60 * 1000; // 24 horas en ms
 
+  if (!lastCleanup || (now - parseInt(lastCleanup)) > oneDay) {
+    fetch('/php/cleanup.php') // ajusta la ruta según dónde tengas el archivo
+      .then(r => console.log("Cleanup ejecutado"))
+      .catch(e => console.error("Error cleanup", e));
+
+    localStorage.setItem('lastCleanup', now.toString());
+  }
+})();
 </script>
 
 </body>
