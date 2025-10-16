@@ -1,11 +1,6 @@
 <?php
-// Database configuration and connection
-$cfg = [
-  'host' => 'database-5018755722.webspace-host.com',
-  'db'   => 'dbs14831558',
-  'user' => 'dbu4896585',
-  'pass' => 'ProbandoProbando!',
-];
+// Database configuration and connection (encrypted)
+$cfg = require __DIR__ . '/config.enc.php';
 
 // Build DSN string for MySQL connection
 $dsn = "mysql:host=".$cfg['host'].";dbname=".$cfg['db'].";charset=utf8mb4";

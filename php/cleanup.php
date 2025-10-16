@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 require __DIR__ . '/db.php';
 
 try {
-  // PRUEBA: 10 minutos (en prod vuelve a 1 día)
   $sql = "DELETE FROM contact_requests
           WHERE created_at < (NOW() - INTERVAL 30 Days)";
   $rows = $pdo->exec($sql);
