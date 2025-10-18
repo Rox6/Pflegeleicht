@@ -1728,7 +1728,7 @@ only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: la
     .legal-container {
         padding: 0;
     }
-}
+
 
 /* Comprehensive iPad fixes - highest priority */
 @media only screen
@@ -1785,7 +1785,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
         padding: clamp(0.2rem, 0.8vw, 0.4rem) clamp(0.4rem, 1.2vw, 0.8rem);
     }
 }
-    }
+    
 
     .carousel-slide {
         height: 450px !important;
@@ -1797,7 +1797,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
         appearance: none !important;
         font-size: 16px !important;
     }
-}
+
 
 /* Values preview layout: 2 arriba, 1 centrada abajo en pantallas medianas */
 @media (max-width: 900px) and (min-width: 590px) {
