@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 
 // Load database connection
 require __DIR__ . '/db.php';
+$cfg = require __DIR__ . '/config.enc.php';
 
 // Only allow POST requests
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -126,22 +127,15 @@ use PHPMailer\PHPMailer\Exception;
 
 $SMTP_HOST = 'smtp.strato.de';
 $SMTP_USER = 'info@570903987.swh.strato-hosting.eu';
-$SMTP_PASS = 'ProbandoProbando123!';  
+$SMTP_PASS = $cfg['SMTP_PASS'];  
 $SMTP_PORT = 587;
 
 $MAIL_FROM      = $SMTP_USER;
 $MAIL_FROM_NAME = 'PflegeLeicht';
 $MAIL_TO_ADMIN  = 'info@570903987.swh.strato-hosting.eu';
 
-// Generate base64 logo for email
-$logoPath = __DIR__ . '/../statics/img/logo.png';
-$logoBase64 = '';
-if (file_exists($logoPath)) {
-  $logoData = file_get_contents($logoPath);
-  $logoBase64 = 'data:image/png;base64,' . base64_encode($logoData);
-} else {
-  $logoBase64 = 'https://pflegeleicht.team/statics/img/logo.png';
-}
+// Logo-URL 
+$logoURL = 'http://570903987.swh.strato-hosting.eu/statics/img/logo.png';
 
 // Email content templates
 $subjectAdmin = 'Neue Kontaktanfrage von ' . $anrede . ' ' . $last_name;
@@ -167,7 +161,7 @@ $bodyAdminHtml = "
 
         <!-- Header with Logo -->
         <div style='background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 3px solid #e0e0e0;'>
-            <img src='{$logoBase64}' alt='PflegeLeicht Logo' style='max-width: 250px; height: auto; display: block; margin: 0 auto;'>
+            <img src='{$logoURL}' alt='Logo' style='max-width:200px;height:auto;'>
         </div>
 
         <!-- Alert Banner -->
@@ -240,7 +234,7 @@ $bodyUserHtml = "
 
         <!-- Header with Logo -->
         <div style='background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 3px solid #e0e0e0;'>
-            <img src='{$logoBase64}' alt='PflegeLeicht Logo' style='max-width: 250px; height: auto; display: block; margin: 0 auto;'>
+            <img src='{$logoURL}' alt='Logo' style='max-width:200px;height:auto;'>
         </div>
 
         <!-- Content -->
@@ -327,7 +321,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $MAIL_FROM,$MAIL_FROM_NAME,
     $email,$first_name.' '.$last_name,
     $subjectUser,$bodyUserHtml,$bodyUserTxt,
-    $MAIL_TO_ADMIN,'PflegeLeicht'
+    'info@570903987.swh.strato-hosting.eu', 'PflegeLeicht'
   );
 }
 
