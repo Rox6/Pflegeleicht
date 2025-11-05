@@ -73,6 +73,7 @@ $email   = $pick('email', 'e_mail', 'email_adresse');
 $concern = $pick('concern', 'ihr_anliegen', 'anliegen');
 $message = $pick('message', 'nachricht');
 $privacy = (isset($_POST['privacy']) && (string)$_POST['privacy'] === '1') ? 1 : 0;
+$awareness_source = $pick('awareness_source', 'aufmerksam_geworden');
 
 // Form validation
 $errors = [];
@@ -95,8 +96,8 @@ if ($errors) {
 // Insert into database
 try {
   $sql = "INSERT INTO contact_requests
-          (anrede, first_name, last_name, phone, email, concern, message, privacy)
-          VALUES (:anrede, :first_name, :last_name, :phone, :email, :concern, :message, :privacy)";
+          (anrede, first_name, last_name, phone, email, awareness_source, concern, message, privacy)
+          VALUES (:anrede, :first_name, :last_name, :phone, :email, :awareness_source, :concern, :message, :privacy)";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
     ':anrede'     => $anrede,
@@ -104,6 +105,7 @@ try {
     ':last_name'  => $last_name,
     ':phone'      => $phone,
     ':email'      => $email,
+    ':awareness_source' => ($awareness_source !== '' ? $awareness_source : null),
     ':concern'    => $concern,
     ':message'    => $message,
     ':privacy'    => $privacy,
@@ -136,15 +138,17 @@ $MAIL_TO_ADMIN  = 'info@570903987.swh.strato-hosting.eu';
 
 // Logo-URL 
 $logoURL = 'http://570903987.swh.strato-hosting.eu/statics/img/logo.png';
+$aw_display = ($awareness_source !== '' ? $awareness_source : '—');
 
 // Email content templates
 $subjectAdmin = 'Neue Kontaktanfrage von ' . $anrede . ' ' . $last_name;
 
-$bodyAdminTxt = "Guten Tag,\n\nSie haben eine neue Kontaktanfrage über Ihre Website erhalten.\n\n" .
+$bodyAdminTxt = "Guten Tag,\n\nSie haben eine neue Kontaktanfrage über Ihre Webseite erhalten.\n\n" .
 "KONTAKTDATEN:\n" .
 "Name: $anrede $first_name $last_name\n" .
 "E-Mail: $email\n" .
 "Telefon: $phone\n" .
+"Wie aufmerksam geworden: $aw_display\n" .
 "Anliegen: $concern\n\n" .
 "NACHRICHT:\n$message\n\n" .
 "Bitte setzen Sie sich zeitnah mit dem Kunden in Verbindung.\n\n" .
@@ -183,6 +187,9 @@ $bodyAdminHtml = "
                 </p>
                 <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
                     Telefon: <a href='tel:$phone' style='color: #4a90e2; text-decoration: none;'>$phone</a>
+                </p>
+                <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
+                    Aufmerksam geworden: $aw_display
                 </p>
                 <p style='margin: 10px 0; color: #555555; font-size: 14px; line-height: 1.8;'>
                     Anliegen: $concern
