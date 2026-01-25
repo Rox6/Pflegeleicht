@@ -128,13 +128,13 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 $SMTP_HOST = 'smtp.strato.de';
-$SMTP_USER = 'info@570903987.swh.strato-hosting.eu';
+$SMTP_USER = 'kontakt@pflegeleicht.team';
 $SMTP_PASS = $cfg['SMTP_PASS'];  
 $SMTP_PORT = 587;
 
 $MAIL_FROM      = $SMTP_USER;
-$MAIL_FROM_NAME = 'PflegeLeicht';
-$MAIL_TO_ADMIN  = 'info@570903987.swh.strato-hosting.eu';
+$MAIL_FROM_NAME = 'Pflegeleicht';
+$MAIL_TO_ADMIN  = 'kontakt@pflegeleicht.team';
 
 // Logo-URL 
 $logoURL = 'http://570903987.swh.strato-hosting.eu/statics/img/logo.png';
