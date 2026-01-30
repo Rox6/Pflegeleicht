@@ -27,27 +27,29 @@
 
     <!-- Startseite (Home) -->
     <div id="startseite" class="page active">
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-        <div class="hero-text">
-            <h1>Wir helfen Ihnen bei Fragen rund um Pflegeleistungen.</h1>
-            <div class="subtitle">Einfach • Verständlich • Für Sie da</div>
-            <p>PflegeLeicht unterstützt Pflegebedürftige und Angehörige bei der Orientierung im Pflegesystem – von der ersten Einschätzung bis zur Vorbereitung auf Begutachtungen. Wir erklären Zusammenhänge verständlich und bereiten Unterlagen strukturiert auf. </p>
-            <div class="hero-buttons">
-            <a href="#kontakt" class="btn-primary">Beratung anfragen</a>
-            <a href="#" class="btn-secondary" onclick="showPage('services')">Was wir für Sie tun</a>
-            </div>
+    <h1>Wir helfen Ihnen bei allen Fragen rund um Pflegeleistungen.</h1>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="subtitle">Einfach • Verständlich • Für Sie da</div>
+        <p>PflegeLeicht unterstützt Pflegebedürftige und Angehörige bei der Orientierung im Pflegesystem – von der ersten Einschätzung bis zur Vorbereitung auf Begutachtungen. Wir erklären Zusammenhänge verständlich und bereiten Unterlagen strukturiert auf</p>
+        <div class="hero-buttons">
+          <a href="#kontakt" class="btn-primary">Beratung anfragen</a>
+          <a href="#services" class="btn-secondary" onclick="showPage('services'); return false;">Was wir für Sie tun</a>
         </div>
-        <div class="hero-visual">
-            <div class="hero-card">
-            <div class="icon">🤝</div>
-            <h3>Persönliche Betreuung</h3>
-            <p>Individuelle Lösungen für Ihre Bedürfnisse</p>
-            </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="icon">🤝</div>
+          <h3>Persönliche Betreuung</h3>
+          <p>Individuelle Lösungen für Ihre Bedürfnisse</p>
         </div>
-        </div>
+      </div>
+    </div>
+
     </section>
+    </div>
 
     <!-- Carousel -->
     <section class="carousel-section">
@@ -74,7 +76,7 @@
                 </div>
             </div>
 
-        <!-- Slide 3: Erfolgreiche Ergebnisse -->
+        <!-- Slide 3: Verlässlich an Ihrer Seite -->
             <div class="carousel-slide" style="background-image:url('statics/img/erfolgreiche_ergebnisse.jpeg')">
                 <div class="slide-content">
                     <h3>Verlässlich an Ihrer Seite</h3>
@@ -350,11 +352,11 @@
 
         <div class="service-detail">
             <h3>Beantragung der Feststellung eines GdB</h3>
-            <p>Der Grad der Behinderung ist unabhängig vom Pflegegrad zu beurteilen. Wir unterstützen bei der Antragstellung und erklären die Unterschiede zwischen Pflegebedürftigkeit und Schwerbehinderung sowie deren jeweilige Auswirkungen und Vorteile.</p>
+            <p>Der Grad der Behinderung ist unabhängig vom Pflegegrad zu beurteilen. Wir unterstützen bei der Antragstellung und erklären die Unterschiede zwischen Pflegebedürftigkeit und Schwerbehinderung sowie deren jeweilige Auswirkungen und Möglichkeiten für Nachteilsausgleiche.</p>
         
           </div>
                 <div style="text-align: center; margin-top: 4rem;">
-            <a href="index.html#kontakt" class="btn-primary">Jetzt kostenlose Beratung anfragen</a>
+            <a href="#kontakt" onclick="navigateTo('kontakt')" class="btn-primary">Jetzt Beratung anfragen</a>
         </div>
 
         </div>
