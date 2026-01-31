@@ -1400,7 +1400,7 @@ select::placeholder {
             }
             .hero > h1 {
                 top: clamp(60px, 8vh, 100px);
-                font-size: clamp(11.5rem, 4vw, 2.2rem);
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
                 padding: 0 0.5rem;
                 text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);    
             }
