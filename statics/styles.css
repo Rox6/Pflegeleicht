@@ -128,7 +128,7 @@ body {
 
         .hero > h1 {
         position: absolute;
-        top: clamp(80px, 10vh, 130px);   /* Abstand von oben */
+        top: clamp(80px, 10vh, 130px);   
         left: 50%;
         transform: translateX(-50%);
 
@@ -1397,6 +1397,12 @@ select::placeholder {
                 padding: 1rem;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
                 z-index: 1000;
+            }
+            .hero > h1 {
+                top: clamp(60px, 8vh, 100px);
+                font-size: clamp(11.5rem, 4vw, 2.2rem);
+                padding: 0 0.5rem;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);    
             }
 
             .hero-content {
