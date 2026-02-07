@@ -133,7 +133,7 @@ $SMTP_PASS = $cfg['SMTP_PASS'];
 $SMTP_PORT = 587;
 
 $MAIL_FROM      = $SMTP_USER;
-$MAIL_FROM_NAME = 'Pflegeleicht';
+$MAIL_FROM_NAME = 'PflegeLeicht';
 $MAIL_TO_ADMIN  = 'kontakt@pflegeleicht.team';
 
 // Logo-URL 
